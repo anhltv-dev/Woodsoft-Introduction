@@ -538,7 +538,7 @@
       <div class="txt"><span class="title">BAZIS – Dựng hình</span></div>
     </div>
 
-    <div class="node woodsoft" data-id="wood-viewer" style="left:450px; top:38px; width:200px; height:55px;">
+    <div class="node woodsoft" data-id="wood-viewer" data-href="wood-viewer.html" style="left:450px; top:38px; width:200px; height:55px;">
       <div class="icon"><i class="fa-solid fa-eye"></i></div>
       <div class="txt"><span class="title">Wood Viewer</span></div>
     </div>
@@ -1161,8 +1161,8 @@ document.querySelectorAll('.node, .chip').forEach(node => {
   node.setAttribute('tabindex', '0');
   node.setAttribute('role', 'button');
   node.addEventListener('click', () => {
-    if (node.dataset.id === 'dung-hinh') {
-      window.location.href = node.dataset.href || 'Bazis_dunghinh.html';
+    if (node.dataset.href) {
+      window.location.href = node.dataset.href;
       return;
     }
     openModal(node.dataset.id, node);
@@ -1170,8 +1170,8 @@ document.querySelectorAll('.node, .chip').forEach(node => {
   node.addEventListener('keydown', e => {
     if(e.key === 'Enter' || e.key === ' '){
       e.preventDefault();
-      if (node.dataset.id === 'dung-hinh') {
-        window.location.href = node.dataset.href || 'Bazis_dunghinh.html';
+      if (node.dataset.href) {
+        window.location.href = node.dataset.href;
         return;
       }
       openModal(node.dataset.id, node);
