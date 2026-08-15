@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wood Viewer</title>
+<style>
+    :root{
+      --bg:#f6f8fb;
+      --surface:#ffffff;
+      --text:#1f2937;
+      --muted:#64748b;
+      --line:#e5e7eb;
+      --primary:#0f6fb8;
+      --primary-dark:#0b4f83;
+      --soft:#eaf4fb;
+      --accent:#f3b43f;
+      --success:#178a63;
+      --shadow:0 14px 35px rgba(15, 23, 42, .08);
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(15,111,184,.08), transparent 28%),
+        var(--bg);
+      line-height:1.65;
+    }
+
+    .home-btn{
+      position:fixed;
+      top:20px;
+      right:20px;
+      z-index:1000;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 20px;
+      border-radius:999px;
+      text-decoration:none;
+      color:#fff;
+      font-weight:700;
+      font-size:14px;
+      transition:all .3s ease;
+      background:linear-gradient(135deg, #0f6fb8, #0b4f83 60%, #09395d);
+      box-shadow:0 8px 20px rgba(15,111,184,.3);
+    }
+
+    .home-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(15,111,184,.4);
+    }
+
+    .home-btn i{
+      font-size:16px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:60px 24px;
+    }
+
+    h1{
+      font-size:2.5em;
+      font-weight:800;
+      margin:0 0 20px;
+      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    h2{
+      font-size:1.8em;
+      font-weight:700;
+      margin:40px 0 20px;
+      color:var(--primary);
+    }
+
+    p{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:1.05em;
+      line-height:1.8;
+    }
+
+    .section{
+      background:var(--surface);
+      border-radius:var(--radius);
+      padding:40px;
+      margin:30px 0;
+      box-shadow:0 2px 8px rgba(0,0,0,.05);
+      border:1px solid var(--line);
+    }
+
+    .badge{
+      display:inline-block;
+      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
+      color:#fff;
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:0.85em;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .feature-list{
+      list-style:none;
+      padding:0;
+      margin:20px 0;
+    }
+
+    .feature-list li{
+      padding:12px 0;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+    }
+
+    .feature-list li:last-child{
+      border-bottom:none;
+    }
+
+    .feature-list i{
+      color:var(--success);
+      font-size:1.2em;
+      margin-top:2px;
+    }
+
+    .cta-btn{
+      display:inline-block;
+      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
+      color:#fff;
+      padding:14px 28px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:700;
+      transition:all .3s ease;
+      border:2px solid transparent;
+    }
+
+    .cta-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 20px rgba(15,111,184,.3);
+    }
+
+    @media (max-width:768px){
+      .container{
+        padding:40px 16px;
+      }
+
+      h1{
+        font-size:1.8em;
+      }
+
+      h2{
+        font-size:1.3em;
+      }
+
+      .section{
+        padding:24px;
+      }
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<a class="home-btn" href="index.html" aria-label="Về trang chủ">
+  <i class="fa-solid fa-home"></i> HOME
+</a>
+
+<div class="container">
+  <div class="badge"><i class="fa-solid fa-eye"></i> Wood Viewer</div>
+  
+  <h1>Wood Viewer</h1>
+  <p>Công cụ xem và tương tác 3D cho mô hình sản phẩm gỗ</p>
+
+  <div class="section">
+    <h2>Giới thiệu</h2>
+    <p>Nội dung sẽ được cập nhật sớm...</p>
+  </div>
+
+  <div class="section">
+    <h2>Tính năng chính</h2>
+    <ul class="feature-list">
+      <li><i class="fa-solid fa-check"></i> <span>Xem mô hình 3D tương tác</span></li>
+      <li><i class="fa-solid fa-check"></i> <span>Quay xoay và phóng to/thu nhỏ</span></li>
+      <li><i class="fa-solid fa-check"></i> <span>Hiển thị chi tiết sản phẩm</span></li>
+      <li><i class="fa-solid fa-check"></i> <span>Xuất ảnh 3D</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Hướng dẫn sử dụng</h2>
+    <p>Nội dung chi tiết sẽ được bổ sung...</p>
+  </div>
+
+</div>
+
+<script>
+  // Script sẽ được bổ sung khi có nội dung
+</script>
+</body>
+</html>
