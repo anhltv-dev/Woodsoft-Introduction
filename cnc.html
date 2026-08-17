@@ -5,6 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>BAZIS - CNC</title>
+<meta name="description" content="BAZIS – CNC tự động tạo chương trình gia công cho máy khoan, phay CNC từ mô hình 3D BAZIS.">
 <style>
     :root{
       --bg:#f6f8fb;
@@ -83,97 +84,6 @@
       line-height:1;
     }
 
-    .container{
-      max-width:1200px;
-      margin:0 auto;
-      padding:60px 24px;
-    }
-
-    h1{
-      font-size:2.5em;
-      font-weight:800;
-      margin:0 0 20px;
-      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-    }
-
-    h2{
-      font-size:1.8em;
-      font-weight:700;
-      margin:40px 0 20px;
-      color:var(--primary);
-    }
-
-    p{
-      margin:0 0 16px;
-      color:var(--muted);
-      font-size:1.05em;
-      line-height:1.8;
-    }
-
-    .section{
-      background:var(--surface);
-      border-radius:var(--radius);
-      padding:40px;
-      margin:30px 0;
-      box-shadow:0 2px 8px rgba(0,0,0,.05);
-      border:1px solid var(--line);
-    }
-
-    .badge{
-      display:inline-block;
-      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
-      color:#fff;
-      padding:8px 16px;
-      border-radius:999px;
-      font-size:0.85em;
-      font-weight:700;
-      margin-bottom:20px;
-    }
-
-    .feature-list{
-      list-style:none;
-      padding:0;
-      margin:20px 0;
-    }
-
-    .feature-list li{
-      padding:12px 0;
-      border-bottom:1px solid var(--line);
-      display:flex;
-      align-items:flex-start;
-      gap:12px;
-    }
-
-    .feature-list li:last-child{
-      border-bottom:none;
-    }
-
-    .feature-list i{
-      color:var(--success);
-      font-size:1.2em;
-      margin-top:2px;
-    }
-
-    .cta-btn{
-      display:inline-block;
-      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
-      color:#fff;
-      padding:14px 28px;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:700;
-      transition:all .3s ease;
-      border:2px solid transparent;
-    }
-
-    .cta-btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 8px 20px rgba(15,111,184,.3);
-    }
-
     .woodsoft-footer{
       max-width: 1200px;
       margin: 38px auto 0;
@@ -228,30 +138,265 @@
       font-size: 0.95rem;
     }
 
-    @media (max-width:768px){
-      .container{
-        padding:40px 16px;
-      }
+    /* ================= Nội dung theo phong cách BAZIS Dự toán ================= */
 
-      h1{
-        font-size:1.8em;
-      }
+    .page{
+      width:min(1180px,calc(100% - 40px));
+      margin:0 auto;
+      padding:44px 0 20px;
+    }
 
-      h2{
-        font-size:1.3em;
-      }
+    .hero{
+      background:linear-gradient(135deg,#0b4f83 0%,#0f6fb8 60%,#1484cf 100%);
+      color:#fff;
+      border-radius:26px;
+      padding:48px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:280px;
+      height:280px;
+      border-radius:50%;
+      right:-90px;
+      top:-100px;
+      background:rgba(255,255,255,.08);
+      z-index:0;
+    }
+    .hero > *{position:relative;z-index:2}
+    .hero-icons{position:absolute;inset:0;z-index:1;pointer-events:none}
+    .hero-icon{position:absolute;color:rgba(255,255,255,.12);filter:drop-shadow(0 10px 18px rgba(0,0,0,.08));line-height:1}
+    .hero-icon.i1{top:36px;right:310px;font-size:34px;transform:rotate(-8deg)}
+    .hero-icon.i2{top:112px;right:120px;font-size:48px;transform:rotate(10deg)}
+    .hero-icon.i3{bottom:54px;right:270px;font-size:42px;transform:rotate(-6deg)}
+    .hero-icon.i4{bottom:34px;right:90px;font-size:36px;transform:rotate(8deg)}
+    .hero-icon.i5{top:52px;left:56%;font-size:28px;transform:rotate(14deg)}
 
-      .section{
-        padding:24px;
-      }
+    .hero h1{
+      margin:0 0 16px;
+      font-size:clamp(34px,5vw,58px);
+      line-height:1.08;
+      letter-spacing:-.03em;
+      color:#fff;
+    }
+    .hero p{max-width:900px;margin:0;font-size:18px;color:rgba(255,255,255,.9)}
+    .hero strong{color:#fff}
 
-      .woodsoft-footer{
-        padding:14px 16px;
-      }
+    .estimate-detail{margin-top:24px;display:grid;gap:18px}
+    .estimate-detail-card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:0 10px 28px rgba(15,23,42,.055);
+      overflow:hidden;
+    }
 
-      .woodsoft-brand-text{
-        gap:6px;
-      }
+    .estimate-overview{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+      gap:28px;
+      align-items:center;
+      padding:30px;
+    }
+    .estimate-overview-copy{min-width:0}
+    .estimate-overview-kicker{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 11px;border-radius:999px;
+      background:var(--soft);color:var(--primary-dark);
+      font-size:12px;font-weight:850;letter-spacing:.05em;text-transform:uppercase;
+    }
+    .estimate-overview h2{
+      margin:12px 0 6px;color:#08245a;
+      font-size:clamp(26px,3vw,38px);line-height:1.1;letter-spacing:-.03em;
+    }
+    .estimate-slogan{margin:0 0 12px;color:#172033;font-size:17px;font-weight:800}
+    .estimate-overview-copy p{margin:0 0 12px;color:#475569;font-size:15px;line-height:1.72}
+    .estimate-overview-copy p:last-child{margin-bottom:0}
+
+    .ov-visual{display:flex;flex-direction:column;gap:10px;min-width:0}
+    .ov-visual-box{
+      border:1px solid #e6edf4;border-radius:16px;background:#fff;
+      padding:14px;display:flex;align-items:center;justify-content:center;
+    }
+    .ov-visual-box svg{width:100%;height:auto;display:block;max-height:250px}
+    .ov-visual-caption{
+      display:flex;align-items:flex-start;gap:6px;
+      font-size:11.5px;color:var(--muted);font-weight:600;line-height:1.4;
+      padding:0 4px;
+    }
+    .ov-visual-caption i{color:var(--primary);font-size:11px;margin-top:2px}
+
+    .estimate-main-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1.15fr);gap:18px}
+    .estimate-block{padding:22px}
+    .estimate-block-title{
+      display:flex;align-items:center;gap:9px;margin:0 0 17px;color:#fff;
+      background:linear-gradient(135deg,#0f6fb8,#1484cf);border-radius:999px;
+      padding:8px 14px;width:max-content;max-width:100%;
+      font-size:14px;font-weight:850;letter-spacing:.02em;
+    }
+
+    .estimate-feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px}
+    .estimate-feature-item{display:grid;grid-template-columns:40px minmax(0,1fr);gap:10px;align-items:start;min-width:0}
+    .estimate-feature-icon{
+      width:40px;height:40px;display:grid;place-items:center;border-radius:12px;
+      color:var(--primary);background:#edf7ff;font-size:16px;flex:0 0 auto;
+    }
+    .estimate-feature-item p{margin:2px 0 0;color:#334155;font-size:13px;line-height:1.5}
+
+    .cost-category-grid{
+      display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;
+      border:1px solid #dbeaf5;border-radius:16px;overflow:hidden;background:#fff;
+    }
+    .cost-category{min-width:0;padding:16px 12px;border-right:1px solid #dbeaf5;text-align:center}
+    .cost-category:last-child{border-right:none}
+    .cat-icon{
+      width:42px;height:42px;margin:0 auto 10px;border-radius:12px;
+      background:var(--soft);color:var(--primary);
+      display:flex;align-items:center;justify-content:center;font-size:17px;
+    }
+    .cost-category h4{
+      margin:0 0 9px;min-height:34px;display:flex;align-items:center;justify-content:center;
+      text-align:center;color:#0b4f83;font-size:12px;line-height:1.25;text-transform:uppercase;
+    }
+    .cost-category ul{margin:0;padding-left:16px;color:#334155;font-size:11.5px;line-height:1.55;text-align:left}
+
+    .estimate-bottom-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:18px}
+    .workflow-card{padding:22px}
+    .workflow-detail{
+      display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:start;
+      gap:6px;overflow-x:auto;padding:2px 1px 6px;
+    }
+    .workflow-detail-step{text-align:center;flex:0 0 auto;min-width:96px}
+    .workflow-detail-icon{
+      width:64px;height:64px;margin:0 auto 9px;border:1.5px solid #47a7e8;border-radius:50%;
+      display:grid;place-items:center;background:#f7fbff;color:#1378c2;font-size:23px;
+      box-shadow:0 7px 18px rgba(15,111,184,.07);
+    }
+    .workflow-detail-step strong{display:block;color:#1f2937;font-size:11.5px;line-height:1.35;font-weight:700}
+    .workflow-detail-arrow{align-self:center;margin-top:20px;color:#1992da;font-size:16px}
+
+    .benefit-card{padding:22px}
+    .benefit-list{display:grid;gap:10px}
+    .benefit-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;align-items:start;color:#334155;font-size:13px;line-height:1.5}
+    .benefit-check{
+      width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+      color:#0f6fb8;background:#edf7ff;font-size:11px;margin-top:1px;
+    }
+
+    .estimate-value-strip{
+      display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+      background:linear-gradient(135deg,#075493,#0b68ad 55%,#0e79c4);
+      color:#fff;border-radius:20px;overflow:hidden;box-shadow:0 12px 30px rgba(11,79,131,.16);
+    }
+    .estimate-value-item{
+      display:grid;grid-template-columns:50px minmax(0,1fr);gap:12px;align-items:center;
+      min-width:0;padding:17px 16px;border-right:1px solid rgba(255,255,255,.25);
+    }
+    .estimate-value-item:last-child{border-right:none}
+    .estimate-value-icon{
+      width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.62);
+      border-radius:14px;background:rgba(255,255,255,.055);color:#fff;font-size:19px;line-height:1;
+    }
+    .estimate-value-item strong{display:block;font-size:13px;line-height:1.25}
+    .estimate-value-item > div > span{display:block;margin-top:3px;color:rgba(255,255,255,.82);font-size:11.5px;line-height:1.3}
+
+    /* Hệ điều khiển & định dạng hỗ trợ */
+    .formats-card{padding:26px 30px}
+    .formats-lead{margin:0 0 18px;color:var(--muted);font-size:14.5px;line-height:1.7;max-width:860px}
+    .formats-note{margin:16px 2px 0;color:var(--muted);font-size:12.5px}
+
+    .dxf-callout{
+      display:flex;gap:14px;align-items:flex-start;
+      background:linear-gradient(135deg,#eaf5fe,#dceefa);
+      border:1px solid #c7e3f5;border-left:4px solid var(--primary);
+      border-radius:14px;padding:16px 18px;margin:0 0 22px;
+    }
+    .dxf-callout-icon{
+      width:42px;height:42px;min-width:42px;border-radius:12px;
+      background:var(--primary);color:#fff;font-size:17px;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .dxf-callout strong{display:block;color:var(--primary-dark);font-size:14px;margin-bottom:4px}
+    .dxf-callout p{margin:0;color:#334155;font-size:13.5px;line-height:1.6}
+
+    .brand-accordion{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+    .brand-item{border-bottom:1px solid var(--line)}
+    .brand-item:last-child{border-bottom:none}
+    .brand-item summary{
+      list-style:none;cursor:pointer;padding:12px 18px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      font-size:13.5px;font-weight:700;color:#1f2937;
+      transition:background .15s ease;
+    }
+    .brand-item summary::-webkit-details-marker{display:none}
+    .brand-item summary:hover{background:#f8fafc}
+    .brand-toggle{
+      width:22px;height:22px;min-width:22px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      background:var(--soft);color:var(--primary);font-size:13px;font-weight:900;
+      transition:transform .15s ease,background .15s ease,color .15s ease;
+    }
+    .brand-toggle::before{content:"+"}
+    .brand-item[open] .brand-toggle{background:var(--primary);color:#fff;transform:rotate(45deg)}
+    .brand-item[open] summary{background:#f8fafc}
+    .brand-body{
+      padding:4px 18px 18px;display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;
+      background:#fbfdff;
+    }
+    .brand-logo-wrap{
+      flex:0 0 auto;width:130px;height:70px;border:1px solid #e6edf4;border-radius:10px;
+      background:#fff;display:flex;align-items:center;justify-content:center;padding:8px;
+    }
+    .brand-logo-wrap img{max-width:100%;max-height:100%;object-fit:contain}
+    .brand-table-wrap{flex:1 1 320px;min-width:0;overflow:auto}
+    .brand-table{width:100%;border-collapse:collapse;font-size:12px}
+    .brand-table th,.brand-table td{padding:6px 9px;border-bottom:1px solid #eef2f7;text-align:left}
+    .brand-table th{background:#f8fafc;color:#64748b;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em}
+    .brand-table tr:last-child td{border-bottom:none}
+
+    @media(max-width:1050px){
+      .estimate-overview{grid-template-columns:1fr}
+      .estimate-main-grid{grid-template-columns:1fr}
+      .cost-category-grid{grid-template-columns:repeat(3,1fr)}
+      .cost-category{border-bottom:1px solid #dbeaf5}
+      .cost-category:nth-child(3){border-right:none}
+      .cost-category:nth-child(4),.cost-category:nth-child(5){border-bottom:none}
+      .estimate-bottom-grid{grid-template-columns:1fr}
+      .estimate-value-strip{grid-template-columns:repeat(2,1fr)}
+      .estimate-value-item{border-bottom:1px solid rgba(255,255,255,.2)}
+      .estimate-value-item:nth-child(2n){border-right:none}
+      .estimate-value-item:last-child{grid-column:1/-1;border-bottom:none;border-right:none}
+      .workflow-detail{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:18px}
+      .workflow-detail-arrow{display:none}
+    }
+
+    @media(max-width:720px){
+      .page{padding-top:24px}
+      .hero{padding:32px 26px}
+      .hero-icons{display:none}
+      .estimate-overview,.estimate-block,.workflow-card,.benefit-card,.formats-card{padding:18px}
+      .estimate-feature-list{grid-template-columns:1fr}
+      .cost-category-grid{grid-template-columns:1fr}
+      .cost-category{border-right:none;border-bottom:1px solid #dbeaf5;text-align:left}
+      .cat-icon{margin:0 0 8px}
+      .cost-category h4{justify-content:flex-start;text-align:left}
+      .cost-category:last-child{border-bottom:none}
+      .estimate-value-strip{grid-template-columns:1fr}
+      .estimate-value-item,.estimate-value-item:nth-child(2n){border-right:none;border-bottom:1px solid rgba(255,255,255,.2)}
+      .estimate-value-item:last-child{grid-column:auto;border-bottom:none}
+      .workflow-detail{grid-template-columns:1fr 1fr}
+      .home-btn{top:12px;right:12px;padding:9px 14px;font-size:13px}
+      .brand-body{padding:4px 14px 14px}
+      .brand-logo-wrap{width:100%;height:60px}
+      .dxf-callout{flex-direction:column}
+    }
+
+    @media(max-width:480px){
+      .workflow-detail{grid-template-columns:1fr}
     }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -260,33 +405,903 @@
 
 <a class="home-btn" href="index.html" aria-label="Về trang chủ">HOME</a>
 
-<div class="container">
-  <div class="badge"><i class="fa-solid fa-gears"></i> BAZIS - CNC</div>
-  
-  <h1>BAZIS - CNC</h1>
-  <p>Phần mềm quản lý và điều khiển máy CNC chuyên nghiệp cho sản xuất</p>
+<main class="page">
 
-  <div class="section">
-    <h2>Giới thiệu</h2>
-    <p>Nội dung sẽ được cập nhật sớm...</p>
-  </div>
+  <section class="hero">
+    <div class="hero-icons" aria-hidden="true">
+      <i class="hero-icon i1 fa-solid fa-gears"></i>
+      <i class="hero-icon i2 fa-solid fa-industry"></i>
+      <i class="hero-icon i3 fa-solid fa-compass-drafting"></i>
+      <i class="hero-icon i4 fa-solid fa-microchip"></i>
+      <i class="hero-icon i5 fa-solid fa-bolt"></i>
+    </div>
+    <h1>BAZIS – CNC</h1>
+    <p>
+      Tự động truyền dữ liệu sản phẩm từ hệ thống BAZIS tới các trung tâm gia công phay – khoan và máy CNC,
+      giúp <strong>rút ngắn thời gian lập trình và nâng cao chất lượng sản xuất</strong>.
+    </p>
+  </section>
 
-  <div class="section">
-    <h2>Tính năng chính</h2>
-    <ul class="feature-list">
-      <li><i class="fa-solid fa-check"></i> <span>Lập trình G-code tự động</span></li>
-      <li><i class="fa-solid fa-check"></i> <span>Điều khiển máy CNC</span></li>
-      <li><i class="fa-solid fa-check"></i> <span>Tối ưu hóa đường cắt</span></li>
-      <li><i class="fa-solid fa-check"></i> <span>Giám sát sản xuất</span></li>
-    </ul>
-  </div>
+  <section class="estimate-detail" aria-label="Giới thiệu chi tiết BAZIS CNC">
 
-  <div class="section">
-    <h2>Hướng dẫn sử dụng</h2>
-    <p>Nội dung chi tiết sẽ được bổ sung...</p>
-  </div>
+    <article class="estimate-detail-card estimate-overview">
+      <div class="estimate-overview-copy">
+        <span class="estimate-overview-kicker"><i class="fa-solid fa-gears"></i> BAZIS CNC</span>
+        <h2>Tự động hóa dữ liệu gia công CNC</h2>
+        <p class="estimate-slogan">Từ mô hình 3D đến máy CNC — chính xác từng đường dao</p>
+        <p>BAZIS-CNC tự động lấy thông tin của chi tiết trực tiếp từ mô hình sản phẩm hoặc bản vẽ trong BAZIS và chuyển thành dữ liệu phù hợp với hệ thống điều khiển của máy CNC.</p>
+        <p>Mô-đun tự động tạo các nguyên công cần thiết như phay biên dạng, khoan trên mặt và cạnh, phay rãnh cạnh, gia công mặt cánh và các chi tiết có biên dạng phức tạp — nhờ đó dữ liệu từ thiết kế được chuyển thẳng sang sản xuất, hạn chế tối đa thao tác nhập liệu thủ công.</p>
+      </div>
+      <div class="ov-visual">
+        <div class="ov-visual-box">
+          <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ minh họa đường chạy dao và lỗ khoan trên chi tiết">
+            <rect x="0" y="0" width="420" height="300" rx="18" fill="var(--soft)"/>
+            <rect x="55" y="45" width="270" height="175" rx="6" fill="#fff" stroke="var(--primary)" stroke-width="2"/>
+            <circle cx="90" cy="78" r="5.5" fill="none" stroke="var(--primary-dark)" stroke-width="2"/>
+            <circle cx="190" cy="78" r="5.5" fill="none" stroke="var(--primary-dark)" stroke-width="2"/>
+            <circle cx="290" cy="78" r="5.5" fill="none" stroke="var(--primary-dark)" stroke-width="2"/>
+            <circle cx="90" cy="188" r="5.5" fill="none" stroke="var(--primary-dark)" stroke-width="2"/>
+            <circle cx="190" cy="188" r="5.5" fill="none" stroke="var(--primary-dark)" stroke-width="2"/>
+            <circle cx="290" cy="188" r="5.5" fill="none" stroke="var(--primary-dark)" stroke-width="2"/>
+            <path d="M90,78 L190,78 L190,188 L290,188 L290,78" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-dasharray="6,5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="290" cy="78" r="9" fill="var(--accent)" opacity=".22"/>
+            <circle cx="290" cy="78" r="3.4" fill="var(--accent)"/>
+            <g stroke="var(--primary-dark)" stroke-width="2" fill="none" stroke-linecap="round">
+              <line x1="28" y1="252" x2="28" y2="222"/>
+              <line x1="28" y1="252" x2="58" y2="252"/>
+            </g>
+            <text x="61" y="257" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="var(--primary-dark)">X</text>
+            <text x="21" y="217" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="var(--primary-dark)">Y</text>
+            <rect x="145" y="238" width="130" height="27" rx="13.5" fill="var(--primary)"/>
+            <text x="210" y="256" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#fff" text-anchor="middle">Chương trình G-code</text>
+          </svg>
+        </div>
+        <div class="ov-visual-caption"><i class="fa-solid fa-circle-info"></i><span>Minh họa: đường chạy dao và lỗ khoan được sinh tự động từ mô hình 3D BAZIS.</span></div>
+      </div>
+    </article>
 
-</div>
+    <div class="estimate-main-grid">
+      <article class="estimate-detail-card estimate-block">
+        <h3 class="estimate-block-title"><i class="fa-solid fa-star"></i> TÍNH NĂNG NỔI BẬT</h3>
+        <div class="estimate-feature-list">
+          <div class="estimate-feature-item"><span class="estimate-feature-icon"><i class="fa-solid fa-cube"></i></span><p>Tự động lấy dữ liệu chi tiết từ mô hình 3D hoặc bản vẽ BAZIS.</p></div>
+          <div class="estimate-feature-item"><span class="estimate-feature-icon"><i class="fa-solid fa-file-export"></i></span><p>Xuất trực tiếp sang hệ thống điều khiển máy CNC, không cần nhập liệu lại.</p></div>
+          <div class="estimate-feature-item"><span class="estimate-feature-icon"><i class="fa-solid fa-route"></i></span><p>Tự động tạo nguyên công phay biên dạng, kể cả biên dạng phức tạp.</p></div>
+          <div class="estimate-feature-item"><span class="estimate-feature-icon"><i class="fa-solid fa-circle-dot"></i></span><p>Tự động khoan trên mặt và trên cạnh chi tiết.</p></div>
+          <div class="estimate-feature-item"><span class="estimate-feature-icon"><i class="fa-solid fa-ruler-combined"></i></span><p>Tự động phay rãnh cạnh và gia công mặt cánh.</p></div>
+          <div class="estimate-feature-item"><span class="estimate-feature-icon"><i class="fa-solid fa-clone"></i></span><p>Tự động tạo chương trình gia công cho cả mặt trước và mặt sau.</p></div>
+          <div class="estimate-feature-item"><span class="estimate-feature-icon"><i class="fa-solid fa-vector-square"></i></span><p>Tự động hình thành biên dạng có tính đến vật liệu dán cạnh.</p></div>
+          <div class="estimate-feature-item"><span class="estimate-feature-icon"><i class="fa-solid fa-list-ol"></i></span><p>Tự động nhóm lỗ khoan và tối ưu thứ tự gia công.</p></div>
+          <div class="estimate-feature-item"><span class="estimate-feature-icon"><i class="fa-solid fa-gauge-high"></i></span><p>Hỗ trợ phay thô và phay tinh, xử lý rãnh bằng nhiều loại dao.</p></div>
+          <div class="estimate-feature-item"><span class="estimate-feature-icon"><i class="fa-solid fa-arrows-rotate"></i></span><p>Tự động xoay chi tiết để bố trí thuận tiện trên máy.</p></div>
+          <div class="estimate-feature-item"><span class="estimate-feature-icon"><i class="fa-solid fa-plug-circle-check"></i></span><p>Chuyển đổi trực tiếp bản vẽ 3D BAZIS sang định dạng phù hợp của 30+ hãng máy CNC khoan &amp; phay — không cần thêm phần mềm trung gian.</p></div>
+        </div>
+      </article>
+
+      <article class="estimate-detail-card estimate-block">
+        <h3 class="estimate-block-title"><i class="fa-solid fa-diagram-project"></i> CÁC NHÓM NGUYÊN CÔNG HỖ TRỢ</h3>
+        <div class="cost-category-grid">
+          <section class="cost-category">
+            <div class="cat-icon"><i class="fa-solid fa-route"></i></div>
+            <h4>Phay biên dạng</h4>
+            <ul><li>Biên dạng đơn giản đến phức tạp</li><li>Phay thô và phay tinh</li></ul>
+          </section>
+          <section class="cost-category">
+            <div class="cat-icon"><i class="fa-solid fa-circle-dot"></i></div>
+            <h4>Khoan</h4>
+            <ul><li>Khoan trên mặt</li><li>Khoan trên cạnh</li><li>Tự động nhóm lỗ</li></ul>
+          </section>
+          <section class="cost-category">
+            <div class="cat-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h4>Phay rãnh</h4>
+            <ul><li>Xử lý rãnh bằng nhiều loại dao</li></ul>
+          </section>
+          <section class="cost-category">
+            <div class="cat-icon"><i class="fa-solid fa-vector-square"></i></div>
+            <h4>Gia công mặt cánh</h4>
+            <ul><li>Chương trình mặt trước &amp; mặt sau</li><li>Tính đến vật liệu dán cạnh</li></ul>
+          </section>
+          <section class="cost-category">
+            <div class="cat-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+            <h4>Bố trí &amp; tối ưu</h4>
+            <ul><li>Tối ưu thứ tự gia công</li><li>Xoay chi tiết trên máy</li></ul>
+          </section>
+        </div>
+      </article>
+    </div>
+
+    <div class="estimate-bottom-grid">
+      <article class="estimate-detail-card workflow-card">
+        <h3 class="estimate-block-title"><i class="fa-solid fa-diagram-project"></i> QUY TRÌNH HOẠT ĐỘNG</h3>
+        <div class="workflow-detail" aria-label="Quy trình hoạt động của BAZIS CNC">
+          <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-cube"></i></span><strong>Mô hình 3D /<br>bản vẽ BAZIS</strong></div>
+          <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
+          <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-file-import"></i></span><strong>Đọc dữ liệu<br>chi tiết</strong></div>
+          <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
+          <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-gears"></i></span><strong>Tự động tạo<br>nguyên công</strong></div>
+          <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
+          <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-sliders"></i></span><strong>Thiết lập công nghệ<br>theo máy</strong></div>
+          <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
+          <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-file-export"></i></span><strong>Xuất file<br>điều khiển CNC</strong></div>
+          <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
+          <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-diagram-project"></i></span><strong>Gửi dữ liệu<br>phân luồng</strong></div>
+        </div>
+      </article>
+
+      <article class="estimate-detail-card benefit-card">
+        <h3 class="estimate-block-title"><i class="fa-solid fa-check-double"></i> LỢI ÍCH MANG LẠI</h3>
+        <div class="benefit-list">
+          <div class="benefit-item"><span class="benefit-check"><i class="fa-solid fa-check"></i></span><span>Rút ngắn thời gian lập trình gia công, hạn chế thao tác nhập liệu thủ công.</span></div>
+          <div class="benefit-item"><span class="benefit-check"><i class="fa-solid fa-check"></i></span><span>Giảm sai sót nhờ dữ liệu lấy trực tiếp từ mô hình 3D / bản vẽ BAZIS.</span></div>
+          <div class="benefit-item"><span class="benefit-check"><i class="fa-solid fa-check"></i></span><span>Thiết lập công nghệ riêng theo từng nhà máy, từng loại máy.</span></div>
+          <div class="benefit-item"><span class="benefit-check"><i class="fa-solid fa-check"></i></span><span>Xuất cùng lúc file điều khiển cho nhiều hệ thống, nhiều hãng máy.</span></div>
+          <div class="benefit-item"><span class="benefit-check"><i class="fa-solid fa-check"></i></span><span>Kết nối liền mạch với BAZIS – Dựng hình và Woodsoft Data Analyzer.</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="estimate-value-strip" aria-label="Giá trị nổi bật">
+      <div class="estimate-value-item"><span class="estimate-value-icon"><i class="fa-solid fa-bolt"></i></span><div><strong>Tự động hóa</strong><span>Không cần nhập liệu thủ công</span></div></div>
+      <div class="estimate-value-item"><span class="estimate-value-icon"><i class="fa-solid fa-bullseye"></i></span><div><strong>Chính xác</strong><span>Dữ liệu lấy trực tiếp từ mô hình 3D</span></div></div>
+      <div class="estimate-value-item"><span class="estimate-value-icon"><i class="fa-solid fa-layer-group"></i></span><div><strong>Đa dạng máy</strong><span>Tương thích nhiều hãng, nhiều định dạng</span></div></div>
+      <div class="estimate-value-item"><span class="estimate-value-icon"><i class="fa-solid fa-sliders"></i></span><div><strong>Tùy biến</strong><span>Thiết lập công nghệ theo từng nhà máy</span></div></div>
+      <div class="estimate-value-item"><span class="estimate-value-icon"><i class="fa-solid fa-diagram-project"></i></span><div><strong>Kết nối</strong><span>Đồng bộ với BAZIS &amp; Data Analyzer</span></div></div>
+    </div>
+
+    <article class="estimate-detail-card formats-card">
+      <h3 class="estimate-block-title"><i class="fa-solid fa-plug-circle-check"></i> HỆ ĐIỀU KHIỂN &amp; ĐỊNH DẠNG HỖ TRỢ</h3>
+      <p class="formats-lead">Phần mềm chuyển đổi bản vẽ 3D từ BAZIS sang định dạng phù hợp của <strong>30+ hãng máy CNC khoan &amp; phay</strong> — tạo trực tiếp file chạy máy, không cần thêm bất kỳ phần mềm trung gian nào. Người dùng có thể lưu các thông số công nghệ vào file thiết lập, kiểm tra khả năng thực hiện nguyên công trên máy và tạo file điều khiển cho nhiều hệ thống điều khiển cùng lúc.</p>
+
+      <div class="dxf-callout">
+        <div class="dxf-callout-icon"><i class="fa-solid fa-file-export"></i></div>
+        <div>
+          <strong>DXF System — đầu ra Postprocessor quan trọng</strong>
+          <p>File DXF xuất từ BAZIS CNC là đầu vào chuẩn cho toàn bộ hệ thống Woodsoft Optimizers.</p>
+        </div>
+      </div>
+
+      <div class="brand-accordion" aria-label="Danh sách hãng máy CNC tương thích với BAZIS CNC">
+          <details class="brand-item">
+            <summary><span>AES Group</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/aes-group.png" alt="Logo AES Group" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>AES Raptor</td><td>*.ANC</td></tr>
+<tr><td>Khoan</td><td>AES Sirius</td><td>*.</td></tr>
+<tr><td>Khoan</td><td>Drill Macro</td><td>*.</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>Artisman</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/artisman.png" alt="Logo Artisman" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Artisman</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>BEAVER</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/beaver.gif" alt="Logo BEAVER" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>CAMDRILL – Swift (Compact)</td><td>*.MPR</td></tr>
+<tr><td>Phay - Khoan</td><td>OSAI Control</td><td>*.CNC</td></tr>
+<tr><td>Phay - Khoan</td><td>OSAI Control – Optimal (E3)</td><td>*.</td></tr>
+<tr><td>Phay - Khoan</td><td>OSAI Control — NestConcept (E4) Labeling</td><td>*.ANC</td></tr>
+<tr><td>Phay - Khoan</td><td>OSAI Control — NestConcept (E4) Pre-Labeling</td><td>*.ANC</td></tr>
+<tr><td>Phay - Khoan</td><td>OSAI Control + Syntec — NestConcept (E4) Pre-Labeling</td><td>*.ANC</td></tr>
+<tr><td>Phay - Khoan</td><td>OSAI Control – Universal (E6)</td><td>*.</td></tr>
+<tr><td>Phay - Khoan</td><td>Swift Turbo (EH, EHS, EHSW)</td><td>*.XML</td></tr>
+<tr><td>Khoan</td><td>Swift HSD</td><td>*.NC</td></tr>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.CNC</td></tr>
+<tr><td>Phay - Khoan</td><td>TPA</td><td>*.TCN</td></tr>
+<tr><td>Phay - Khoan</td><td>VIC Engraver Control SystemNC</td><td>*.NC</td></tr>
+<tr><td>Phay - Khoan</td><td>Weihong — i-Nest, Easy Nest, NestConcept (E3, E4)</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>BIESSE Group</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/biesse-group.gif" alt="Logo BIESSE Group" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>BiesseWorks</td><td>*.BPP</td></tr>
+<tr><td>Phay - Khoan</td><td>NС500</td><td>*.PAN</td></tr>
+<tr><td>Phay - Khoan</td><td>XNC (NС1000)</td><td>*.</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>BJD</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/bjd.png" alt="Logo BJD" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>HiWCAM (в бета-тесте)</td><td>*.HCAM</td></tr>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>BLUE ELEPHANT</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/blue-elephant.png" alt="Logo BLUE ELEPHANT" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>ELE</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>BUSELLATO</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/busellato.gif" alt="Logo BUSELLATO" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Genesis Evolution 6.5−8.8</td><td>*.CNC</td></tr>
+<tr><td>Phay - Khoan</td><td>Wave</td><td>*.XXL, *.PGM</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>CAD SYSTEM</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>DXF</td><td>*.DXF</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>EXCITECH</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/excitech.png" alt="Logo EXCITECH" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>CAMDRILL – Swift (Compact)</td><td>*.MPR</td></tr>
+<tr><td>Phay - Khoan</td><td>OSAI Control</td><td>*.CNC</td></tr>
+<tr><td>Phay - Khoan</td><td>OSAI Control – Optimal (E3)</td><td>*.</td></tr>
+<tr><td>Phay - Khoan</td><td>OSAI Control — NestConcept (E4) Pre-Labeling</td><td>*.ANC</td></tr>
+<tr><td>Phay - Khoan</td><td>OSAI Control + Syntec — NestConcept (E4) Pre-Labeling</td><td>*.ANC</td></tr>
+<tr><td>Phay - Khoan</td><td>OSAI Control – Universal (E6)</td><td>*.</td></tr>
+<tr><td>Phay - Khoan</td><td>Swift Turbo (EH, EHS, EHSW)</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.CNC</td></tr>
+<tr><td>Phay - Khoan</td><td>TPA</td><td>*.TCN</td></tr>
+<tr><td>Phay - Khoan</td><td>VIC Engraver Control SystemNC</td><td>*.NC</td></tr>
+<tr><td>Phay - Khoan</td><td>Weihong – i-Nest, Easy Nest, NestConcept (E3, E4)</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>FALIT</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/falit.png" alt="Logo FALIT" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.CNC</td></tr>
+<tr><td>Phay - Khoan</td><td>PSDrillCAM</td><td>*.SCX</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>FELDER Format4 Profit 2s</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/felder-format4-profit-2s.png" alt="Logo FELDER Format4 Profit 2s" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Genesis Evolution 6.5-8.8</td><td>*.CNC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>FELDER Format4 Profit H20-30</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/felder-format4-profit-h20-30.png" alt="Logo FELDER Format4 Profit H20-30" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Wood Flash</td><td>*.TCN</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>FELDER</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/felder.png" alt="Logo FELDER" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>F4Integrate</td><td>*.F4G</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>FILATO</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/filato.gif" alt="Logo FILATO" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>ARIX-OpenCNC</td><td>*.TNC</td></tr>
+<tr><td>Khoan</td><td>Filato DS3</td><td>*.NC</td></tr>
+<tr><td>Khoan</td><td>Filato Next (NC Boring)</td><td>*.AUT</td></tr>
+<tr><td>Phay - Khoan</td><td>Filato RS Lab</td><td>*.NC</td></tr>
+<tr><td>Phay - Khoan</td><td>Filato SV</td><td>*.NC</td></tr>
+<tr><td>Phay - Khoan</td><td>Higerman - Drillmatic</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.CNC</td></tr>
+<tr><td>Phay - Khoan</td><td>NC Studio, NK105</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>FORMIGO</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/formigo.png" alt="Logo FORMIGO" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.nc</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>GANNOMAT</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/gannomat.gif" alt="Logo GANNOMAT" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>GannoMat Editor (cần ASCII-Import-Postprozessor)</td><td>*.ASCII</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>GIBEN</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/giben.gif" alt="Logo GIBEN" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>WoodCam</td><td>*.DXF</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>GORELOVSKIY</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/gorelovskiy.png" alt="Logo GORELOVSKIY" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>System</td><td>*.CNC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>GRIGGIO</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/griggio.gif" alt="Logo GRIGGIO" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>GCad Lepton</td><td>*.PZA</td></tr>
+<tr><td>Phay - Khoan</td><td>TPA</td><td>*.TCN</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>HIRZT</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/hirzt.gif" alt="Logo HIRZT" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>iLENIA CAD/4</td><td>*.PD4</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>HIRZT by Maggi</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/hirzt-by-maggi.gif" alt="Logo HIRZT by Maggi" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>TPA</td><td>*.TCN</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>HOLD</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/hold.png" alt="Logo HOLD" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>CNC Drill</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>LNC System</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>HOLZ-HER</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/holz-her.png" alt="Logo HOLZ-HER" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Campus Hops</td><td>*.HOP</td></tr>
+<tr><td>Phay - Khoan</td><td>TwinCam</td><td>*.DXF</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>HOLZTEK</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/holztek.png" alt="Logo HOLZTEK" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>Horizontal Drill</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>HOMAG GROUP</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/homag-group.gif" alt="Logo HOMAG GROUP" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>WoodWop 4.5 - 6.1</td><td>*.MPR</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>HUAHUA</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/huahua.png" alt="Logo HUAHUA" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>PCDrillCAM</td><td>*.SCX</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>IMA</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/ima.gif" alt="Logo IMA" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>ImaWop 4.0 - 8.0</td><td>*.FMC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>INNOTECHMAC</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/innotechmac.png" alt="Logo INNOTECHMAC" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay</td><td>ATV</td><td>*.anc</td></tr>
+<tr><td>Phay - Khoan</td><td>SUPPRESSOR</td><td>*.anc</td></tr>
+<tr><td>Phay - Khoan</td><td>TBS</td><td>*.xml</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>JIYU</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/jiyu.png" alt="Logo JIYU" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>LNC-CD</td><td>*.xml</td></tr>
+<tr><td>Phay - Khoan</td><td>LNC-CH</td><td>*.cnc</td></tr>
+<tr><td>Phay - Khoan</td><td>LNC-CHA</td><td>*.nc</td></tr>
+<tr><td>Khoan</td><td>LNC-CS</td><td>*.nc</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>KDT</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/kdt.png" alt="Logo KDT" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>CNC Drill (Trepan)</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>Delta System</td><td>*.NC</td></tr>
+<tr><td>Phay - Khoan</td><td>Horizontal Drill</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.CNC</td></tr>
+<tr><td>Phay - Khoan</td><td>TPA</td><td>*.TCN</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>KOCH</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/koch.png" alt="Logo KOCH" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>NC-Studio</td><td>*.NCP</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>MAGGI</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/maggi.png" alt="Logo MAGGI" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>ICE101</td><td>*.</td></tr>
+<tr><td>Khoan</td><td>iLENIA CAD/4</td><td>*.PD4</td></tr>
+<tr><td>Phay - Khoan</td><td>Pegasus Panel</td><td>*.XML</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>MASTERWOOD</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/masterwood.png" alt="Logo MASTERWOOD" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>MW208</td><td>*.LBR, *.UTE</td></tr>
+<tr><td>Phay - Khoan</td><td>MW310</td><td>*.TLF</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>MORBIDELLI (SCM GROUP)</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/morbidelli-scm-group.png" alt="Logo MORBIDELLI (SCM GROUP)" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Xilog Plus</td><td>*.XXL, *.PGM</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>MULTICAM</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/multicam.png" alt="Logo MULTICAM" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>MultiCam PSS</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>NANXING</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/nanxing.svg" alt="Logo NANXING" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>Driller Master</td><td>*.BAN</td></tr>
+<tr><td>Phay - Khoan</td><td>FinChinaSoft</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>FinChinaSoft Nesting</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>NCB</td><td>*.NC</td></tr>
+<tr><td>Phay - Khoan</td><td>NDC</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>PCDrillCAM</td><td>*.SCX</td></tr>
+<tr><td>Phay - Khoan</td><td>TPA</td><td>*.TCN</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>NEST.ONE</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/nest-one.png" alt="Logo NEST.ONE" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Weihong</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>OMAKSAN</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/omaksan.png" alt="Logo OMAKSAN" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>Omaksan Works</td><td>*.OM</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>PMSK</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/pmsk.png" alt="Logo PMSK" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>PT2</td><td>*.NC</td></tr>
+<tr><td>Phay - Khoan</td><td>PT6</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>ROCTECH</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/roctech.png" alt="Logo ROCTECH" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>SANDAR</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/sandar.png" alt="Logo SANDAR" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>PA CNC</td><td>*.DXF</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>SCM (SCM Group)</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/scm-scm-group.png" alt="Logo SCM (SCM Group)" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>Cyflex H800</td><td>*.CNC</td></tr>
+<tr><td>Khoan</td><td>Startech CN</td><td>*.CSV</td></tr>
+<tr><td>Khoan</td><td>Startech CN V</td><td>*.ISO</td></tr>
+<tr><td>Phay - Khoan</td><td>Xilog Plus</td><td>*.XXL, *.PGM, *.PGMX</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>TECHNOCNC</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/technocnc.png" alt="Logo TECHNOCNC" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>ATV Syntec</td><td>*.ANC</td></tr>
+<tr><td>Phay - Khoan</td><td>Suppressor Syntec</td><td>*.ANC</td></tr>
+<tr><td>Phay - Khoan</td><td>TechnoBit</td><td>*.XML</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>INNOTECHMAC cncline</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/innotechmac-cncline.png" alt="Logo INNOTECHMAC cncline" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>ATV</td><td>*.ANC</td></tr>
+<tr><td>Phay - Khoan</td><td>Suppressor</td><td>*.ANC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>INNOTECHMAC bitline</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/innotechmac-bitline.png" alt="Logo INNOTECHMAC bitline" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>TBS</td><td>*.XML</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>TREETECH</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/treetech.png" alt="Logo TREETECH" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>Higerman</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>LNC</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>UNITEAM</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/uniteam.jpg" alt="Logo UNITEAM" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Albatros EdiCad</td><td>*.</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>VELBERG</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/velberg.jpg" alt="Logo VELBERG" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>RMZ-5D</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.CNC</td></tr>
+<tr><td>Phay - Khoan</td><td>Weihong NCStudio</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>VITAP</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/vitap.gif" alt="Logo VITAP" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Khoan</td><td>Vitap Bridge (ICE 112)</td><td>*.</td></tr>
+<tr><td>Khoan</td><td>VitapPoint CAD/4</td><td>*.PD4</td></tr>
+<tr><td>Khoan</td><td>TPA</td><td>*.TCN</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>WOODTEC</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/woodtec.png" alt="Logo WOODTEC" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>YIMING</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/yiming.png" alt="Logo YIMING" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Syntec</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>ZAITEC</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/zaitec.jpg" alt="Logo ZAITEC" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>Delta System</td><td>*.NC</td></tr>
+<tr><td>Phay - Khoan</td><td>TPA</td><td>*.TCN</td></tr>
+<tr><td>Phay - Khoan</td><td>Trepan</td><td>*.XML</td></tr>
+<tr><td>Phay - Khoan</td><td>Weihong</td><td>*.NC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>ZELDER</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/zelder.png" alt="Logo ZELDER" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>VIC Engraver Control System</td><td>*.CNC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>Artel</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/artel.png" alt="Logo Artel" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>DeskCNC</td><td>*.DNC</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+          <details class="brand-item">
+            <summary><span>NPF Semil</span><span class="brand-toggle"></span></summary>
+            <div class="brand-body">
+              <div class="brand-logo-wrap"><img src="images/cnc-logos/npf-semil.gif" alt="Logo NPF Semil" loading="lazy"></div>
+              <div class="brand-table-wrap"><table class="brand-table">
+<thead><tr><th>Loại máy</th><th>Hệ điều khiển</th><th>Định dạng file</th></tr></thead>
+<tbody>
+<tr><td>Phay - Khoan</td><td>WinKam</td><td>*.UF4</td></tr>
+</tbody>
+</table></div>
+            </div>
+          </details>
+      </div>
+
+      <p class="formats-note"><i class="fa-solid fa-circle-info"></i> Danh sách máy tương thích với BAZIS được cập nhật thường xuyên. Nếu doanh nghiệp cần kiểm tra tương thích với máy cụ thể, vui lòng liên hệ Woodsoft.</p>
+    </article>
+
+  </section>
+
+</main>
 
 <div class="top-bar">
   <img class="logo" src="images/logo.png" alt="Woodsoft logo">

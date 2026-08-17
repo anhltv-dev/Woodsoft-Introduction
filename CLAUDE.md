@@ -14,7 +14,7 @@ There are no build/lint/test commands — this repo is plain HTML/CSS/JS. To pre
 - **`Bazis_dunghinh.html`** — "BAZIS – Dựng hình" (3D design module), the most detailed marketing page. Has a showcase gallery (click a feature in the side list to swap the hero image) and a unified image lightbox, both driven by `data-title`/`data-desc`/`data-image`/`data-lightbox-*` attributes on DOM elements rather than a JS data object.
 - **`du-toan.html`** — "BAZIS – Dự toán" (costing/estimation module). Has a feature grid with popup "example" panels (positioned relative to the clicked card), a YouTube embed that falls back to a plain link when loaded from `file://` (YouTube requires an HTTP referer), and an embedded-PDF viewer modal.
 - **`analyzer.html`, `cnc.html`, `nesting.html`, `packing.html`, `panelsaw.html`, `wood-viewer.html`** — placeholder "coming soon" pages, all copy-pasted from one identical template (only the `<title>`, hero heading/subtext, and feature list differ). Their content sections still say "Nội dung sẽ được cập nhật sớm..." awaiting real content.
-- **`images/`** — `logo.png`, `phukien.png`, referenced by `<img src="images/...">` in several pages.
+- **`images/`** — `logo.png`, `phukien.png`, referenced by `<img src="images/...">` in several pages. `images/cnc-logos/` holds ~54 CNC machine-brand logos (sourced from bazis-center.ru) used by the compatibility accordion on `cnc.html` — kept as separate small files rather than inlined as base64, to avoid repeating the bloat problem described below.
 - **`downloads/`** — source PDFs (`BAZIS_BAN_VE_MAU.pdf`, `BAZIS_DU_TOAN_MAU.pdf`) whose contents are also embedded as base64 directly inside `du-toan.html` (see below).
 
 ## Repo-wide conventions (duplicated per file, not shared)
