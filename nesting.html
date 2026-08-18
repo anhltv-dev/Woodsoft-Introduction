@@ -324,6 +324,34 @@
       border-radius:999px;background:#fef3e2;color:#8a5a12;font-size:12px;font-weight:800;
       letter-spacing:.02em;border:1px solid #f4dfb2;
     }
+    .section-share-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:17px}
+    .section-share-row .estimate-block-title{margin-bottom:0}
+    .section-share-btn{
+      display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;
+      background:#f8fafc;border:1px solid #dbe6ef;color:var(--primary-dark);font-size:12.5px;font-weight:700;
+      cursor:pointer;transition:.15s ease;
+    }
+    .section-share-btn:hover{background:var(--soft);border-color:#c9e2f2}
+    .section-share-btn.copied{background:#e8f7ee;border-color:#bfe6cc;color:#1d8a4c}
+    .real-project-head{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;flex-wrap:wrap;margin-bottom:24px}
+    .real-project-head .real-project-text{flex:1;min-width:260px}
+    .customer-testimonial{
+      display:flex;align-items:center;gap:13px;flex:none;padding:12px 18px 12px 12px;
+      border-radius:16px;background:#f8fafc;border:1px solid #e3eaf0;max-width:330px;
+      text-decoration:none;color:inherit;transition:.15s ease;cursor:pointer;
+    }
+    .customer-testimonial:hover{background:#eef6fc;border-color:#c9e2f2;box-shadow:0 4px 14px rgba(15,111,184,.12)}
+    .customer-testimonial-name .fa-brands{color:#1877f2;font-size:12px;margin-left:5px}
+    .customer-testimonial-avatar{
+      width:140px;height:140px;min-width:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;font-size:22px;font-weight:800;
+      box-shadow:0 6px 16px rgba(15,111,184,.25);overflow:hidden;border:3px solid #fff;
+    }
+    .customer-testimonial-avatar img{width:100%;height:100%;object-fit:cover}
+    .customer-testimonial-name{font-size:13.5px;font-weight:800;color:#12365c;line-height:1.35}
+    .customer-testimonial-name .fa-certificate{color:#e08e14;font-size:11px;margin-left:4px}
+    .customer-testimonial-role{display:block;font-size:12px;font-weight:600;color:#5c7793;margin-top:1px}
+    .customer-testimonial-note{display:block;font-size:11.5px;color:#7a8ea3;margin-top:5px;line-height:1.45}
     .nesting-flow{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
     .nesting-flow-step{display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:12px;background:var(--soft);border:1px solid #d8e9f5}
     .nesting-flow-icon{width:34px;height:34px;min-width:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:var(--primary);color:#fff;font-size:14px}
@@ -518,7 +546,7 @@
     .xlsx-table th{background:#f8fafc;color:#475569;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;position:sticky;top:0;z-index:1}
     .xlsx-table tr:last-child td{border-bottom:none}
     .xlsx-table tr.total-row{background:var(--soft);font-weight:800}
-    .xlsx-table td.num{text-align:right;font-variant-numeric:tabular-nums}
+    .xlsx-table td.num,.xlsx-table th.num{text-align:right;font-variant-numeric:tabular-nums}
     .xlsx-table td.filecell{color:var(--muted);font-size:10.5px;white-space:normal;max-width:200px;overflow-wrap:break-word}
     .xlsx-table td.tickcell{text-align:center}
     .xlsx-table .tick{color:var(--primary);font-weight:900}
@@ -747,10 +775,26 @@
       <div class="estimate-value-item"><span class="estimate-value-icon"><i class="fa-solid fa-plug-circle-check"></i></span><div><strong>Kết nối mở</strong><span>BAZIS, SketchUp, AutoCAD, DXF</span></div></div>
     </div>
 
-    <article class="estimate-detail-card" id="realExampleSection" style="padding:26px 30px;">
-      <h3 class="estimate-block-title"><i class="fa-solid fa-book-open"></i> VÍ DỤ THỰC TẾ TỪ KHÁCH HÀNG</h3>
-      <div class="real-project-badge"><i class="fa-solid fa-certificate"></i> Công trình thực tế do khách hàng cung cấp</div>
-      <p class="report-lead">8 sản phẩm dưới đây thuộc cùng 1 công trình thật đã giao cho khách hàng (mỗi sản phẩm số lượng 1).<br>Chỉ với 1 lần bấm Woodsoft Nesting, phần mềm xuất thẳng trọn bộ hồ sơ sản xuất — file chạy CNC, tem nhãn, báo cáo vật tư, sơ đồ cắt — đóng gói chung 1 file ZIP.</p>
+    <article class="estimate-detail-card" id="realExampleSection" style="padding:26px 30px;scroll-margin-top:20px;">
+      <div class="section-share-row">
+        <h3 class="estimate-block-title"><i class="fa-solid fa-book-open"></i> VÍ DỤ THỰC TẾ TỪ KHÁCH HÀNG</h3>
+        <button type="button" class="section-share-btn" id="realExampleShareBtn" onclick="copyRealExampleLink(this)">
+          <i class="fa-solid fa-link"></i> <span>Copy link mục này</span>
+        </button>
+      </div>
+      <div class="real-project-head">
+        <div class="real-project-text">
+          <div class="real-project-badge"><i class="fa-solid fa-certificate"></i> Công trình thực tế do khách hàng cung cấp</div>
+          <p class="report-lead">8 sản phẩm dưới đây thuộc cùng 1 công trình thật đã giao cho khách hàng (mỗi sản phẩm số lượng 1).<br>Chỉ với 1 lần bấm Woodsoft Nesting, phần mềm xuất thẳng trọn bộ hồ sơ sản xuất — file chạy CNC, tem nhãn, báo cáo vật tư, sơ đồ cắt — đóng gói chung 1 file ZIP.</p>
+        </div>
+        <a class="customer-testimonial" href="https://www.facebook.com/nguyen.chien.737" target="_blank" rel="noopener" title="Xem trang Facebook của Anh Chiến">
+          <div class="customer-testimonial-avatar"><img src="images/anhChien.jpg" alt="Anh Chiến"></div>
+          <div>
+            <span class="customer-testimonial-name">Anh Chiến <i class="fa-solid fa-certificate" title="Khách hàng xác thực"></i><i class="fa-brands fa-facebook" title="Xem Facebook"></i></span>
+            <span class="customer-testimonial-role">Hà Nội</span>
+          </div>
+        </a>
+      </div>
 
       <div class="xlsx-tabs" role="tablist" aria-label="Ví dụ thực tế từ khách hàng">
         <button type="button" class="xlsx-tab-btn active" data-tab="tabVideo">Preview 3D sản phẩm</button>
@@ -1029,7 +1073,7 @@
       <div class="xlsx-panel" id="xlsxSheetList">
         <p class="xlsx-table-title">Sheet "Sheet list" — Danh sách tấm (vật liệu đại diện: MDF_17.5_cot_tho_NOTEXT, 3 tấm đầu tiên)</p>
         <div class="xlsx-table-wrap scroll-y"><table class="xlsx-table">
-          <thead><tr><th>Tên file</th><th>Tên chi tiết</th><th>Dài</th><th>Rộng</th><th>Dài hoàn thiện</th><th>Rộng hoàn thiện</th><th>Số lượng</th><th>Ghi chú</th></tr></thead>
+          <thead><tr><th>Tên file</th><th>Tên chi tiết</th><th class="num">Dài</th><th class="num">Rộng</th><th class="num">Dài hoàn thiện</th><th class="num">Rộng hoàn thiện</th><th class="num">Số lượng</th><th>Ghi chú</th></tr></thead>
           <tbody>
             <tr class="material-row"><td colspan="8">Vật liệu: MDF_17.5_cot_tho_NOTEXT</td></tr>
             <tr class="sheet-row"><td colspan="8">MDF_17.5_cot_tho_NOTEXT#1</td></tr>
@@ -1252,6 +1296,33 @@
     const imageLightboxImg = document.getElementById('imageLightboxImg');
     const imageLightboxClose = document.getElementById('imageLightboxClose');
 
+    function copyRealExampleLink(btn) {
+      const url = location.href.split('#')[0] + '#realExampleSection';
+      const showCopied = () => {
+        const label = btn.querySelector('span');
+        const original = label.textContent;
+        btn.classList.add('copied');
+        label.textContent = 'Đã copy link!';
+        setTimeout(() => { btn.classList.remove('copied'); label.textContent = original; }, 1800);
+      };
+      const manualFallback = () => {
+        window.prompt('Không tự copy được (thường do mở file trực tiếp, không phải qua web) — bấm Ctrl+C để copy link:', url);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(showCopied).catch(manualFallback);
+        return;
+      }
+      const ta = document.createElement('textarea');
+      ta.value = url;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      if (ok) showCopied(); else manualFallback();
+    }
     function openImageLightbox(src, alt) {
       imageLightboxImg.src = src;
       imageLightboxImg.alt = alt || '';
