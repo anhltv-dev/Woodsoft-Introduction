@@ -313,13 +313,13 @@
       gap:10px;padding:26px;text-align:center;text-decoration:none;color:#fff;
       background:radial-gradient(circle at 70% 30%,rgba(15,111,184,.35),transparent 45%),linear-gradient(135deg,#0b1220 0%,#101a2b 58%,#0d2338 100%);
     }
-    .product3d-mobile-cta-icon{
+    .product3d-mobile-cta span{display:flex;align-items:center;gap:6px;font-size:12.5px;color:rgba(255,255,255,.82);max-width:320px;text-align:center;justify-content:center}
+    .product3d-mobile-cta .product3d-mobile-cta-icon{
       width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
       background:var(--primary);color:#fff;font-size:22px;box-shadow:0 10px 24px rgba(15,111,184,.35);
     }
-    .product3d-mobile-cta strong{font-size:16px;line-height:1.35;max-width:320px}
-    .product3d-mobile-cta span{display:flex;align-items:center;gap:6px;font-size:12.5px;color:rgba(255,255,255,.82)}
-    .product3d-mobile-cta-btn{
+    .product3d-mobile-cta .product3d-mobile-cta-title{font-size:16px;font-weight:800;line-height:1.35;color:#fff}
+    .product3d-mobile-cta .product3d-mobile-cta-btn{
       display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:10px 18px;
       border-radius:999px;background:#fff;color:#111;font-weight:800;font-size:13px;
     }
@@ -510,6 +510,7 @@
       .estimate-value-item:last-child{grid-column:auto;border-bottom:none}
       .home-btn{top:12px;right:12px;padding:9px 14px;font-size:13px}
       .resource-grid{grid-template-columns:1fr}
+      .product3d-frame{aspect-ratio:auto;min-height:300px}
       .product3d-body{flex-direction:column}
       .product3d-list{max-width:100%;flex-direction:row;flex-wrap:wrap}
       .product3d-list-head{width:100%}
@@ -1068,17 +1069,27 @@
     const product3dFrame = document.getElementById('nestingProduct3dFrame');
     const product3dChecks = document.querySelectorAll('.product3d-check');
     const product3dMql = window.matchMedia('(max-width:720px)');
+    const product3dInAppBrowser = /Zalo|FBAN|FBAV|FB_IAB|Instagram|Line\/|MicroMessenger|Twitter/i.test(navigator.userAgent || '');
     let currentProduct3d = null;
 
     function renderProduct3d(cb) {
       if (!product3dFrame || !cb) return;
       currentProduct3d = cb;
       const url = `https://woodviewer.com/v/${cb.dataset.embedId}`;
-      if (product3dMql.matches) {
+      if (product3dInAppBrowser) {
         product3dFrame.innerHTML = `
           <a class="product3d-mobile-cta" href="${url}" target="_blank" rel="noopener">
             <span class="product3d-mobile-cta-icon"><i class="fa-solid fa-cube"></i></span>
-            <strong>Mô hình 3D — ${cb.dataset.name}</strong>
+            <span class="product3d-mobile-cta-title">Mô hình 3D — ${cb.dataset.name}</span>
+            <span>Trình duyệt trong ứng dụng (Zalo, Messenger...) không xem được mô hình 3D này.</span>
+            <span>Bấm biểu tượng <b>⋯</b> ở góc trên bên phải, chọn <b>"Mở bằng trình duyệt"</b> để xem đầy đủ.</span>
+            <span class="product3d-mobile-cta-btn"><i class="fa-solid fa-up-right-from-square"></i> Hoặc thử mở tại đây</span>
+          </a>`;
+      } else if (product3dMql.matches) {
+        product3dFrame.innerHTML = `
+          <a class="product3d-mobile-cta" href="${url}" target="_blank" rel="noopener">
+            <span class="product3d-mobile-cta-icon"><i class="fa-solid fa-cube"></i></span>
+            <span class="product3d-mobile-cta-title">Mô hình 3D — ${cb.dataset.name}</span>
             <span>Trên điện thoại, xem 3D mượt hơn khi mở toàn màn hình</span>
             <span class="product3d-mobile-cta-btn"><i class="fa-solid fa-up-right-from-square"></i> Mở xem 3D</span>
           </a>`;
