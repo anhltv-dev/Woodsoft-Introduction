@@ -84,6 +84,43 @@
       line-height:1;
     }
 
+    .real-example-cta{
+      position:fixed;
+      top:78px;
+      right:20px;
+      z-index:999;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 18px;
+      border-radius:999px;
+      text-decoration:none;
+      color:#0b4f83;
+      font-weight:700;
+      font-size:13px;
+      background:#fff;
+      border:1px solid rgba(15,111,184,.35);
+      box-shadow:0 10px 24px rgba(11,79,131,.2);
+      transition:opacity .35s ease, transform .35s ease, box-shadow .2s ease;
+      animation:realExamplePulse 2.2s ease-in-out infinite;
+    }
+
+    .real-example-cta:hover{
+      box-shadow:0 14px 30px rgba(11,79,131,.3);
+      animation-play-state:paused;
+    }
+
+    .real-example-cta.is-hidden{
+      opacity:0;
+      transform:translateY(-8px);
+      pointer-events:none;
+    }
+
+    @keyframes realExamplePulse{
+      0%,100%{box-shadow:0 10px 24px rgba(11,79,131,.2), 0 0 0 0 rgba(15,111,184,.35)}
+      50%{box-shadow:0 10px 24px rgba(11,79,131,.2), 0 0 0 8px rgba(15,111,184,0)}
+    }
+
     .woodsoft-footer{
       max-width: 1200px;
       margin: 38px auto 0;
@@ -516,6 +553,7 @@
       .estimate-value-item,.estimate-value-item:nth-child(2n){border-right:none;border-bottom:1px solid rgba(255,255,255,.2)}
       .estimate-value-item:last-child{grid-column:auto;border-bottom:none}
       .home-btn{top:12px;right:12px;padding:9px 14px;font-size:13px}
+      .real-example-cta{top:60px;right:12px;padding:8px 14px;font-size:12px}
       .resource-grid{grid-template-columns:1fr}
       .product3d-frame{aspect-ratio:auto;min-height:360px}
       .product3d-body{flex-direction:column}
@@ -544,6 +582,7 @@
 <body>
 
 <a class="home-btn" href="index.html" aria-label="Về trang chủ">HOME</a>
+<a class="real-example-cta" id="realExampleCta" href="#realExampleSection"><i class="fa-solid fa-star"></i> Xem ví dụ thực tế</a>
 
 <main class="page">
 
@@ -708,12 +747,12 @@
       <div class="estimate-value-item"><span class="estimate-value-icon"><i class="fa-solid fa-plug-circle-check"></i></span><div><strong>Kết nối mở</strong><span>BAZIS, SketchUp, AutoCAD, DXF</span></div></div>
     </div>
 
-    <article class="estimate-detail-card" style="padding:26px 30px;">
-      <h3 class="estimate-block-title"><i class="fa-solid fa-book-open"></i> TÀI NGUYÊN &amp; VÍ DỤ THỰC TẾ</h3>
+    <article class="estimate-detail-card" id="realExampleSection" style="padding:26px 30px;">
+      <h3 class="estimate-block-title"><i class="fa-solid fa-book-open"></i> VÍ DỤ THỰC TẾ TỪ KHÁCH HÀNG</h3>
       <div class="real-project-badge"><i class="fa-solid fa-certificate"></i> Công trình thực tế do khách hàng cung cấp</div>
-      <p class="report-lead">8 sản phẩm dưới đây thuộc cùng 1 công trình thật đã giao cho khách hàng (mỗi sản phẩm số lượng 1). Chỉ với 1 lần bấm Woodsoft Nesting, phần mềm xuất thẳng trọn bộ hồ sơ sản xuất — file chạy CNC, tem nhãn, báo cáo vật tư, sơ đồ cắt — đóng gói chung 1 file ZIP.</p>
+      <p class="report-lead">8 sản phẩm dưới đây thuộc cùng 1 công trình thật đã giao cho khách hàng (mỗi sản phẩm số lượng 1).<br>Chỉ với 1 lần bấm Woodsoft Nesting, phần mềm xuất thẳng trọn bộ hồ sơ sản xuất — file chạy CNC, tem nhãn, báo cáo vật tư, sơ đồ cắt — đóng gói chung 1 file ZIP.</p>
 
-      <div class="xlsx-tabs" role="tablist" aria-label="Tài nguyên và ví dụ thực tế">
+      <div class="xlsx-tabs" role="tablist" aria-label="Ví dụ thực tế từ khách hàng">
         <button type="button" class="xlsx-tab-btn active" data-tab="tabVideo">Preview 3D sản phẩm</button>
         <button type="button" class="xlsx-tab-btn" data-tab="tabExample">Preview nhanh sơ đồ cắt ván</button>
         <button type="button" class="xlsx-tab-btn" data-tab="tabLabel">Preview tem</button>
@@ -1233,6 +1272,20 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') { closeVideoLightbox(); closeImageLightbox(); }
     });
+
+    const realExampleCta = document.getElementById('realExampleCta');
+    const realExampleSection = document.getElementById('realExampleSection');
+    if (realExampleCta && realExampleSection && 'IntersectionObserver' in window) {
+      const realExampleObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            realExampleCta.classList.add('is-hidden');
+            realExampleObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.15 });
+      realExampleObserver.observe(realExampleSection);
+    }
   })();
 </script>
 </body>
