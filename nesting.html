@@ -324,15 +324,6 @@
       border-radius:999px;background:#fef3e2;color:#8a5a12;font-size:12px;font-weight:800;
       letter-spacing:.02em;border:1px solid #f4dfb2;
     }
-    .section-share-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:17px}
-    .section-share-row .estimate-block-title{margin-bottom:0}
-    .section-share-btn{
-      display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;
-      background:#f8fafc;border:1px solid #dbe6ef;color:var(--primary-dark);font-size:12.5px;font-weight:700;
-      cursor:pointer;transition:.15s ease;
-    }
-    .section-share-btn:hover{background:var(--soft);border-color:#c9e2f2}
-    .section-share-btn.copied{background:#e8f7ee;border-color:#bfe6cc;color:#1d8a4c}
     .real-project-head{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;flex-wrap:wrap;margin-bottom:24px}
     .real-project-head .real-project-text{flex:1;min-width:260px}
     .customer-testimonial{
@@ -776,12 +767,7 @@
     </div>
 
     <article class="estimate-detail-card" id="realExampleSection" style="padding:26px 30px;scroll-margin-top:20px;">
-      <div class="section-share-row">
-        <h3 class="estimate-block-title"><i class="fa-solid fa-book-open"></i> VÍ DỤ THỰC TẾ TỪ KHÁCH HÀNG</h3>
-        <button type="button" class="section-share-btn" id="realExampleShareBtn" onclick="copyRealExampleLink(this)">
-          <i class="fa-solid fa-link"></i> <span>Copy link mục này</span>
-        </button>
-      </div>
+      <h3 class="estimate-block-title"><i class="fa-solid fa-book-open"></i> VÍ DỤ THỰC TẾ TỪ KHÁCH HÀNG</h3>
       <div class="real-project-head">
         <div class="real-project-text">
           <div class="real-project-badge"><i class="fa-solid fa-certificate"></i> Công trình thực tế do khách hàng cung cấp</div>
@@ -1296,33 +1282,6 @@
     const imageLightboxImg = document.getElementById('imageLightboxImg');
     const imageLightboxClose = document.getElementById('imageLightboxClose');
 
-    function copyRealExampleLink(btn) {
-      const url = location.href.split('#')[0] + '#realExampleSection';
-      const showCopied = () => {
-        const label = btn.querySelector('span');
-        const original = label.textContent;
-        btn.classList.add('copied');
-        label.textContent = 'Đã copy link!';
-        setTimeout(() => { btn.classList.remove('copied'); label.textContent = original; }, 1800);
-      };
-      const manualFallback = () => {
-        window.prompt('Không tự copy được (thường do mở file trực tiếp, không phải qua web) — bấm Ctrl+C để copy link:', url);
-      };
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(url).then(showCopied).catch(manualFallback);
-        return;
-      }
-      const ta = document.createElement('textarea');
-      ta.value = url;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      let ok = false;
-      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
-      document.body.removeChild(ta);
-      if (ok) showCopied(); else manualFallback();
-    }
     function openImageLightbox(src, alt) {
       imageLightboxImg.src = src;
       imageLightboxImg.alt = alt || '';
