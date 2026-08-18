@@ -282,22 +282,36 @@
     .resource-label{display:flex;align-items:center;gap:8px;margin:0 0 12px;color:var(--primary-dark);font-size:14px;font-weight:800}
     .video-frame{position:relative;overflow:hidden;width:100%;aspect-ratio:16/9;border-radius:13px;background:#0f172a;box-shadow:0 8px 22px rgba(15,23,42,.12)}
     .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-    .video-local-fallback{
-      position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:34px;
-      text-decoration:none;color:#fff;text-align:center;
-      background:radial-gradient(circle at 75% 45%,rgba(15,111,184,.35),transparent 34%),linear-gradient(135deg,#0b1220 0%,#101a2b 58%,#0d2338 100%);
+    .real-project-badge{
+      display:inline-flex;align-items:center;gap:7px;padding:6px 13px;margin:2px 0 12px;
+      border-radius:999px;background:#fef3e2;color:#8a5a12;font-size:12px;font-weight:800;
+      letter-spacing:.02em;border:1px solid #f4dfb2;
     }
-    .video-local-content{max-width:520px}
-    .video-local-play{
-      width:66px;height:46px;margin:0 auto 18px;border-radius:13px;display:flex;align-items:center;justify-content:center;
-      background:#ff0033;color:#fff;font-size:22px;box-shadow:0 12px 28px rgba(255,0,51,.28);
+    .nesting-flow{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+    .nesting-flow-step{display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:12px;background:var(--soft);border:1px solid #d8e9f5}
+    .nesting-flow-icon{width:34px;height:34px;min-width:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:var(--primary);color:#fff;font-size:14px}
+    .nesting-flow-step strong{display:block;font-size:12.5px;color:#12365c;line-height:1.3}
+    .nesting-flow-step span{display:block;font-size:11px;color:#5c7793;margin-top:1px}
+    .nesting-flow-arrow{color:#9fb7cb;font-size:14px}
+    .product3d-sub{margin:-6px 0 12px;color:#5c7793;font-size:12.5px;line-height:1.5}
+    .product3d-body{display:flex;gap:14px;align-items:stretch}
+    .product3d-list{display:flex;flex-direction:column;min-width:180px;max-width:210px;border:1px solid #e3eaf0;border-radius:12px;background:#fff;overflow:hidden}
+    .product3d-list-head{padding:9px 12px;font-size:11px;font-weight:800;letter-spacing:.04em;color:#8592a6;background:#f4f7fa;border-bottom:1px solid #e3eaf0}
+    .product3d-item{display:flex;align-items:center;gap:9px;padding:10px 12px;font-size:13px;font-weight:700;color:#243247;cursor:pointer;border-bottom:1px solid #eef2f7;transition:.15s ease}
+    .product3d-item:last-child{border-bottom:none}
+    .product3d-item:hover{background:#f4f8fb}
+    .product3d-item.active{background:var(--soft);color:var(--primary-dark)}
+    .product3d-item input{width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex:none}
+    .product3d-viewer-wrap{position:relative;flex:1;min-width:0}
+    .product3d-real-badge{
+      position:absolute;top:10px;left:10px;z-index:2;display:inline-flex;align-items:center;gap:6px;
+      padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.92);color:#8a5a12;
+      font-size:11px;font-weight:800;box-shadow:0 4px 10px rgba(15,23,42,.15);
     }
-    .video-local-content strong{display:block;font-size:22px;line-height:1.25;margin-bottom:8px}
-    .video-local-content span{display:block;color:rgba(255,255,255,.78);font-size:13px;line-height:1.55}
-    .video-local-button{
-      display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:10px 15px;
-      border-radius:999px;background:#fff;color:#111;font-weight:800;font-size:13px;
-    }
+    .file-type-chips{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 10px}
+    .file-type-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;background:#eef5fb;color:var(--primary-dark);font-size:11px;font-weight:700;border:1px solid #d8e9f5}
+    .file-stats{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 12px;font-size:12px;color:#5c7793}
+    .file-stats strong{color:#12365c;font-size:13px;margin-right:3px}
     .file-list{display:grid;gap:10px}
     .file-card{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;padding:13px;border:1px solid #e3eaf0;border-radius:13px;background:#fff}
     .file-icon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:11px;background:#fef3e2;color:#b7791f;font-size:18px}
@@ -481,6 +495,12 @@
       .estimate-value-item:last-child{grid-column:auto;border-bottom:none}
       .home-btn{top:12px;right:12px;padding:9px 14px;font-size:13px}
       .resource-grid{grid-template-columns:1fr}
+      .product3d-body{flex-direction:column}
+      .product3d-list{max-width:100%;flex-direction:row;flex-wrap:wrap}
+      .product3d-list-head{width:100%}
+      .product3d-item{border-bottom:none;border-right:1px solid #eef2f7}
+      .nesting-flow{flex-direction:column;align-items:stretch}
+      .nesting-flow-arrow{transform:rotate(90deg);align-self:center}
       .stat-strip-3{grid-template-columns:1fr}
       .stat-strip-3 .estimate-value-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.2)}
       .stat-strip-3 .estimate-value-item:last-child{border-bottom:none}
@@ -665,10 +685,11 @@
 
     <article class="estimate-detail-card" style="padding:26px 30px;">
       <h3 class="estimate-block-title"><i class="fa-solid fa-book-open"></i> TÀI NGUYÊN &amp; VÍ DỤ THỰC TẾ</h3>
-      <p class="report-lead">Video minh họa, file dữ liệu mẫu tải về, và bản xem trước dữ liệu thật từ một công trình thực tế — chỉ với 1 lần bấm Woodsoft Nesting.</p>
+      <div class="real-project-badge"><i class="fa-solid fa-certificate"></i> Dự án thực tế của khách hàng — không phải dữ liệu dựng minh họa</div>
+      <p class="report-lead">8 sản phẩm dưới đây thuộc cùng 1 công trình thật đã giao cho khách hàng (mỗi sản phẩm số lượng 1). Chỉ với 1 lần bấm Woodsoft Nesting, phần mềm xuất thẳng trọn bộ hồ sơ sản xuất — file chạy CNC, tem nhãn, báo cáo vật tư, sơ đồ cắt — đóng gói chung 1 file ZIP.</p>
 
       <div class="xlsx-tabs" role="tablist" aria-label="Tài nguyên và ví dụ thực tế">
-        <button type="button" class="xlsx-tab-btn active" data-tab="tabVideo">Video &amp; File mẫu</button>
+        <button type="button" class="xlsx-tab-btn active" data-tab="tabVideo">Preview 3D sản phẩm</button>
         <button type="button" class="xlsx-tab-btn" data-tab="tabExample">Preview nhanh sơ đồ cắt ván</button>
         <button type="button" class="xlsx-tab-btn" data-tab="tabLabel">Preview tem</button>
         <button type="button" class="xlsx-tab-btn" data-tab="xlsxMaterial">Vật tư sử dụng</button>
@@ -678,10 +699,67 @@
       </div>
 
       <div class="xlsx-panel active" id="tabVideo">
+        <div class="nesting-flow" aria-hidden="true">
+          <div class="nesting-flow-step">
+            <span class="nesting-flow-icon"><i class="fa-solid fa-cubes"></i></span>
+            <div><strong>8 sản phẩm thật</strong><span>1 công trình, mỗi sản phẩm SL 1</span></div>
+          </div>
+          <span class="nesting-flow-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+          <div class="nesting-flow-step">
+            <span class="nesting-flow-icon"><i class="fa-solid fa-bolt"></i></span>
+            <div><strong>1 click Nesting</strong><span>Woodsoft tự động xếp tối ưu</span></div>
+          </div>
+          <span class="nesting-flow-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+          <div class="nesting-flow-step">
+            <span class="nesting-flow-icon"><i class="fa-solid fa-box-open"></i></span>
+            <div><strong>Bộ hồ sơ sản xuất</strong><span>NC, DXF, tem, Excel, JSON — 1 file ZIP</span></div>
+          </div>
+        </div>
         <div class="resource-grid">
           <div class="video-card">
-            <div class="resource-label"><i class="fa-brands fa-youtube"></i> Video minh họa</div>
-            <div class="video-frame" id="nestingVideoFrame" aria-label="Video minh họa Woodsoft Nesting"></div>
+            <div class="resource-label"><i class="fa-solid fa-cube"></i> Xem trước 3D sản phẩm</div>
+            <p class="product3d-sub">1 công trình thực tế × 8 sản phẩm — mỗi sản phẩm số lượng 1</p>
+            <div class="product3d-body">
+              <div class="product3d-list" role="group" aria-label="Chọn sản phẩm để xem trước 3D">
+                <div class="product3d-list-head">SẢN PHẨM</div>
+                <label class="product3d-item active">
+                  <input type="checkbox" class="product3d-check" data-embed-id="4823x8g5irnznce9" data-name="BENCH NGỒI" checked>
+                  <span>BENCH NGỒI</span>
+                </label>
+                <label class="product3d-item">
+                  <input type="checkbox" class="product3d-check" data-embed-id="wxsp4aciv0001dyy" data-name="KỆ TRƯNG BÀY 2">
+                  <span>KỆ TRƯNG BÀY 2</span>
+                </label>
+                <label class="product3d-item">
+                  <input type="checkbox" class="product3d-check" data-embed-id="e0v32y95gmkdrpf7" data-name="VÁCH PHẢI">
+                  <span>VÁCH PHẢI</span>
+                </label>
+                <label class="product3d-item">
+                  <input type="checkbox" class="product3d-check" data-embed-id="p7537gbbor7xzv24" data-name="VÁCH SAU">
+                  <span>VÁCH SAU</span>
+                </label>
+                <label class="product3d-item">
+                  <input type="checkbox" class="product3d-check" data-embed-id="3bo72hq19apb361o" data-name="VÁCH TRÁI">
+                  <span>VÁCH TRÁI</span>
+                </label>
+                <label class="product3d-item">
+                  <input type="checkbox" class="product3d-check" data-embed-id="sp8ai3m46qgksqtg" data-name="ĐẢO 1">
+                  <span>ĐẢO 1</span>
+                </label>
+                <label class="product3d-item">
+                  <input type="checkbox" class="product3d-check" data-embed-id="debc1yrm5bwpvi0b" data-name="ĐẢO 2">
+                  <span>ĐẢO 2</span>
+                </label>
+                <label class="product3d-item">
+                  <input type="checkbox" class="product3d-check" data-embed-id="idoujc9cmci0n92n" data-name="ĐẢO THẤP">
+                  <span>ĐẢO THẤP</span>
+                </label>
+              </div>
+              <div class="product3d-viewer-wrap">
+                <span class="product3d-real-badge"><i class="fa-solid fa-certificate"></i> Công trình thật</span>
+                <div class="video-frame product3d-frame" id="nestingProduct3dFrame" aria-label="Xem trước 3D sản phẩm Woodsoft Nesting"></div>
+              </div>
+            </div>
           </div>
           <div class="downloads-card">
             <div class="resource-label"><i class="fa-solid fa-file-arrow-down"></i> File mẫu để tham khảo</div>
@@ -689,8 +767,20 @@
               <article class="file-card">
                 <div class="file-icon"><i class="fa-solid fa-file-zipper"></i></div>
                 <div class="file-info">
-                  <h3>Trọn bộ dữ liệu xuất ra – 1 công trình thực tế</h3>
-                  <p>52 tấm ván, 608 chi tiết: file gia công NC, DXF, tem nhãn PDF, báo cáo Excel, sơ đồ cắt JSON.</p>
+                  <h3>Đây chính là kết quả Nesting của 8 sản phẩm bên trái</h3>
+                  <p>Từ đúng công trình thực tế trên — chỉ 1 lần bấm Woodsoft Nesting, ra ngay trọn bộ hồ sơ sản xuất, đóng gói chung 1 file.</p>
+                  <div class="file-type-chips">
+                    <span class="file-type-chip"><i class="fa-solid fa-gears"></i> File NC</span>
+                    <span class="file-type-chip"><i class="fa-solid fa-draw-polygon"></i> DXF</span>
+                    <span class="file-type-chip"><i class="fa-solid fa-tag"></i> Tem PDF</span>
+                    <span class="file-type-chip"><i class="fa-solid fa-file-excel"></i> Báo cáo Excel</span>
+                    <span class="file-type-chip"><i class="fa-solid fa-diagram-project"></i> Sơ đồ cắt JSON</span>
+                  </div>
+                  <div class="file-stats">
+                    <span><strong>52</strong> tấm ván</span>
+                    <span><strong>608</strong> chi tiết</span>
+                    <span><strong>4</strong> loại vật liệu</span>
+                  </div>
                   <div class="file-actions">
                     <a class="file-btn primary" href="downloads/CongtrinhVPT_CNC.zip" download><i class="fa-solid fa-download"></i> Tải file ZIP mẫu</a>
                   </div>
@@ -960,35 +1050,35 @@
 
 <script>
   (() => {
-    const videoFrame = document.getElementById('nestingVideoFrame');
-    const videoId = 'b60codwM-aI';
-    const youtubeWatch = 'https://www.youtube.com/watch?v=' + videoId;
+    const product3dFrame = document.getElementById('nestingProduct3dFrame');
+    const product3dChecks = document.querySelectorAll('.product3d-check');
 
-    function renderVideo() {
-      if (!videoFrame) return;
-      if (window.location.protocol === 'file:') {
-        videoFrame.innerHTML = `
-          <a class="video-local-fallback" href="${youtubeWatch}" target="_blank" rel="noopener">
-            <div class="video-local-content">
-              <div class="video-local-play"><i class="fa-solid fa-play"></i></div>
-              <strong>Video minh họa Woodsoft Nesting</strong>
-              <span>File đang được mở trực tiếp trên máy tính. Nhấn để xem video trên YouTube; khi trang được đưa lên website, video sẽ phát trực tiếp ngay tại đây.</span>
-              <span class="video-local-button"><i class="fa-brands fa-youtube"></i> Xem video trên YouTube</span>
-            </div>
-          </a>`;
-      } else {
-        const origin = encodeURIComponent(window.location.origin);
-        videoFrame.innerHTML = `
-          <iframe
-            src="https://www.youtube.com/embed/${videoId}?rel=0&origin=${origin}"
-            title="Video minh họa Woodsoft Nesting"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>`;
-      }
+    function renderProduct3d(cb) {
+      if (!product3dFrame || !cb) return;
+      product3dFrame.innerHTML = `
+        <iframe
+          src="https://woodviewer.com/v/${cb.dataset.embedId}?embed=1"
+          title="Xem 3D ${cb.dataset.name}"
+          allowfullscreen></iframe>`;
     }
-    renderVideo();
+
+    product3dChecks.forEach(cb => {
+      cb.addEventListener('change', () => {
+        if (!cb.checked) { cb.checked = true; return; }
+        product3dChecks.forEach(other => {
+          if (other !== cb) { other.checked = false; other.closest('.product3d-item').classList.remove('active'); }
+        });
+        cb.closest('.product3d-item').classList.add('active');
+        renderProduct3d(cb);
+      });
+    });
+
+    const initialProduct3d = document.querySelector('.product3d-check:checked') || product3dChecks[0];
+    if (initialProduct3d) {
+      initialProduct3d.checked = true;
+      initialProduct3d.closest('.product3d-item').classList.add('active');
+      renderProduct3d(initialProduct3d);
+    }
 
     const tabButtons = document.querySelectorAll('.xlsx-tab-btn');
     const panels = document.querySelectorAll('.xlsx-panel');
