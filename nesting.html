@@ -431,6 +431,7 @@
     .vidu-preview-box:hover .vidu-preview-zoom{background:rgba(15,111,184,.92)}
 
     /* Preview tem nhãn */
+    .label-grid-wrap{max-height:300px;overflow-y:auto;overflow-x:hidden;border-radius:12px;padding-right:4px}
     .label-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
     .label-card{
       border:1px solid #e6edf4;border-radius:12px;overflow:hidden;background:#fff;
@@ -484,6 +485,13 @@
     .xlsx-table td.filecell{color:var(--muted);font-size:10.5px;white-space:normal;max-width:200px;overflow-wrap:break-word}
     .xlsx-table td.tickcell{text-align:center}
     .xlsx-table .tick{color:var(--primary);font-weight:900}
+    .xlsx-table.xlsx-table-center th,.xlsx-table.xlsx-table-center td{text-align:center}
+    .xlsx-table.xlsx-table-center td.num{text-align:center}
+    .xlsx-product-link{display:inline-flex;align-items:center;gap:6px;color:var(--primary-dark);font-weight:800;text-decoration:none}
+    .xlsx-product-link:hover{color:var(--primary);text-decoration:underline}
+    .xlsx-product-link i{font-size:10px;color:var(--primary)}
+    .xlsx-table tr.material-row td{background:var(--soft);color:var(--primary-dark);font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:.02em}
+    .xlsx-table tr.sheet-row td{background:#f4f7fa;color:#334155;font-weight:700;font-size:11px}
     .xlsx-note{margin:0 0 4px;color:var(--muted);font-size:12px;font-style:italic;white-space:normal}
 
     @media(max-width:1050px){
@@ -495,6 +503,7 @@
       .feature-showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .process-steps{grid-template-columns:1fr}
       .label-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+      .label-grid-wrap{max-height:380px}
     }
 
     @media(max-width:720px){
@@ -519,12 +528,14 @@
       .stat-strip-3 .estimate-value-item:last-child{border-bottom:none}
       .feature-showcase-grid{grid-template-columns:1fr}
       .label-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .label-grid-wrap{max-height:340px}
     }
 
     @media(max-width:480px){
       .xlsx-tabs{gap:6px}
       .xlsx-tab-btn{padding:8px 12px;font-size:12px}
       .label-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .label-grid-wrap{max-height:320px}
     }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -819,7 +830,8 @@
       </div>
 
       <div class="xlsx-panel" id="tabLabel">
-        <p class="xlsx-note" style="margin-bottom:14px;"><i class="fa-solid fa-circle-info"></i> 24 tem nhãn của <strong>Sơ đồ cắt số 8</strong> (vật liệu MDF 17.5 cốt thô) — trích từ file <code>label_MDF_17.5_cot_tho_NOTEXT.pdf</code> trong bộ dữ liệu mẫu. Mỗi tem gồm mã chi tiết, kích thước, QR code và biên dạng vị trí trên tấm. Bấm vào tem để xem phóng to.</p>
+        <p class="xlsx-note" style="margin-bottom:14px;"><i class="fa-solid fa-circle-info"></i> 24 tem nhãn của <strong>Sơ đồ cắt số 8</strong> (vật liệu MDF 17.5 cốt thô) — trích từ file <code>label_MDF_17.5_cot_tho_NOTEXT.pdf</code> trong bộ dữ liệu mẫu. Mỗi tem gồm mã chi tiết, kích thước, QR code và biên dạng vị trí trên tấm. Cuộn dọc để xem thêm, hoặc bấm vào tem để xem phóng to.</p>
+        <div class="label-grid-wrap">
         <div class="label-grid">
           <button type="button" class="label-card" data-full-img="images/nesting/labels-sheet8-full/tem-08-01.png" data-full-alt="Tem ĐÁY - K1-03.001">
             <img src="images/nesting/labels-sheet8-thumb/tem-08-01.png" alt="Tem ĐÁY - K1-03.001" loading="lazy">
@@ -918,6 +930,7 @@
             <div class="label-card-cap"><strong>ĐỢT GHÉP</strong><span>VP-02.006 &middot; 20 x 390 x 17.5 = 52</span></div>
           </button>
         </div>
+        </div>
       </div>
 
       <div class="xlsx-panel" id="xlsxMaterial">
@@ -957,36 +970,61 @@
 
       <div class="xlsx-panel" id="xlsxProduct">
         <p class="xlsx-table-title">Sheet "Product expense" — Thống kê theo sản phẩm</p>
-        <div class="xlsx-table-wrap"><table class="xlsx-table">
+        <div class="xlsx-table-wrap"><table class="xlsx-table xlsx-table-center">
           <thead><tr><th>Sản phẩm</th><th>MDF 12 (m²)</th><th>MDF 17.5 (m²)</th><th>MDF 3 (m²)</th><th>MDF 9 (m²)</th><th>N trắng (m)</th><th>Bản lề</th><th>Ốc cam</th><th>Khoan</th></tr></thead>
           <tbody>
-            <tr><td>BENCH NGỒI</td><td>—</td><td class="num">4.04</td><td>—</td><td class="num">4.44</td><td>—</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
-            <tr><td>KỆ TRƯNG BÀY 2</td><td class="num">25.05</td><td class="num">46.22</td><td>—</td><td>—</td><td>—</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
-            <tr><td>VÁCH PHẢI</td><td class="num">16.24</td><td class="num">16.90</td><td class="num">3.12</td><td>—</td><td class="num">45.85</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
-            <tr><td>VÁCH SAU</td><td>—</td><td class="num">1.85</td><td class="num">1.08</td><td>—</td><td class="num">16.04</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
-            <tr><td>VÁCH TRÁI</td><td>—</td><td class="num">1.09</td><td>—</td><td>—</td><td class="num">2.28</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
-            <tr><td>ĐẢO 1</td><td>—</td><td class="num">12.11</td><td>—</td><td class="num">0.75</td><td>—</td><td class="num">4</td><td class="num">0</td><td>D35: 4, D5: 4, D3: 9</td></tr>
-            <tr><td>ĐẢO 2</td><td>—</td><td class="num">12.58</td><td>—</td><td class="num">1.27</td><td>—</td><td class="num">2</td><td class="num">0</td><td>D35: 2, D8: 2, D3: 26</td></tr>
-            <tr><td>ĐẢO THẤP</td><td>—</td><td class="num">5.99</td><td>—</td><td>—</td><td class="num">9.55</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
+            <tr><td><a class="xlsx-product-link" href="https://woodviewer.com/v/4823x8g5irnznce9" target="_blank" rel="noopener">BENCH NGỒI <i class="fa-solid fa-cube"></i></a></td><td>—</td><td class="num">4.04</td><td>—</td><td class="num">4.44</td><td>—</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
+            <tr><td><a class="xlsx-product-link" href="https://woodviewer.com/v/wxsp4aciv0001dyy" target="_blank" rel="noopener">KỆ TRƯNG BÀY 2 <i class="fa-solid fa-cube"></i></a></td><td class="num">25.05</td><td class="num">46.22</td><td>—</td><td>—</td><td>—</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
+            <tr><td><a class="xlsx-product-link" href="https://woodviewer.com/v/e0v32y95gmkdrpf7" target="_blank" rel="noopener">VÁCH PHẢI <i class="fa-solid fa-cube"></i></a></td><td class="num">16.24</td><td class="num">16.90</td><td class="num">3.12</td><td>—</td><td class="num">45.85</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
+            <tr><td><a class="xlsx-product-link" href="https://woodviewer.com/v/p7537gbbor7xzv24" target="_blank" rel="noopener">VÁCH SAU <i class="fa-solid fa-cube"></i></a></td><td>—</td><td class="num">1.85</td><td class="num">1.08</td><td>—</td><td class="num">16.04</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
+            <tr><td><a class="xlsx-product-link" href="https://woodviewer.com/v/3bo72hq19apb361o" target="_blank" rel="noopener">VÁCH TRÁI <i class="fa-solid fa-cube"></i></a></td><td>—</td><td class="num">1.09</td><td>—</td><td>—</td><td class="num">2.28</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
+            <tr><td><a class="xlsx-product-link" href="https://woodviewer.com/v/sp8ai3m46qgksqtg" target="_blank" rel="noopener">ĐẢO 1 <i class="fa-solid fa-cube"></i></a></td><td>—</td><td class="num">12.11</td><td>—</td><td class="num">0.75</td><td>—</td><td class="num">4</td><td class="num">0</td><td>D35: 4, D5: 4, D3: 9</td></tr>
+            <tr><td><a class="xlsx-product-link" href="https://woodviewer.com/v/debc1yrm5bwpvi0b" target="_blank" rel="noopener">ĐẢO 2 <i class="fa-solid fa-cube"></i></a></td><td>—</td><td class="num">12.58</td><td>—</td><td class="num">1.27</td><td>—</td><td class="num">2</td><td class="num">0</td><td>D35: 2, D8: 2, D3: 26</td></tr>
+            <tr><td><a class="xlsx-product-link" href="https://woodviewer.com/v/idoujc9cmci0n92n" target="_blank" rel="noopener">ĐẢO THẤP <i class="fa-solid fa-cube"></i></a></td><td>—</td><td class="num">5.99</td><td>—</td><td>—</td><td class="num">9.55</td><td class="num">0</td><td class="num">0</td><td>—</td></tr>
           </tbody>
         </table></div>
-        <p class="xlsx-note"><i class="fa-solid fa-circle-info"></i> Đủ dữ liệu để tính giá thành và bóc tách vật tư cho từng sản phẩm riêng lẻ trong cùng một công trình.</p>
+        <p class="xlsx-note"><i class="fa-solid fa-circle-info"></i> Đủ dữ liệu để tính giá thành và bóc tách vật tư cho từng sản phẩm riêng lẻ trong cùng một công trình. Bấm vào tên sản phẩm để xem mô hình 3D tương ứng.</p>
       </div>
 
       <div class="xlsx-panel" id="xlsxSheetList">
-        <p class="xlsx-table-title">Sheet "Sheet list" — Danh sách tấm (trích 2 tấm đầu tiên)</p>
-        <div class="xlsx-table-wrap"><table class="xlsx-table">
-          <thead><tr><th>Tấm</th><th>Tên chi tiết</th><th>Dài (mm)</th><th>Rộng (mm)</th><th>Số lượng</th></tr></thead>
+        <p class="xlsx-table-title">Sheet "Sheet list" — Danh sách tấm (vật liệu đại diện: MDF_17.5_cot_tho_NOTEXT, 3 tấm đầu tiên)</p>
+        <div class="xlsx-table-wrap scroll-y"><table class="xlsx-table">
+          <thead><tr><th>Tên file</th><th>Tên chi tiết</th><th>Dài</th><th>Rộng</th><th>Dài hoàn thiện</th><th>Rộng hoàn thiện</th><th>Số lượng</th><th>Ghi chú</th></tr></thead>
           <tbody>
-            <tr><td>MDF_12_cot_tho_NOTEXT #1</td><td>MẶT TRÊN</td><td class="num">2291.4</td><td class="num">1043.8</td><td class="num">1</td></tr>
-            <tr><td>MDF_12_cot_tho_NOTEXT #1</td><td>MẶT TRÊN</td><td class="num">1250</td><td class="num">470.6</td><td class="num">1</td></tr>
-            <tr><td>MDF_12_cot_tho_NOTEXT #1</td><td>XƯƠNG BỎ</td><td class="num">440.8</td><td class="num">444</td><td class="num">2</td></tr>
-            <tr><td>MDF_12_cot_tho_NOTEXT #2</td><td>MẶT TRÊN</td><td class="num">2291.4</td><td class="num">1043.8</td><td class="num">1</td></tr>
-            <tr><td>MDF_12_cot_tho_NOTEXT #2</td><td>MẶT DƯỚI ĐỆM</td><td class="num">1106.9</td><td class="num">518.1</td><td class="num">1</td></tr>
-            <tr><td>MDF_12_cot_tho_NOTEXT #2</td><td>XƯƠNG BỎ</td><td class="num">440.8</td><td class="num">444</td><td class="num">2</td></tr>
+            <tr class="material-row"><td colspan="8">Vật liệu: MDF_17.5_cot_tho_NOTEXT</td></tr>
+            <tr class="sheet-row"><td colspan="8">MDF_17.5_cot_tho_NOTEXT#1</td></tr>
+            <tr><td>DT-013_1</td><td>ĐỠ MẶT</td><td class="num">250</td><td class="num">250</td><td class="num">250</td><td class="num">250</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>VP-03.055_2</td><td>XƯỢNG 4</td><td class="num">50</td><td class="num">2169</td><td class="num">50</td><td class="num">2169</td><td class="num">2</td><td>—</td></tr>
+            <tr><td>D2-00.002_2</td><td>NGĂN KÉO</td><td class="num">40</td><td class="num">858.5</td><td class="num">40</td><td class="num">858.5</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>VP-03.053_2</td><td>XƯƠNG 2</td><td class="num">50</td><td class="num">2169</td><td class="num">50</td><td class="num">2169</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>DT-004_2</td><td>XƯƠNG</td><td class="num">146</td><td class="num">146</td><td class="num">146</td><td class="num">146</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>VP-03.059_1</td><td>XƯƠNG 6</td><td class="num">45.0</td><td class="num">2169</td><td class="num">45.0</td><td class="num">2169</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>KTB_4-020_1</td><td>ĐÁY</td><td class="num">2360.4</td><td class="num">850</td><td class="num">2360.4</td><td class="num">850</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>VP-03.057_2</td><td>XƯƠNG 5</td><td class="num">50</td><td class="num">2169</td><td class="num">50</td><td class="num">2169</td><td class="num">2</td><td>—</td></tr>
+            <tr class="sheet-row"><td colspan="8">MDF_17.5_cot_tho_NOTEXT#2</td></tr>
+            <tr><td>D1-00.035_2</td><td>BENT (PHÔI TRẢI PHẲNG)</td><td class="num">2073.2</td><td class="num">85</td><td class="num">2073.2</td><td class="num">85</td><td class="num">2</td><td>—</td></tr>
+            <tr><td>VS-05.006_16</td><td>5 ĐỢT GHÉP 38 4</td><td class="num">392.5</td><td class="num">20</td><td class="num">392.5</td><td class="num">20</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>VP-03.017_4</td><td>XƯƠNG</td><td class="num">300</td><td class="num">300</td><td class="num">300</td><td class="num">300</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>VP-03.043_8</td><td>HORIZONTAL</td><td class="num">124.5</td><td class="num">197.2</td><td class="num">124.5</td><td class="num">197.2</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>KTB_4-014_2</td><td>ĐỢT</td><td class="num">2339.9</td><td class="num">809.8</td><td class="num">2339.9</td><td class="num">809.8</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>VS-03.005_8</td><td>FRONT</td><td class="num">20</td><td class="num">1880</td><td class="num">20</td><td class="num">1880</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>D2-00.043_2</td><td>BENT (PHÔI TRẢI PHẲNG)</td><td class="num">2073.2</td><td class="num">85</td><td class="num">2073.2</td><td class="num">85</td><td class="num">2</td><td>—</td></tr>
+            <tr><td>D1-00.030_2</td><td>HORIZONTAL</td><td class="num">1080</td><td class="num">60</td><td class="num">1080</td><td class="num">60</td><td class="num">1</td><td>—</td></tr>
+            <tr class="sheet-row"><td colspan="8">MDF_17.5_cot_tho_NOTEXT#3</td></tr>
+            <tr><td>VP-02.076_4</td><td>ĐỢT GHÉP 38 4</td><td class="num">1830</td><td class="num">20</td><td class="num">1830</td><td class="num">20</td><td class="num">3</td><td>—</td></tr>
+            <tr><td>VP-03.015_4</td><td>XƯƠNG</td><td class="num">239</td><td class="num">349.5</td><td class="num">239</td><td class="num">349.5</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>VT-00.003_9</td><td>ĐỢT GHÉP 38 4</td><td class="num">1608</td><td class="num">20</td><td class="num">1608</td><td class="num">20</td><td class="num">5</td><td>—</td></tr>
+            <tr><td>VS-05.006_16</td><td>5 ĐỢT GHÉP 38 4</td><td class="num">392.5</td><td class="num">20</td><td class="num">392.5</td><td class="num">20</td><td class="num">5</td><td>—</td></tr>
+            <tr><td>D2-00.027_2</td><td>HORIZONTAL</td><td class="num">1080</td><td class="num">60</td><td class="num">1080</td><td class="num">60</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>VP-03.043_8</td><td>HORIZONTAL</td><td class="num">124.5</td><td class="num">197.2</td><td class="num">124.5</td><td class="num">197.2</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>KTB_4-014_2</td><td>ĐỢT</td><td class="num">2339.9</td><td class="num">809.8</td><td class="num">2339.9</td><td class="num">809.8</td><td class="num">1</td><td>—</td></tr>
+            <tr><td>VS-03.005_8</td><td>FRONT</td><td class="num">20</td><td class="num">1880</td><td class="num">20</td><td class="num">1880</td><td class="num">7</td><td>—</td></tr>
+            <tr><td>VT-00.025_4</td><td>ĐỢT GHÉP 38 4</td><td class="num">698</td><td class="num">20</td><td class="num">698</td><td class="num">20</td><td class="num">2</td><td>—</td></tr>
+            <tr><td>VS-04.006_16</td><td>ĐỢT GHÉP 38 4 4</td><td class="num">392.5</td><td class="num">20</td><td class="num">392.5</td><td class="num">20</td><td class="num">2</td><td>—</td></tr>
+            <tr><td>BN-03.01.003_2</td><td>GHẾ GHÉP 40</td><td class="num">150</td><td class="num">150</td><td class="num">150</td><td class="num">150</td><td class="num">1</td><td>—</td></tr>
           </tbody>
         </table></div>
-        <p class="xlsx-note"><i class="fa-solid fa-circle-info"></i> ... và 50 tấm khác trong file đầy đủ (tổng 52 tấm, tương ứng 608 chi tiết đã xếp).</p>
+        <p class="xlsx-note"><i class="fa-solid fa-circle-info"></i> Trích 3/33 tấm của vật liệu MDF_17.5_cot_tho_NOTEXT (vật liệu dùng nhiều tấm nhất) — file đầy đủ có 52 tấm thuộc 4 loại vật liệu, tương ứng 608 chi tiết đã xếp.</p>
       </div>
 
       <div class="xlsx-panel" id="xlsxDetail">
