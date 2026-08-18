@@ -308,6 +308,12 @@
       padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.92);color:#8a5a12;
       font-size:11px;font-weight:800;box-shadow:0 4px 10px rgba(15,23,42,.15);
     }
+    .product3d-open-link{
+      position:absolute;top:10px;right:10px;z-index:2;display:inline-flex;align-items:center;gap:6px;
+      padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--primary-dark);
+      font-size:11px;font-weight:800;box-shadow:0 4px 10px rgba(15,23,42,.15);text-decoration:none;
+    }
+    .product3d-open-link:hover{background:#fff}
     .file-type-chips{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 10px}
     .file-type-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;background:#eef5fb;color:var(--primary-dark);font-size:11px;font-weight:700;border:1px solid #d8e9f5}
     .file-stats{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 12px;font-size:12px;color:#5c7793}
@@ -757,6 +763,7 @@
               </div>
               <div class="product3d-viewer-wrap">
                 <span class="product3d-real-badge"><i class="fa-solid fa-certificate"></i> Công trình thật</span>
+                <a class="product3d-open-link" id="product3dOpenLink" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-up-right-from-square"></i> Không hiện được? Mở bằng trình duyệt</a>
                 <div class="video-frame product3d-frame" id="nestingProduct3dFrame" aria-label="Xem trước 3D sản phẩm Woodsoft Nesting"></div>
               </div>
             </div>
@@ -1052,6 +1059,7 @@
   (() => {
     const product3dFrame = document.getElementById('nestingProduct3dFrame');
     const product3dChecks = document.querySelectorAll('.product3d-check');
+    const product3dOpenLink = document.getElementById('product3dOpenLink');
 
     function renderProduct3d(cb) {
       if (!product3dFrame || !cb) return;
@@ -1059,7 +1067,11 @@
         <iframe
           src="https://woodviewer.com/v/${cb.dataset.embedId}?embed=1"
           title="Xem 3D ${cb.dataset.name}"
+          loading="eager"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; magnetometer; xr-spatial-tracking; fullscreen; picture-in-picture; web-share"
           allowfullscreen></iframe>`;
+      if (product3dOpenLink) product3dOpenLink.href = `https://woodviewer.com/v/${cb.dataset.embedId}`;
     }
 
     product3dChecks.forEach(cb => {
