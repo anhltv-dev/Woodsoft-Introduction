@@ -487,6 +487,7 @@
     .xlsx-table .tick{color:var(--primary);font-weight:900}
     .xlsx-table.xlsx-table-center th,.xlsx-table.xlsx-table-center td{text-align:center}
     .xlsx-table.xlsx-table-center td.num{text-align:center}
+    #xlsxMaterial .xlsx-table th.num,#xlsxMaterial .xlsx-table td.num{text-align:center}
     .xlsx-product-link{display:inline-flex;align-items:center;gap:6px;color:var(--primary-dark);font-weight:800;text-decoration:none}
     .xlsx-product-link:hover{color:var(--primary);text-decoration:underline}
     .xlsx-product-link i{font-size:10px;color:var(--primary)}
@@ -936,7 +937,7 @@
       <div class="xlsx-panel" id="xlsxMaterial">
         <p class="xlsx-table-title">Sheet "Expense material" — Danh sách vật liệu</p>
         <div class="xlsx-table-wrap"><table class="xlsx-table">
-          <thead><tr><th>Vật liệu</th><th>Kích thước (mm)</th><th>Số lượng ván</th><th>Số lượng chi tiết</th><th>Lượng nẹp</th></tr></thead>
+          <thead><tr><th>Vật liệu</th><th>Kích thước (mm)</th><th class="num">Số lượng ván</th><th class="num">Số lượng chi tiết</th><th>Lượng nẹp</th></tr></thead>
           <tbody>
             <tr><td>MDF_12_cot_tho_NOTEXT</td><td>2440 × 1220 × 12</td><td class="num">15</td><td class="num">43</td><td>—</td></tr>
             <tr><td>MDF_17.5_cot_tho_NOTEXT</td><td>2440 × 1220 × 17.5</td><td class="num">33</td><td class="num">516</td><td>N trắng: 35.05 m (hao phí 44.09 m)</td></tr>
@@ -947,7 +948,7 @@
         </table></div>
         <p class="xlsx-table-title">Sheet "Expense material" — Thống kê gia công</p>
         <div class="xlsx-table-wrap"><table class="xlsx-table">
-          <thead><tr><th>Hạng mục</th><th>Số lượng</th></tr></thead>
+          <thead><tr><th>Hạng mục</th><th class="num">Số lượng</th></tr></thead>
           <tbody>
             <tr><td>Độ dài dán cạnh cong</td><td class="num">42.28 m</td></tr>
             <tr><td>Số lượng bản lề</td><td class="num">6</td></tr>
