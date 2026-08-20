@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Packing Manager</title>
+<title>Woodsoft Packing Manager | Phân loại &amp; đóng gói thông minh</title>
 <style>
     :root{
       --bg:#f6f8fb;
@@ -83,97 +82,6 @@
       line-height:1;
     }
 
-    .container{
-      max-width:1200px;
-      margin:0 auto;
-      padding:60px 24px;
-    }
-
-    h1{
-      font-size:2.5em;
-      font-weight:800;
-      margin:0 0 20px;
-      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-    }
-
-    h2{
-      font-size:1.8em;
-      font-weight:700;
-      margin:40px 0 20px;
-      color:var(--primary);
-    }
-
-    p{
-      margin:0 0 16px;
-      color:var(--muted);
-      font-size:1.05em;
-      line-height:1.8;
-    }
-
-    .section{
-      background:var(--surface);
-      border-radius:var(--radius);
-      padding:40px;
-      margin:30px 0;
-      box-shadow:0 2px 8px rgba(0,0,0,.05);
-      border:1px solid var(--line);
-    }
-
-    .badge{
-      display:inline-block;
-      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
-      color:#fff;
-      padding:8px 16px;
-      border-radius:999px;
-      font-size:0.85em;
-      font-weight:700;
-      margin-bottom:20px;
-    }
-
-    .feature-list{
-      list-style:none;
-      padding:0;
-      margin:20px 0;
-    }
-
-    .feature-list li{
-      padding:12px 0;
-      border-bottom:1px solid var(--line);
-      display:flex;
-      align-items:flex-start;
-      gap:12px;
-    }
-
-    .feature-list li:last-child{
-      border-bottom:none;
-    }
-
-    .feature-list i{
-      color:var(--success);
-      font-size:1.2em;
-      margin-top:2px;
-    }
-
-    .cta-btn{
-      display:inline-block;
-      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
-      color:#fff;
-      padding:14px 28px;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:700;
-      transition:all .3s ease;
-      border:2px solid transparent;
-    }
-
-    .cta-btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 8px 20px rgba(15,111,184,.3);
-    }
-
     .woodsoft-footer{
       max-width: 1200px;
       margin: 38px auto 0;
@@ -228,30 +136,217 @@
       font-size: 0.95rem;
     }
 
-    @media (max-width:768px){
-      .container{
-        padding:40px 16px;
-      }
+    /* ================= Nội dung theo phong cách BAZIS Dự toán / Nesting / WoodViewer ================= */
 
-      h1{
-        font-size:1.8em;
-      }
+    .page{
+      width:min(1180px,calc(100% - 40px));
+      margin:0 auto;
+      padding:44px 0 20px;
+    }
 
-      h2{
-        font-size:1.3em;
-      }
+    .hero{
+      background:linear-gradient(135deg,#0b4f83 0%,#0f6fb8 60%,#1484cf 100%);
+      color:#fff;
+      border-radius:26px;
+      padding:48px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:280px;
+      height:280px;
+      border-radius:50%;
+      right:-90px;
+      top:-100px;
+      background:rgba(255,255,255,.08);
+      z-index:0;
+    }
+    .hero > *{position:relative;z-index:2}
+    .hero-icons{position:absolute;inset:0;z-index:1;pointer-events:none}
+    .hero-icon{position:absolute;color:rgba(255,255,255,.12);filter:drop-shadow(0 10px 18px rgba(0,0,0,.08));line-height:1}
+    .hero-icon.i1{top:36px;right:310px;font-size:34px;transform:rotate(-8deg)}
+    .hero-icon.i2{top:112px;right:120px;font-size:48px;transform:rotate(10deg)}
+    .hero-icon.i3{bottom:54px;right:270px;font-size:42px;transform:rotate(-6deg)}
+    .hero-icon.i4{bottom:34px;right:90px;font-size:36px;transform:rotate(8deg)}
+    .hero-icon.i5{top:52px;left:56%;font-size:28px;transform:rotate(14deg)}
 
-      .section{
-        padding:24px;
-      }
+    .hero h1{
+      margin:0 0 16px;
+      font-size:clamp(34px,5vw,58px);
+      line-height:1.08;
+      letter-spacing:-.03em;
+      color:#fff;
+    }
+    .hero p{max-width:900px;margin:0;font-size:18px;color:rgba(255,255,255,.9)}
+    .hero strong{color:#fff}
 
-      .woodsoft-footer{
-        padding:14px 16px;
-      }
+    .estimate-detail{margin-top:24px;display:grid;gap:18px}
+    .estimate-detail-card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:0 10px 28px rgba(15,23,42,.055);
+      overflow:hidden;
+    }
 
-      .woodsoft-brand-text{
-        gap:6px;
-      }
+    .estimate-overview{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+      gap:28px;
+      align-items:center;
+      padding:30px;
+    }
+    .estimate-overview-copy{min-width:0}
+    .estimate-overview-kicker{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 11px;border-radius:999px;
+      background:var(--soft);color:var(--primary-dark);
+      font-size:12px;font-weight:850;letter-spacing:.05em;text-transform:uppercase;
+    }
+    .estimate-overview h2{
+      margin:12px 0 6px;color:#08245a;
+      font-size:clamp(24px,3vw,34px);line-height:1.15;letter-spacing:-.03em;
+    }
+    .estimate-slogan{margin:0 0 16px;color:#475569;font-size:15px;font-weight:600;line-height:1.7;max-width:480px}
+
+    .viewer-flow-line{
+      display:flex;align-items:center;gap:7px;flex-wrap:wrap;
+      margin:0 0 22px;color:var(--primary-dark);font-size:12.5px;font-weight:700;
+    }
+    .viewer-flow-line i{color:#9fb7cb;font-size:9px}
+
+    .ov-cta{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;font-weight:800;font-size:13.5px;text-decoration:none;box-shadow:0 10px 24px rgba(11,79,131,.22);transition:.2s ease}
+    .ov-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(11,79,131,.3)}
+
+    .ov-visual{display:flex;flex-direction:column;gap:10px;min-width:0}
+    .ov-visual-box{border:1px solid #e6edf4;border-radius:16px;background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .ov-visual-box img{width:100%;height:auto;display:block}
+    .ov-visual-caption{
+      display:flex;align-items:flex-start;gap:6px;
+      font-size:11.5px;color:var(--muted);font-weight:600;line-height:1.4;
+      padding:0 4px;
+    }
+    .ov-visual-caption i{color:var(--primary);font-size:11px;margin-top:2px}
+
+    .estimate-block-title{
+      display:flex;align-items:center;gap:9px;margin:0 0 14px;color:#fff;
+      background:linear-gradient(135deg,#0f6fb8,#1484cf);border-radius:999px;
+      padding:8px 14px;width:max-content;max-width:100%;
+      font-size:14px;font-weight:850;letter-spacing:.02em;
+    }
+    .report-lead{margin:0 0 18px;color:var(--muted);font-size:14.5px;line-height:1.7;max-width:820px}
+
+    .pain-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}
+    .pain-item{display:grid;grid-template-columns:26px minmax(0,1fr);gap:9px;align-items:start;color:#334155;font-size:13.5px;line-height:1.55}
+    .pain-icon{
+      width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
+      color:#b45309;background:#fef3e2;font-size:11px;margin-top:1px;
+    }
+    .pain-item strong{color:#7c2d12}
+    .pain-note{margin:18px 0 0;padding-top:16px;border-top:1px solid var(--line);color:#12365c;font-size:14px;font-weight:700;line-height:1.6}
+    .pain-note i{color:var(--primary);margin-right:6px}
+
+    .video-frame{
+      position:relative;overflow:hidden;width:100%;max-width:860px;margin:0 auto;
+      aspect-ratio:16/9;border-radius:16px;background:#0f172a;box-shadow:0 14px 32px rgba(15,23,42,.16);
+    }
+    .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    .feature-showcase-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .feature-showcase-card{background:#f8fafc;border:1px solid #eef2f7;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+    .feature-showcase-thumb{position:relative;width:100%;aspect-ratio:16/9;background:#eef6fc;overflow:hidden;cursor:zoom-in}
+    .feature-showcase-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s ease}
+    .feature-showcase-card:hover .feature-showcase-thumb img{transform:scale(1.04)}
+    .feature-showcase-zoom{
+      position:absolute;right:10px;bottom:10px;z-index:2;width:30px;height:30px;border-radius:50%;
+      background:rgba(11,79,131,.88);color:#fff;display:flex;align-items:center;justify-content:center;
+      font-size:12px;opacity:0;transform:translateY(4px);transition:opacity .2s ease,transform .2s ease;pointer-events:none;
+    }
+    .feature-showcase-card:hover .feature-showcase-zoom{opacity:1;transform:translateY(0)}
+    .feature-showcase-body{padding:16px 18px 18px}
+    .feature-showcase-body h4{margin:0 0 7px;font-size:15px;color:#08245a}
+    .feature-showcase-body p{margin:0;font-size:13px;color:var(--muted);line-height:1.62}
+
+    /* Lightbox xem ảnh phóng to */
+    .image-lightbox{position:fixed;inset:0;z-index:2500;display:none;overflow-y:auto;padding:56px 20px 40px}
+    .image-lightbox.open{display:block}
+    .image-lightbox-backdrop{position:fixed;inset:0;background:rgba(8,15,30,.86);backdrop-filter:blur(4px);z-index:0}
+    .image-lightbox-inner{
+      position:relative;z-index:1;width:min(880px,100%);margin:0 auto;
+      background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.4);
+    }
+    .image-lightbox-inner img{width:100%;height:auto;display:block}
+    .image-lightbox-close{
+      position:fixed;top:16px;right:20px;z-index:2;width:38px;height:38px;border-radius:50%;
+      background:rgba(255,255,255,.16);border:none;color:#fff;font-size:19px;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .image-lightbox-close:hover{background:rgba(255,255,255,.28)}
+
+    .benefit-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}
+    .benefit-item{display:grid;grid-template-columns:26px minmax(0,1fr);gap:9px;align-items:start;color:#334155;font-size:13.5px;line-height:1.55}
+    .benefit-check{
+      width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
+      color:#0f6fb8;background:#edf7ff;font-size:11px;margin-top:1px;
+    }
+    .benefit-item strong{color:#12365c}
+
+    .workflow-card{padding:26px 30px}
+    .workflow-detail{
+      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:start;
+      gap:6px;overflow-x:auto;padding:2px 1px 6px;
+    }
+    .workflow-detail-step{text-align:center;flex:0 0 auto;min-width:96px}
+    .workflow-detail-icon{
+      width:60px;height:60px;margin:0 auto 9px;border:1.5px solid #47a7e8;border-radius:50%;
+      display:grid;place-items:center;background:#f7fbff;color:#1378c2;font-size:21px;
+      box-shadow:0 7px 18px rgba(15,111,184,.07);
+    }
+    .workflow-detail-step strong{display:block;color:#1f2937;font-size:12.5px;line-height:1.4;font-weight:700}
+    .workflow-detail-arrow{align-self:center;margin-top:18px;color:#1992da;font-size:16px}
+
+    .quote-banner{
+      padding:34px 38px;border-radius:22px;
+      background:linear-gradient(135deg,#0b4f83 0%,#0f6fb8 60%,#1484cf 100%);color:#fff;
+      display:flex;align-items:center;justify-content:space-between;gap:26px;
+      box-shadow:0 18px 40px rgba(15,111,184,.22);
+    }
+    .quote-banner h2{margin:0 0 7px;font-size:1.55rem;color:#fff;line-height:1.3}
+    .quote-banner p{margin:0;color:rgba(255,255,255,.85);font-size:14.5px}
+    .quote-btn{
+      display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;
+      background:#fff;color:var(--primary-dark);font-weight:800;font-size:13.5px;
+      text-decoration:none;white-space:nowrap;transition:.2s ease;
+    }
+    .quote-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.15)}
+
+    @media(max-width:1050px){
+      .estimate-overview{grid-template-columns:1fr}
+      .feature-showcase-grid{grid-template-columns:1fr}
+      .benefit-list{grid-template-columns:1fr}
+      .pain-list{grid-template-columns:1fr}
+      .workflow-detail{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}
+      .workflow-detail-arrow{display:none}
+    }
+
+    @media(max-width:720px){
+      .page{padding-top:24px}
+      .hero{padding:32px 26px}
+      .hero-icons{display:none}
+      .estimate-overview,.workflow-card{padding:18px}
+      .viewer-flow-line{gap:5px}
+      .quote-banner{display:block}
+      .quote-banner .quote-btn{margin-top:18px}
+      .home-btn{top:12px;right:12px;padding:9px 14px;font-size:13px}
+      .workflow-detail{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:480px){
+      .workflow-detail{grid-template-columns:1fr}
     }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -260,32 +355,136 @@
 
 <a class="home-btn" href="index.html" aria-label="Về trang chủ">HOME</a>
 
-<div class="container">
-  <div class="badge"><i class="fa-solid fa-box"></i> Packing Manager</div>
-  
-  <h1>Packing Manager</h1>
-  <p>Hệ thống quản lý đóng gói và vận chuyển sản phẩm</p>
+<main class="page">
 
-  <div class="section">
-    <h2>Giới thiệu</h2>
-    <p>Nội dung sẽ được cập nhật sớm...</p>
+  <section class="hero">
+    <div class="hero-icons" aria-hidden="true">
+      <i class="hero-icon i1 fa-solid fa-qrcode"></i>
+      <i class="hero-icon i2 fa-solid fa-box"></i>
+      <i class="hero-icon i3 fa-solid fa-tag"></i>
+      <i class="hero-icon i4 fa-solid fa-boxes-stacked"></i>
+      <i class="hero-icon i5 fa-solid fa-truck-fast"></i>
+    </div>
+    <h1>Woodsoft Packing Manager</h1>
+    <p>
+      Giải pháp <strong>phân loại và đóng gói thông minh theo thời gian thực</strong> do Woodsoft Việt Nam phát triển, dành cho các xưởng và nhà máy sản xuất nội thất — kiểm soát chặt chẽ từ phân loại chi tiết, đóng kiện, kiểm tra đến in nhãn.
+    </p>
+  </section>
+
+  <section class="estimate-detail" aria-label="Giới thiệu chi tiết Woodsoft Packing Manager">
+
+    <article class="estimate-detail-card estimate-overview">
+      <div class="estimate-overview-copy">
+        <span class="estimate-overview-kicker"><i class="fa-solid fa-box"></i> Packing Manager</span>
+        <h2>Không mất tem – Không nhầm hàng – Không thiếu chi tiết.</h2>
+        <p class="estimate-slogan">Woodsoft Packing Manager hướng tới một nguyên tắc đơn giản: mỗi chi tiết đúng vị trí – mỗi kiện hàng đủ trước khi xuất xưởng.</p>
+        <p class="viewer-flow-line" aria-label="Quy trình Packing Manager">
+          <span>Phân loại chi tiết</span><i class="fa-solid fa-chevron-right"></i><span>Đóng kiện</span><i class="fa-solid fa-chevron-right"></i><span>Kiểm tra</span><i class="fa-solid fa-chevron-right"></i><span>In nhãn</span>
+        </p>
+        <a class="ov-cta" href="#video"><i class="fa-solid fa-circle-play"></i> Xem video minh họa</a>
+      </div>
+      <div class="ov-visual">
+        <div class="ov-visual-box">
+          <img src="images/packing/tong-hop.png" alt="Bảng điều khiển Woodsoft Packing Manager theo dõi tiến độ đóng gói và giao hàng theo thời gian thực">
+        </div>
+        <div class="ov-visual-caption"><i class="fa-solid fa-circle-info"></i><span>Bảng điều khiển Woodsoft Packing Manager theo dõi đơn hàng, kiện hàng và tiến độ giao hàng theo thời gian thực — đúng hàng, đủ số lượng, đúng quy cách, đúng tiến độ.</span></div>
+      </div>
+    </article>
+
+    <article class="estimate-detail-card" style="padding:26px 30px;">
+      <h3 class="estimate-block-title"><i class="fa-solid fa-triangle-exclamation"></i> ĐIỂM NGHẼN TRONG KHÂU PHÂN LOẠI &amp; ĐÓNG GÓI</h3>
+      <p class="report-lead">Sau quá trình cắt và gia công, số lượng lớn chi tiết thường tập trung tại khu vực phân loại. Nếu công nhân phải kiểm tra thủ công từng tem để xác định đơn hàng, sản phẩm hoặc vị trí tập kết, quá trình này sẽ mất nhiều thời gian và rất dễ xảy ra sai sót. Đặc biệt, việc thiếu chi tiết hoặc phụ kiện đôi khi chỉ được phát hiện khi hàng đã được vận chuyển đến công trình, gây ảnh hưởng đến tiến độ lắp đặt và phát sinh thêm chi phí xử lý.</p>
+      <div class="pain-list">
+        <div class="pain-item"><span class="pain-icon"><i class="fa-solid fa-layer-group"></i></span><span><strong>Chi tiết dồn ứ tại khu phân loại</strong> — số lượng lớn chi tiết tập trung sau cắt/gia công, dễ gây ùn tắc và nhầm lẫn.</span></div>
+        <div class="pain-item"><span class="pain-icon"><i class="fa-solid fa-magnifying-glass"></i></span><span><strong>Kiểm tra tem thủ công</strong> — xác định đơn hàng, sản phẩm bằng tay tốn nhiều thời gian và dễ sai sót.</span></div>
+        <div class="pain-item"><span class="pain-icon"><i class="fa-solid fa-puzzle-piece"></i></span><span><strong>Thiếu chi tiết, thiếu phụ kiện</strong> — nhiều khi chỉ phát hiện khi hàng đã đến công trình, ảnh hưởng tiến độ lắp đặt.</span></div>
+        <div class="pain-item"><span class="pain-icon"><i class="fa-solid fa-coins"></i></span><span><strong>Phát sinh chi phí xử lý</strong> — sai sót phát hiện muộn kéo theo chi phí bù hàng và ảnh hưởng uy tín giao hàng.</span></div>
+      </div>
+      <p class="pain-note"><i class="fa-solid fa-shield-halved"></i>Woodsoft Packing Manager giúp kiểm soát các vấn đề này ngay tại xưởng, trước khi hàng được xuất đi.</p>
+    </article>
+
+    <article class="estimate-detail-card" style="padding:26px 30px;" id="features">
+      <h3 class="estimate-block-title"><i class="fa-solid fa-diagram-project"></i> QUY TRÌNH VẬN HÀNH</h3>
+      <p class="report-lead">Ba bước khép kín từ phân loại đến gắn nhãn, mỗi bước đều được hệ thống kiểm soát và cập nhật theo thời gian thực.</p>
+      <div class="feature-showcase-grid">
+        <div class="feature-showcase-card">
+          <div class="feature-showcase-thumb" data-full-img="images/packing/1 smart-sorting.png" data-full-alt="Phân loại thông minh – Smart Sorting">
+            <img src="images/packing/1 smart-sorting.png" alt="Phân loại thông minh – Smart Sorting" loading="lazy">
+            <span class="feature-showcase-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+          </div>
+          <div class="feature-showcase-body"><h4>1. Phân loại thông minh — Smart Sorting</h4><p>Công nhân chỉ cần quét mã QR trên từng chi tiết. Hệ thống tự động xác định chi tiết thuộc đơn hàng, sản phẩm hoặc pallet nào, đồng thời hướng dẫn vị trí tập kết phù hợp. Số lượng đã thu gom và còn thiếu được cập nhật theo thời gian thực trên màn hình.</p></div>
+        </div>
+
+        <div class="feature-showcase-card">
+          <div class="feature-showcase-thumb" data-full-img="images/packing/2 kiem-soat-dong-kien.png" data-full-alt="Kiểm soát đóng kiện">
+            <img src="images/packing/2 kiem-soat-dong-kien.png" alt="Kiểm soát đóng kiện" loading="lazy">
+            <span class="feature-showcase-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+          </div>
+          <div class="feature-showcase-body"><h4>2. Kiểm soát đóng kiện</h4><p>Từng chi tiết tiếp tục được quét trước khi đưa vào kiện hàng. Phần mềm tự động đối chiếu với dữ liệu sản xuất và cảnh báo ngay khi phát hiện chi tiết không thuộc kiện, đóng nhầm sản phẩm hoặc kiện hàng chưa đủ số lượng yêu cầu.</p></div>
+        </div>
+
+        <div class="feature-showcase-card">
+          <div class="feature-showcase-thumb" data-full-img="images/packing/3 dan tem kien.png" data-full-alt="Gắn nhãn và quản lý kiện hàng">
+            <img src="images/packing/3 dan tem kien.png" alt="Gắn nhãn và quản lý kiện hàng" loading="lazy">
+            <span class="feature-showcase-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+          </div>
+          <div class="feature-showcase-body"><h4>3. Gắn nhãn và quản lý kiện hàng</h4><p>Sau khi hoàn tất đóng kiện, hệ thống hỗ trợ tự động tạo và in tem kiện hàng với mã nhận diện cùng các thông tin cần thiết phục vụ quản lý, vận chuyển và lắp đặt.</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="estimate-detail-card" style="padding:26px 30px;" id="video">
+      <h3 class="estimate-block-title"><i class="fa-solid fa-circle-play"></i> VIDEO MINH HỌA WOODSOFT PACKING MANAGER</h3>
+      <p class="report-lead">Xem nhanh cách Woodsoft Packing Manager kiểm soát phân loại, đóng kiện và gắn nhãn ngay tại xưởng sản xuất.</p>
+      <div class="video-frame" aria-label="Video minh họa Woodsoft Packing Manager">
+        <iframe src="https://www.facebook.com/plugins/video.php?height=314&amp;href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1323783892939989%2F&amp;show_text=false&amp;width=560&amp;t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+    </article>
+
+    <article class="estimate-detail-card" style="padding:26px 30px;">
+      <h3 class="estimate-block-title"><i class="fa-solid fa-check-double"></i> GIÁ TRỊ MANG LẠI</h3>
+      <p class="report-lead">Woodsoft Packing Manager giúp doanh nghiệp xây dựng một quy trình đóng gói có kiểm soát, trong đó mỗi chi tiết đều được xác định đúng vị trí, mỗi kiện hàng đều được kiểm tra đủ trước khi xuất xưởng.</p>
+      <div class="benefit-list">
+        <div class="benefit-item"><span class="benefit-check"><i class="fa-solid fa-check"></i></span><span><strong>Giảm thời gian phân loại</strong> — Quét QR thay thế kiểm tra tem thủ công, rút ngắn thời gian xác định đơn hàng và vị trí tập kết.</span></div>
+        <div class="benefit-item"><span class="benefit-check"><i class="fa-solid fa-check"></i></span><span><strong>Hạn chế sai sót khi đóng kiện</strong> — Đối chiếu tự động với dữ liệu sản xuất, cảnh báo ngay khi đóng nhầm hoặc thiếu chi tiết.</span></div>
+        <div class="benefit-item"><span class="benefit-check"><i class="fa-solid fa-check"></i></span><span><strong>Giảm thiếu hàng tại công trình</strong> — Kiểm soát đủ số lượng ngay tại xưởng, trước khi hàng được xuất đi.</span></div>
+        <div class="benefit-item"><span class="benefit-check"><i class="fa-solid fa-check"></i></span><span><strong>Theo dõi thời gian thực</strong> — Tiến độ thu gom, đóng gói và tình trạng từng kiện hàng cập nhật liên tục trên màn hình.</span></div>
+        <div class="benefit-item"><span class="benefit-check"><i class="fa-solid fa-check"></i></span><span><strong>Truy xuất nhanh toàn trình</strong> — Mỗi kiện hàng có mã nhận diện riêng, dễ dàng tra cứu từ xưởng đến công trình.</span></div>
+        <div class="benefit-item"><span class="benefit-check"><i class="fa-solid fa-check"></i></span><span><strong>Nâng cao tính chuyên nghiệp</strong> — Quy trình giao hàng – lắp đặt rõ ràng và minh bạch hơn với khách hàng.</span></div>
+      </div>
+    </article>
+
+    <article class="estimate-detail-card workflow-card">
+      <h3 class="estimate-block-title"><i class="fa-solid fa-route"></i> QUY TRÌNH</h3>
+      <div class="workflow-detail" aria-label="Quy trình phân loại và đóng gói của Woodsoft Packing Manager">
+        <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-qrcode"></i></span><strong>Phân loại chi tiết<br>Quét QR</strong></div>
+        <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
+        <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-box"></i></span><strong>Đóng kiện<br>Đối chiếu tự động</strong></div>
+        <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
+        <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-clipboard-check"></i></span><strong>Kiểm tra<br>Cảnh báo sai/thiếu</strong></div>
+        <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
+        <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-tag"></i></span><strong>In nhãn<br>Quản lý kiện hàng</strong></div>
+      </div>
+    </article>
+
+    <div class="quote-banner">
+      <div>
+        <h2>Mỗi chi tiết đúng vị trí — mỗi kiện hàng đủ trước khi xuất xưởng.</h2>
+        <p>Woodsoft Packing Manager kiểm soát phân loại và đóng gói ngay tại xưởng, giảm sai sót và nâng cao tính chuyên nghiệp trong giao hàng – lắp đặt.</p>
+      </div>
+      <a class="quote-btn" href="mailto:anhltv@woodsoft.vn"><i class="fa-solid fa-envelope"></i> Liên hệ tư vấn</a>
+    </div>
+
+  </section>
+
+</main>
+
+<div class="image-lightbox" id="imageLightbox" aria-hidden="true">
+  <div class="image-lightbox-backdrop" data-image-close></div>
+  <button class="image-lightbox-close" id="imageLightboxClose" aria-label="Đóng ảnh">&times;</button>
+  <div class="image-lightbox-inner">
+    <img id="imageLightboxImg" src="" alt="" loading="lazy">
   </div>
-
-  <div class="section">
-    <h2>Tính năng chính</h2>
-    <ul class="feature-list">
-      <li><i class="fa-solid fa-check"></i> <span>Quản lý quy trình đóng gói</span></li>
-      <li><i class="fa-solid fa-check"></i> <span>In nhãn và mã vạch</span></li>
-      <li><i class="fa-solid fa-check"></i> <span>Theo dõi lô hàng</span></li>
-      <li><i class="fa-solid fa-check"></i> <span>Quản lý vận chuyển</span></li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Hướng dẫn sử dụng</h2>
-    <p>Nội dung chi tiết sẽ được bổ sung...</p>
-  </div>
-
 </div>
 
 <div class="top-bar">
@@ -305,7 +504,30 @@
 </footer>
 
 <script>
-  // Script sẽ được bổ sung khi có nội dung
+/* Lightbox xem ảnh phóng to */
+const imageLightbox = document.getElementById('imageLightbox');
+const imageLightboxImg = document.getElementById('imageLightboxImg');
+const imageLightboxClose = document.getElementById('imageLightboxClose');
+
+function openImageLightbox(src, alt) {
+  imageLightboxImg.src = src;
+  imageLightboxImg.alt = alt || '';
+  imageLightbox.classList.add('open');
+  imageLightbox.setAttribute('aria-hidden', 'false');
+}
+function closeImageLightbox() {
+  imageLightbox.classList.remove('open');
+  imageLightbox.setAttribute('aria-hidden', 'true');
+  imageLightboxImg.src = '';
+}
+document.querySelectorAll('[data-full-img]').forEach(el => {
+  el.addEventListener('click', () => openImageLightbox(el.dataset.fullImg, el.dataset.fullAlt || ''));
+});
+imageLightboxClose.addEventListener('click', closeImageLightbox);
+imageLightbox.querySelector('[data-image-close]').addEventListener('click', closeImageLightbox);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeImageLightbox();
+});
 </script>
 </body>
 </html>
