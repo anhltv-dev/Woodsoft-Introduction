@@ -134,6 +134,20 @@
   .node.plugin{ background:linear-gradient(155deg, #2E9FDB, #146B9E); }
   .node.external{ background:linear-gradient(155deg, #97A2AF, #5B6673); border-color:rgba(255,255,255,.28); }
 
+  .node .num{
+    position:absolute;
+    top:4px; right:9px;
+    font-size:22px;
+    font-weight:800;
+    line-height:1;
+    color:#fff;
+    opacity:.3;
+    pointer-events:none;
+    font-family:inherit;
+  }
+  .node.small .num{ font-size:16px; top:3px; right:7px; }
+  .node.plugin .num{ font-size:16px; top:4px; right:8px; }
+
   /* Icon caption chips (machines / xuất kho / đóng gói) */
   .chip{
     position:absolute;
@@ -560,7 +574,7 @@
       <!-- Dựng hình -> Wood viewer -->
       <line x1="270" y1="65" x2="446" y2="65" marker-end="url(#arrow)"/>
       <!-- SketchUp -> Wood viewer -->
-      <line x1="850" y1="65" x2="654" y2="65" marker-end="url(#arrow)"/>
+      <line x1="804" y1="65" x2="654" y2="65" marker-end="url(#arrow)"/>
       <!-- Dựng hình -> Dự toán -->
       <line x1="115" y1="93" x2="115" y2="158" marker-end="url(#arrow)"/>
       <!-- Dựng hình -> CNC -->
@@ -581,32 +595,37 @@
     <div class="node" data-id="dung-hinh" data-href="Bazis_dunghinh.html" style="left:70px; top:38px; width:200px; height:55px;">
       <div class="icon"><i class="fa-solid fa-cube"></i></div>
       <div class="txt"><span class="title">BAZIS – Dựng hình</span></div>
+      <span class="num">1</span>
     </div>
 
     <div class="node woodsoft" data-id="wood-viewer" data-href="wood-viewer.html" style="left:450px; top:38px; width:200px; height:55px;">
       <div class="icon"><i class="fa-solid fa-eye"></i></div>
       <div class="txt"><span class="title">Wood Viewer</span></div>
+      <span class="num">9</span>
     </div>
 
-    <div class="node small external" data-id="sketchup" style="left:850px; top:45px; width:160px; height:40px;">
+    <div class="node small external" data-id="sketchup" style="left:804px; top:45px; width:186px; height:40px;">
       <div class="icon"><i class="fa-brands fa-google"></i></div>
       <div class="txt"><span class="title">SketchUp</span></div>
     </div>
 
-    <div class="node small plugin" data-id="plugin" data-href="plugin-woodsoft.html" style="left:850px; top:95px; width:160px; height:36px;">
+    <div class="node small plugin" data-id="plugin" data-href="plugin-woodsoft.html" style="left:804px; top:93px; width:186px; height:40px;">
       <div class="icon"><i class="fa-solid fa-puzzle-piece"></i></div>
       <div class="txt"><span class="title" style="font-size:11.5px;">Plugin Woodsoft</span></div>
+      <span class="num">5</span>
     </div>
 
     <!-- Row 2: single-line, wider -->
     <div class="node small" data-id="du-toan" data-href="du-toan.html" style="left:30px; top:160px; width:170px; height:48px;">
       <div class="icon"><i class="fa-solid fa-calculator"></i></div>
       <div class="txt"><span class="title">BAZIS – Dự toán</span></div>
+      <span class="num">2</span>
     </div>
 
     <div class="node small" data-id="cnc" data-href="cnc.html" style="left:215px; top:160px; width:150px; height:48px;">
       <div class="icon"><i class="fa-solid fa-gears"></i></div>
       <div class="txt"><span class="title">BAZIS CNC</span></div>
+      <span class="num">3</span>
     </div>
 
     <!-- Data Analyzer, shifted right -->
@@ -616,22 +635,26 @@
         <span class="title">Woodsoft Data Analyzer</span>
         <span class="sub">Phân luồng sản xuất</span>
       </div>
+      <span class="num">6</span>
     </div>
 
     <!-- Row 3: machines, vivid icon badges -->
     <div class="node" data-id="panelsaw" data-href="panelsaw.html" style="left:360px; top:353px; width:240px; height:55px;">
       <div class="icon vivid" style="color:#E4572E;"><i class="fa-solid fa-scissors"></i></div>
       <div class="txt"><span class="title" style="font-size:11.5px;">BAZIS – Cutting panel saw</span></div>
+      <span class="num">4</span>
     </div>
 
     <div class="node woodsoft" data-id="nesting" data-href="nesting.html" style="left:620px; top:353px; width:200px; height:55px;">
       <div class="icon vivid" style="color:#7C5CFC;"><i class="fa-solid fa-layer-group"></i></div>
       <div class="txt"><span class="title" style="font-size:12.5px;">Woodsoft nesting</span></div>
+      <span class="num">7</span>
     </div>
 
     <div class="node woodsoft" data-id="packing" data-href="packing.html" style="left:840px; top:353px; width:200px; height:55px;">
       <div class="icon vivid" style="color:#16A34A;"><i class="fa-solid fa-box"></i></div>
       <div class="txt"><span class="title" style="font-size:12.5px;">Packing manager</span></div>
+      <span class="num">8</span>
     </div>
 
     <!-- Caption chips with vivid icons -->
