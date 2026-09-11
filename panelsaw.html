@@ -109,6 +109,30 @@
       z-index:1;
     }
 
+    .hero-saw-icon{
+      position:absolute;
+      top:8%;
+      right:4%;
+      width:240px;
+      height:210px;
+      opacity:.28;
+      pointer-events:none;
+    }
+
+    .hero-saw-icon svg{
+      display:block;
+      width:100%;
+      height:100%;
+    }
+
+    @media (max-width:980px){
+      .hero-saw-icon{width:190px;height:165px;right:2%}
+    }
+
+    @media (max-width:620px){
+      .hero-saw-icon{display:none}
+    }
+
     .hero h1{
       margin:0;
       max-width:960px;
@@ -596,6 +620,13 @@
 <main class="page">
 
 <section class="hero">
+<div class="hero-saw-icon" aria-hidden="true">
+<svg viewbox="0 0 230 200" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="#ffffff" points="115.0,22.0 128.4,41.5 148.8,29.7 152.4,53.1 176.0,51.4 169.1,74.0 191.0,82.6 175.0,100.0 191.0,117.4 169.1,126.0 176.0,148.6 152.4,146.9 148.8,170.3 128.4,158.5 115.0,178.0 101.6,158.5 81.2,170.3 77.6,146.9 54.0,148.6 60.9,126.0 39.0,117.4 55.0,100.0 39.0,82.6 60.9,74.0 54.0,51.4 77.6,53.1 81.2,29.7 101.6,41.5"></polygon>
+<circle cx="115" cy="100" fill="#dbe9f5" r="34" stroke="#ffffff" stroke-width="2"></circle>
+<circle cx="115" cy="100" fill="var(--primary-dark)" r="8"></circle>
+</svg>
+</div>
 <h1>BAZIS - Cutting Panel saw</h1><div class="hero-accent-line"></div>
 <div class="hero-plain-copy">
 <h2>Tối ưu sơ đồ cắt, xuất thẳng chương trình điều khiển cho máy Panel Saw</h2>
