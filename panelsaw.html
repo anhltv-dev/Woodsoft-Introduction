@@ -4,7 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>BAZIS - Cutting Panel Saw</title>
+<title>BAZIS - Cắt Ván</title>
+<meta content="BAZIS Cắt Ván (Panel Saw) – tối ưu sơ đồ cắt theo điều kiện sản xuất thực tế và xuất chương trình điều khiển cho nhiều dòng máy cưa Panel Saw công nghiệp." name="description"/>
 <style>
     :root{
       --bg:#f6f8fb;
@@ -56,21 +57,6 @@
       transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
     }
 
-    .top-bar{
-      max-width:1200px;
-      margin:0 auto 10px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding-top:16px;
-    }
-
-    .top-bar .logo{
-      display:block;
-      height:92px;
-      width:auto;
-    }
-
     .home-btn:hover{
       transform:translateY(-2px);
       box-shadow:0 18px 36px rgba(11,79,131,.34);
@@ -83,97 +69,466 @@
       line-height:1;
     }
 
-    .container{
-      max-width:1200px;
+    .page{
+      width:min(1180px, calc(100% - 40px));
       margin:0 auto;
-      padding:60px 24px;
+      padding:44px 0 20px;
     }
 
-    h1{
-      font-size:2.5em;
-      font-weight:800;
-      margin:0 0 20px;
-      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
+    /* Hero */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 96% 6%, rgba(255,255,255,.12) 0, rgba(255,255,255,.12) 11%, transparent 11.5%),
+        radial-gradient(circle at 88% 24%, rgba(255,255,255,.045) 0, rgba(255,255,255,.045) 18%, transparent 18.5%),
+        linear-gradient(135deg, #0f4f86 0%, #1162a4 38%, #1b79c3 72%, #2490db 100%);
+      color:#fff;
+      border-radius:30px;
+      padding:64px 58px 56px;
+      box-shadow:0 22px 46px rgba(16, 64, 112, .18);
+      border:1px solid rgba(255,255,255,.08);
+      isolation:isolate;
     }
 
-    h2{
-      font-size:1.8em;
-      font-weight:700;
-      margin:40px 0 20px;
-      color:var(--primary);
+    .hero::before{
+      content:"";
+      position:absolute;
+      right:-80px;
+      top:-70px;
+      width:300px;
+      height:300px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.12) 0%, rgba(255,255,255,.07) 48%, rgba(255,255,255,0) 70%);
+      pointer-events:none;
+      z-index:0;
     }
 
-    p{
+    .hero > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero h1{
+      margin:0;
+      max-width:960px;
+      font-size:clamp(50px, 6vw, 76px);
+      line-height:1.04;
+      letter-spacing:-.04em;
+      font-weight:900;
+      color:#ffffff;
+      text-shadow:0 1px 0 rgba(255,255,255,.04);
+    }
+
+    .hero-accent-line{
+      width:84px;
+      height:5px;
+      margin:20px 0 26px;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.70) 55%, rgba(255,255,255,.12) 100%);
+      box-shadow:0 4px 14px rgba(255,255,255,.16);
+    }
+
+    .hero-plain-copy{
+      max-width:1060px;
+    }
+
+    .hero-plain-copy h2{
+      margin:0 0 10px;
+      color:#ffffff;
+      font-size:clamp(28px, 3.2vw, 42px);
+      line-height:1.18;
+      letter-spacing:-.025em;
+      font-weight:850;
+    }
+
+    .hero-plain-copy .hero-plain-sub{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.82);
+      font-size:18px;
+      line-height:1.65;
+      font-weight:600;
+      max-width:900px;
+    }
+
+    .hero-plain-copy p{
       margin:0 0 16px;
-      color:var(--muted);
-      font-size:1.05em;
-      line-height:1.8;
+      max-width:1080px;
+      color:rgba(255,255,255,.95);
+      font-size:18px;
+      line-height:1.85;
+      font-weight:450;
+    }
+
+    .hero-plain-copy p:last-child{
+      margin-bottom:0;
+    }
+
+    @media (max-width:980px){
+      .hero{
+        padding:46px 30px 38px;
+        border-radius:24px;
+      }
+      .hero-accent-line{
+        width:70px;
+        height:4px;
+        margin:16px 0 20px;
+      }
+      .hero-plain-copy .hero-plain-sub,
+      .hero-plain-copy p{
+        font-size:16px;
+        line-height:1.75;
+      }
+    }
+
+    @media (max-width:620px){
+      .page{
+        width:min(100% - 24px,1180px);
+        padding-top:20px;
+      }
+      .hero{
+        padding:34px 22px 28px;
+      }
+      .hero h1{
+        font-size:42px;
+      }
+      .hero-plain-copy h2{
+        font-size:24px;
+      }
+      .hero-plain-copy .hero-plain-sub,
+      .hero-plain-copy p{
+        font-size:15px;
+        line-height:1.72;
+      }
+    }
+
+    /* Content sections */
+    .content{
+      margin-top:28px;
+      display:grid;
+      gap:20px;
     }
 
     .section{
       background:var(--surface);
-      border-radius:var(--radius);
-      padding:40px;
-      margin:30px 0;
-      box-shadow:0 2px 8px rgba(0,0,0,.05);
       border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:30px;
+      box-shadow:0 8px 24px rgba(15,23,42,.045);
     }
 
-    .badge{
-      display:inline-block;
-      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
-      color:#fff;
-      padding:8px 16px;
-      border-radius:999px;
-      font-size:0.85em;
-      font-weight:700;
-      margin-bottom:20px;
-    }
-
-    .feature-list{
-      list-style:none;
-      padding:0;
-      margin:20px 0;
-    }
-
-    .feature-list li{
-      padding:12px 0;
-      border-bottom:1px solid var(--line);
+    .section-head{
       display:flex;
       align-items:flex-start;
-      gap:12px;
+      gap:16px;
+      margin-bottom:16px;
     }
 
-    .feature-list li:last-child{
-      border-bottom:none;
+    .section-icon{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:var(--soft);
+      color:var(--primary);
+      font-size:20px;
+      font-weight:800;
+      flex:0 0 auto;
+      margin:0;
     }
 
-    .feature-list i{
+    .section h2{
+      margin:0 0 6px;
+      font-size:25px;
+      line-height:1.25;
+      letter-spacing:-.02em;
+    }
+
+    .section .lead{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .section p{
+      margin:12px 0 0;
+    }
+
+    .highlight{
+      border-left:4px solid var(--accent);
+      background:#fff9ec;
+      padding:15px 18px;
+      border-radius:0 12px 12px 0;
+      margin-top:18px;
+    }
+
+    ul{
+      margin:14px 0 0;
+      padding-left:20px;
+    }
+
+    li{margin:7px 0}
+
+    .clean-list{
+      list-style:none;
+      padding:0;
+      display:grid;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .clean-list li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      margin:0;
+      padding:12px 14px;
+      background:#f8fafc;
+      border:1px solid #eef2f7;
+      border-radius:12px;
+    }
+
+    .check{
       color:var(--success);
-      font-size:1.2em;
-      margin-top:2px;
+      font-weight:900;
+      flex:0 0 auto;
     }
 
-    .cta-btn{
-      display:inline-block;
-      background:linear-gradient(135deg, #0f6fb8, #0b4f83);
-      color:#fff;
-      padding:14px 28px;
-      border-radius:8px;
-      text-decoration:none;
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .subcard{
+      background:#f8fafc;
+      border:1px solid #eef2f7;
+      border-radius:14px;
+      padding:18px;
+    }
+
+    .subcard h3{
+      margin:0 0 8px;
+      font-size:17px;
+      color:var(--primary-dark);
+    }
+
+    .subcard p,
+    .subcard ul{margin-top:8px}
+
+    /* Section media (static illustration, no lightbox) */
+    .section-media-layout{
+      display:grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+      gap:28px;
+      align-items:start;
+    }
+
+    .section-media-copy > *:first-child{
+      margin-top:0;
+    }
+
+    .cut-diagram-figure{
+      margin:0;
+      background:linear-gradient(180deg, #fbfdff 0%, #f4f8fc 100%);
+      border:1px solid #dbe6ef;
+      border-radius:20px;
+      padding:14px;
+      box-shadow:0 12px 24px rgba(15,23,42,.05);
+      align-self:start;
+    }
+
+    .cut-diagram{
+      position:relative;
+      aspect-ratio:4 / 3;
+      border-radius:14px;
+      overflow:hidden;
+      background:#f0d5a5;
+      border:1px solid #dfbd84;
+    }
+
+    .cut-diagram .cut{
+      position:absolute;
+      background:#fff6e4;
+      border:1px solid rgba(121,80,29,.32);
+      border-radius:2px;
+      display:grid;
+      place-items:center;
+      color:#86612e;
+      font-size:11px;
+      font-weight:800;
+    }
+    .cut-diagram .c1{left:2%;top:3%;width:29%;height:45%}
+    .cut-diagram .c2{left:32%;top:3%;width:31%;height:45%}
+    .cut-diagram .c3{left:64%;top:3%;width:34%;height:20%}
+    .cut-diagram .c4{left:64%;top:24%;width:34%;height:24%}
+    .cut-diagram .c5{left:2%;top:49%;width:20%;height:48%}
+    .cut-diagram .c6{left:23%;top:49%;width:40%;height:48%}
+    .cut-diagram .c7{left:64%;top:49%;width:34%;height:48%}
+
+    .cut-diagram .sawline{
+      position:absolute;
+      left:31.3%;
+      top:0;
+      width:3px;
+      height:100%;
+      background:var(--primary);
+      box-shadow:0 0 0 2px rgba(15,111,184,.15);
+    }
+
+    .cut-diagram-caption{
+      margin-top:10px;
+      font-size:13px;
+      line-height:1.55;
+      color:#6b7c90;
+      text-align:center;
+    }
+
+    @media (max-width:900px){
+      .two-col{grid-template-columns:1fr}
+      .section-media-layout{grid-template-columns:1fr}
+      .cut-diagram-figure{order:-1}
+    }
+
+    @media (max-width:620px){
+      .section{padding:22px}
+      .section-head{gap:12px}
+    }
+
+    /* Machine compatibility grid */
+
+    .compat-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .compat-card{
+      position:relative;
+      overflow:hidden;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px 20px 20px;
+      box-shadow:0 8px 22px rgba(15,23,42,.055);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .compat-card::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:4px;
+      background:linear-gradient(90deg, var(--primary), var(--primary-dark));
+    }
+
+    .compat-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 34px rgba(15,23,42,.11);
+      border-color:#cfe4f4;
+    }
+
+    .compat-logo{
+      height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      margin-bottom:16px;
+      padding:8px 12px;
+      background:#fbfdff;
+      border:1px solid #eef2f7;
+      border-radius:12px;
+    }
+    .compat-logo img{
+      max-height:100%;
+      max-width:160px;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+    }
+
+    .compat-card h3{
+      margin:0;
+      font-size:16px;
+      font-weight:800;
+      letter-spacing:-.01em;
+      color:var(--primary-dark);
+    }
+
+    .compat-card .compat-sub{
+      font-size:11px;
+      color:var(--muted);
       font-weight:700;
-      transition:all .3s ease;
-      border:2px solid transparent;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      margin:3px 0 12px;
     }
 
-    .cta-btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 8px 20px rgba(15,111,184,.3);
+    .compat-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      padding:8px 0;
+      border-top:1px solid #eef2f7;
+    }
+    .compat-row:first-of-type{border-top:0}
+
+    .compat-row .name{
+      font-size:13px;
+      font-weight:600;
+      color:#405d75;
+      line-height:1.35;
+    }
+    .compat-row .name small{
+      display:block;
+      margin-top:2px;
+      color:var(--muted);
+      font-weight:500;
+      line-height:1.3;
     }
 
+    .compat-row .name small.compat-note{
+      color:#b45309;
+      font-weight:700;
+    }
+
+    .compat-row code{
+      font-size:11px;
+      color:var(--primary-dark);
+      background:var(--soft);
+      border:1px solid #cfe4f4;
+      border-radius:8px;
+      padding:4px 7px;
+      white-space:nowrap;
+    }
+    .compat-row code.unknown{
+      color:#94a3b8;
+      background:#f1f5f9;
+      border-color:#e2e8f0;
+    }
+
+    .wide-note{
+      margin-top:18px;
+      padding:14px 16px;
+      border:1px dashed #cfe4f4;
+      border-radius:14px;
+      background:#f8fbfe;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @media (max-width:900px){
+      .compat-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:620px){
+      .compat-grid{grid-template-columns:1fr}
+    }
+
+    /* Footer */
     .woodsoft-footer{
       max-width: 1200px;
       margin: 38px auto 0;
@@ -191,6 +546,12 @@
       gap:16px;
       flex-wrap:wrap;
       min-height:32px;
+    }
+
+    .footer-logo{
+      display:block;
+      height:28px;
+      width:auto;
     }
 
     .copyright{
@@ -227,73 +588,185 @@
     .social-links a i{
       font-size: 0.95rem;
     }
-
-    @media (max-width:768px){
-      .container{
-        padding:40px 16px;
-      }
-
-      h1{
-        font-size:1.8em;
-      }
-
-      h2{
-        font-size:1.3em;
-      }
-
-      .section{
-        padding:24px;
-      }
-
-      .woodsoft-footer{
-        padding:14px 16px;
-      }
-
-      .woodsoft-brand-text{
-        gap:6px;
-      }
-    }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-
 <a class="home-btn" href="index.html" aria-label="Về trang chủ">HOME</a>
+<main class="page">
 
-<div class="container">
-  <div class="badge"><i class="fa-solid fa-scissors"></i> BAZIS - Cutting Panel Saw</div>
-  
-  <h1>BAZIS - Cutting Panel Saw</h1>
-  <p>Phần mềm quản lý máy cắt bảng gỗ chuyên nghiệp</p>
+<section class="hero">
+<h1>BAZIS - Cutting Panel saw</h1><div class="hero-accent-line"></div>
+<div class="hero-plain-copy">
+<h2>Tối ưu sơ đồ cắt, xuất thẳng chương trình điều khiển cho máy Panel Saw</h2>
+<p class="hero-plain-sub">
+    Từ danh sách chi tiết đến chương trình máy cưa — gọn trong một quy trình khép kín.
+  </p>
+</div>
+</section>
 
-  <div class="section">
-    <h2>Giới thiệu</h2>
-    <p>Nội dung sẽ được cập nhật sớm...</p>
+<div class="content">
+
+<section class="section">
+<div class="section-media-layout">
+<div class="section-media-copy">
+<div class="section-head">
+<div class="section-icon">1</div>
+<div>
+<h2>Từ danh sách chi tiết đến chương trình máy cưa</h2>
+<p class="lead">Một quy trình khép kín, từ dữ liệu đầu vào đến chương trình điều khiển.</p>
+</div>
+</div>
+<p>
+    Chi tiết có thể được cắt theo hai cấp: cắt tấm thành dải, sau đó cắt dải thành chi tiết — trên một hoặc hai thiết bị, tùy cách tổ chức sản xuất của nhà máy.
+  </p>
+<ul class="clean-list">
+<li><span class="check">✓</span><span>7 tiêu chí tối ưu, có thể sắp xếp mức ưu tiên theo yêu cầu sản xuất.</span></li>
+<li><span class="check">✓</span><span>2 chế độ cắt: tấm đơn hoặc chồng tấm, theo công nghệ của từng nhà máy.</span></li>
+<li><span class="check">✓</span><span>Nhiều postprocessor, xuất đúng định dạng chương trình cho từng dòng máy.</span></li>
+</ul>
+</div>
+<figure class="cut-diagram-figure">
+<div class="cut-diagram" aria-hidden="true">
+<div class="cut c1">P-01</div><div class="cut c2">P-02</div><div class="cut c3">P-03</div><div class="cut c4">P-04</div><div class="cut c5">P-05</div><div class="cut c6">P-06</div><div class="cut c7">P-07</div><div class="sawline"></div>
+</div>
+<figcaption class="cut-diagram-caption">Sơ đồ cắt: các chi tiết được sắp xếp trên tấm ván theo phương án tối ưu đã chọn.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="section">
+<div class="section-head">
+<div class="section-icon">⚙</div>
+<div>
+<h2>Tạo sơ đồ cắt theo điều kiện thực tế</h2>
+<p class="lead">Tham số công nghệ được đưa vào ngay từ bước tạo sơ đồ, không xử lý sau.</p>
+</div>
+</div>
+<p>
+    BAZIS Cắt Ván có thể tạo nhiều phương án trong một lần tính, ứng với các hướng cắt đầu tiên khác nhau, để kỹ thuật viên so sánh và chọn phương án phù hợp nhất trước khi đưa xuống máy.
+  </p>
+<ul class="clean-list">
+<li><span class="check">✓</span><span>Chiều vân vật liệu và kích thước tấm chuẩn.</span></li>
+<li><span class="check">✓</span><span>Phế liệu hữu ích có sẵn trong kho, được ưu tiên kiểm tra trước khi dùng tấm mới.</span></li>
+<li><span class="check">✓</span><span>Khoảng lùi mép và lượng dư gia công theo yêu cầu kỹ thuật.</span></li>
+<li><span class="check">✓</span><span>Hướng cắt đầu tiên, có thể so sánh giữa nhiều phương án.</span></li>
+</ul>
+<div class="highlight">
+    Sau tối ưu tự động, kỹ thuật viên vẫn có thể chỉnh sửa sơ đồ bằng tay khi gặp chi tiết hoặc yêu cầu sản xuất đặc thù.
   </div>
+</section>
 
-  <div class="section">
-    <h2>Tính năng chính</h2>
-    <ul class="feature-list">
-      <li><i class="fa-solid fa-check"></i> <span>Lập trình máy cắt tự động</span></li>
-      <li><i class="fa-solid fa-check"></i> <span>Tối ưu hóa cắt nhỏ lẻ</span></li>
-      <li><i class="fa-solid fa-check"></i> <span>Quản lý hàng chờ</span></li>
-      <li><i class="fa-solid fa-check"></i> <span>Báo cáo sản xuất</span></li>
-    </ul>
+<section class="section">
+<div class="section-head">
+<div class="section-icon">▤</div>
+<div>
+<h2>Cắt chồng tấm cho Panel Saw công nghiệp</h2>
+<p class="lead">Hai cách lập sơ đồ, phù hợp số lượng đơn hàng và cách tổ chức sản xuất.</p>
+</div>
+</div>
+<div class="two-col">
+<div class="subcard">
+<h3>Chỉ cắt theo chồng tấm</h3>
+<p>Số lượng chi tiết được làm tròn theo bội số của số tấm trong chồng; phần dư có thể đưa vào vùng lưu trữ tạm để dùng cho đơn hàng sau.</p>
+</div>
+<div class="subcard">
+<h3>Chồng tấm kết hợp tấm đơn</h3>
+<p>Phần đủ bội số được cắt theo chồng tấm; phần còn lại được tách thành sơ đồ riêng để gia công trên máy phù hợp.</p>
+</div>
+</div>
+<div class="highlight">
+    Giới hạn số lần xoay có thể thiết lập theo đúng khả năng của hệ điều khiển từng Panel Saw, thay vì tối ưu theo mô hình lý tưởng.
   </div>
+</section>
 
-  <div class="section">
-    <h2>Hướng dẫn sử dụng</h2>
-    <p>Nội dung chi tiết sẽ được bổ sung...</p>
-  </div>
+<section class="section">
+<div class="section-head">
+<div class="section-icon">♻</div>
+<div>
+<h2>Quản lý phế liệu hữu ích</h2>
+<p class="lead">Tận dụng phần ván còn dùng được cho các đơn hàng tiếp theo.</p>
+</div>
+</div>
+<p>
+    Phần ván còn sử dụng được sau khi cắt có thể lưu thành cơ sở dữ liệu phế liệu. Khi tối ưu đơn hàng tiếp theo, hệ thống ưu tiên kiểm tra phế liệu phù hợp trước khi dùng đến tấm mới.
+  </p>
+<ul class="clean-list">
+<li><span class="check">✓</span><span>Phế liệu được lưu theo kích thước, vật liệu và nguồn gốc phát sinh.</span></li>
+<li><span class="check">✓</span><span>Có thể đưa chi tiết của đơn hàng tiếp theo hoặc chi tiết thường dùng vào các vùng phế liệu phát sinh từ đơn hiện tại.</span></li>
+</ul>
+</section>
+
+<section class="section">
+<div class="section-head">
+<div class="section-icon">▥</div>
+<div>
+<h2>Trình tự cắt, tem nhãn và chia lô sản xuất</h2>
+<p class="lead">Chuẩn bị dữ liệu vận hành đi kèm sơ đồ cắt, không chỉ riêng bản vẽ.</p>
+</div>
+</div>
+<ul class="clean-list">
+<li><span class="check">✓</span><span>Trình tự cắt có tính công nghệ: đánh dấu tấm hoàn thiện và vị trí tương đối so với lưỡi cưa.</span></li>
+<li><span class="check">✓</span><span>Tự động tạo tem và mã vạch, với các trường dữ liệu do người dùng lựa chọn.</span></li>
+<li><span class="check">✓</span><span>Chia lô đơn hàng lớn thành các lô nhỏ hơn để tạo sơ đồ tốt hơn và cân bằng tải thiết bị trong xưởng.</span></li>
+</ul>
+</section>
+
+<section class="section">
+<div class="section-head">
+<div class="section-icon">⇄</div>
+<div>
+<h2>Tương thích với hệ điều khiển Panel Saw</h2>
+<p class="lead">Postprocessor tạo chương trình điều khiển cho nhiều trung tâm cưa khác nhau.</p>
+</div>
+</div>
+<p>
+    Danh sách dưới đây được đối chiếu theo tài liệu BAZIS, kèm hệ điều khiển và định dạng file tương ứng cho từng hãng/nhóm máy.
+  </p>
+<div class="compat-grid">
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/altendorf.gif" alt="ALTENDORF" loading="lazy"></div><h3>ALTENDORF</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">Altendorf</div><code>*.saw</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/biesse-selco.gif" alt="BIESSE SELCO" loading="lazy"></div><h3>BIESSE SELCO</h3><div class="compat-sub">Trước 2000</div><div class="compat-row"><div class="name">Biesse Selco</div><code class="unknown">*.</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/biesse-selco.gif" alt="BIESSE SELCO" loading="lazy"></div><h3>BIESSE SELCO</h3><div class="compat-sub">Sau 2000</div><div class="compat-row"><div class="name">Biesse Selco XML<small class="compat-note">* Cần phần mềm XML Link của BIESSE</small></div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/bjd.png" alt="BJD" loading="lazy"></div><h3>BJD</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">BJD WoodCutOpt</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/excitech.png" alt="EXCITECH" loading="lazy"></div><h3>EXCITECH</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">Excitech EP</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/falit.png" alt="FALIT" loading="lazy"></div><h3>FALIT</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">FALIT</div><code>*.cut</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/felder.png" alt="FELDER" loading="lazy"></div><h3>FELDER</h3><div class="compat-sub">4 biến thể</div><div class="compat-row"><div class="name">Felder F4 Classic</div><code>*.txt</code></div><div class="compat-row"><div class="name">Felder (ФРС)</div><code class="unknown">*.</code></div><div class="compat-row"><div class="name">Felder PC7000</div><code>*.may</code></div><div class="compat-row"><div class="name">Felder Panel Saw (May)</div><code>*.may</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/filato.jpg" alt="FILATO" loading="lazy"></div><h3>FILATO</h3><div class="compat-sub">4 biến thể</div><div class="compat-row"><div class="name">Alba</div><code class="unknown">*.</code></div><div class="compat-row"><div class="name">Filato EP</div><code>*.may</code></div><div class="compat-row"><div class="name">Filato HP</div><code>*.xml</code></div><div class="compat-row"><div class="name">Filato NP</div><code>*.csv</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/griggio.gif" alt="GRIGGIO" loading="lazy"></div><h3>GRIGGIO</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">Griggio</div><code>*.nps</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/hold.png" alt="HOLD" loading="lazy"></div><h3>HOLD</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">HOLD</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/holzher.png" alt="HOLZHER" loading="lazy"></div><h3>HOLZHER</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">Holzher</div><code>*.ncr</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/holzma.jpg" alt="HOLZMA" loading="lazy"></div><h3>HOLZMA</h3><div class="compat-sub">HOMAG</div><div class="compat-row"><div class="name">Holzma<small class="compat-note">* Cần CADLINK hoặc HolzLink của HOMAG</small></div><code>*.ptx</code></div><div class="compat-row"><div class="name">Holzma CadLink 3<small class="compat-note">* Cần CADLINK hoặc HolzLink của HOMAG</small></div><code>*.ptx</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/huahua.png" alt="HUAHUA" loading="lazy"></div><h3>HUAHUA</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">HUAHUA</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/jiyu.png" alt="JIYU" loading="lazy"></div><h3>JIYU</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">JIYULNS-KS</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/kdt.png" alt="KDT" loading="lazy"></div><h3>KDT</h3><div class="compat-sub">3 biến thể</div><div class="compat-row"><div class="name">KDT Panel Saw (TXT)</div><code>*.txt</code></div><div class="compat-row"><div class="name">KDT FRS (XML)</div><code>*.xml</code></div><div class="compat-row"><div class="name">KDT Panel Saw (XML)</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/macmazza.jpg" alt="MACMAZZA" loading="lazy"></div><h3>MACMAZZA</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">MacMazza</div><code>*.pro</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/martin.png" alt="MARTIN" loading="lazy"></div><h3>MARTIN</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">Martin</div><code>*.mrt</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/nanxing.svg" alt="NANXING" loading="lazy"></div><h3>NANXING</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">Nanxing</div><code>*.cut</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/paoloni.jpg" alt="PAOLONI" loading="lazy"></div><h3>PAOLONI</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">Paoloni</div><code>*.txt</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/pmsk.png" alt="PMSK" loading="lazy"></div><h3>PMSK</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">ZD PreSize</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/schelling.jpg" alt="SCHELLING" loading="lazy"></div><h3>SCHELLING</h3><div class="compat-sub">2 hệ</div><div class="compat-row"><div class="name">Panhans</div><code>*.ncr</code></div><div class="compat-row"><div class="name">Schelling Panel Saw</div><code>*.ncl / *.ncp / *.isp</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/scm.png" alt="SCM (SCM GROUP)" loading="lazy"></div><h3>SCM (SCM GROUP)</h3><div class="compat-sub">3 biến thể</div><div class="compat-row"><div class="name">SCM MaestroCut</div><code>*.xPrg / *.Cprg</code></div><div class="compat-row"><div class="name">SCM MaestroCut (3 lần xoay)</div><code>*.xPrg / *.Cprg</code></div><div class="compat-row"><div class="name">SCM WinCut</div><code>*.scm</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/striebig.png" alt="STRIEBIG CONTROL" loading="lazy"></div><h3>STRIEBIG CONTROL</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">Striebig Control</div><code>*.csv</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/stromab.png" alt="STROMAB" loading="lazy"></div><h3>STROMAB</h3><div class="compat-sub">Crosscut</div><div class="compat-row"><div class="name">STROMAB máy cắt ngang</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/technosaw.jpg" alt="TECHNOSAW" loading="lazy"></div><h3>TECHNOSAW</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">TECHNOSAW</div><code>*.cut</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/tork-makine.png" alt="TÖRK MAKİNE" loading="lazy"></div><h3>TÖRK MAKİNE</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">TÖRK MAKİNE</div><code>*.csv</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/velberg.jpg" alt="VELBERG" loading="lazy"></div><h3>VELBERG</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">Velberg XML</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/vstec.png" alt="VSTEC" loading="lazy"></div><h3>VSTEC</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">VSTEC</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/zaitec.gif" alt="ZAITEC" loading="lazy"></div><h3>ZAITEC</h3><div class="compat-sub">3 biến thể</div><div class="compat-row"><div class="name">ZaiTec Panel Saw (TXT)</div><code>*.txt</code></div><div class="compat-row"><div class="name">ZaiTec FRS (XML)</div><code>*.xml</code></div><div class="compat-row"><div class="name">ZaiTec Panel Saw (XML)</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/bazis.png" alt="BAZIS SIMULATOR" loading="lazy"></div><h3>BAZIS SIMULATOR</h3><div class="compat-sub">BAZIS</div><div class="compat-row"><div class="name">BAZIS Simulator</div><code>*.sim</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/holztek.jpg" alt="HOLZTEK" loading="lazy"></div><h3>HOLZTEK</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">HOLZTEK</div><code>*.xml</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/casadei.jpg" alt="CASADEI MACCHINE" loading="lazy"></div><h3>CASADEI MACCHINE</h3><div class="compat-sub">SCM Group</div><div class="compat-row"><div class="name">WinCut</div><code>*.scm</code></div></div>
+<div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/gabbiani.gif" alt="GABBIANI" loading="lazy"></div><h3>GABBIANI</h3><div class="compat-sub">SCM Group</div><div class="compat-row"><div class="name">WinCut</div><code>*.scm</code></div></div>
+</div>
+<div class="wide-note"><strong>Lưu ý kỹ thuật:</strong> danh sách trên được đối chiếu theo tài liệu BAZIS. Với một số hệ cũ, tài liệu gốc chỉ ghi định dạng ở dạng <code>*.</code>; khi triển khai thực tế cần xác nhận đúng model, đời máy, bộ điều khiển và phiên bản phần mềm. BIESSE Selco XML cần XML Link; HOLZMA cần CADLINK hoặc HolzLink của HOMAG.</div>
+</section>
 
 </div>
-
-<div class="top-bar">
-  <img class="logo" src="images/logo.png" alt="Woodsoft logo">
-</div>
+</main>
 
 <footer class="woodsoft-footer">
   <div class="woodsoft-footer-inner">
+    <img class="footer-logo" src="images/logo.png" alt="Woodsoft logo">
     <span class="copyright">Copyright © 2026 woodsoft.vn</span>
     <div class="social-links" aria-label="Woodsoft social media">
       <a href="https://www.facebook.com/bazismebelshik" target="_blank" rel="noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -303,9 +776,5 @@
     </div>
   </div>
 </footer>
-
-<script>
-  // Script sẽ được bổ sung khi có nội dung
-</script>
 </body>
 </html>

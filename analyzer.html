@@ -44,21 +44,37 @@ body{
 a{color:inherit}
 
 .home-btn{
-  position:fixed;top:20px;right:20px;z-index:1000;
-  display:inline-flex;align-items:center;gap:9px;
-  padding:11px 18px;border-radius:999px;text-decoration:none;
-  color:#fff;font-size:.84rem;font-weight:800;letter-spacing:.055em;text-transform:uppercase;
-  background:linear-gradient(135deg,var(--primary),var(--primary-dark) 62%,var(--primary-deep));
-  border:1px solid rgba(255,255,255,.34);box-shadow:0 12px 30px rgba(11,79,131,.25);
-  transition:.2s ease;
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:1000;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 20px;
+  border-radius:999px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  background:linear-gradient(135deg, #0f6fb8, #0b4f83 60%, #09395d);
+  border:1px solid rgba(255,255,255,.3);
+  box-shadow:0 12px 30px rgba(11,79,131,.28);
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
 }
-.home-btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(11,79,131,.32)}
+.home-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 36px rgba(11,79,131,.34);
+  filter:brightness(1.04);
+}
+.home-btn::before{
+  content:"🏠";
+  font-size:18px;
+  line-height:1;
+}
 
 .page-shell{max-width:1240px;margin:0 auto;padding:32px 24px 12px}
-
-.brand-row{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:22px;padding-right:108px}
-.brand-row img{height:62px;width:auto;display:block}
-.brand-kicker{font-size:.79rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--primary)}
 
 .hero{
   position:relative;overflow:hidden;
@@ -154,9 +170,58 @@ strong{color:#24364b}
 .icon-flow-arrow{align-self:center;margin-top:19px;color:var(--primary);opacity:.45;font-size:.85rem;flex:0 0 auto}
 .final-statement{margin:24px auto 0;max-width:980px;padding:22px 26px;border-radius:17px;background:linear-gradient(130deg,var(--soft),#f7fbff);border:1px solid #d5e8f5;color:var(--primary-dark);font-size:1.18rem;font-weight:900;line-height:1.55}
 
-.top-bar{max-width:1200px;margin:26px auto 8px;display:flex;justify-content:center;align-items:center;padding-top:6px}.top-bar .logo{display:block;height:80px;width:auto}
-.woodsoft-footer{max-width:1200px;margin:18px auto 28px;padding:14px 20px;background:rgba(255,255,255,.9);border:1px solid rgba(148,163,184,.25);border-radius:999px;box-shadow:0 8px 20px rgba(15,23,42,.05)}
-.woodsoft-footer-inner{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;min-height:32px}.copyright{color:var(--muted);font-size:.9rem;font-weight:650}.social-links{display:flex;align-items:center;gap:9px}.social-links a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;color:#fff;text-decoration:none;background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 8px 18px rgba(11,79,131,.16);transition:.18s ease}.social-links a:hover{transform:translateY(-2px)}
+.woodsoft-footer{
+  max-width: 1200px;
+  margin: 38px auto 0;
+  padding: 14px 20px;
+  background: rgba(255,255,255,.9);
+  border: 1px solid rgba(148,163,184,.25);
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(15,23,42,.05);
+}
+.woodsoft-footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+  min-height:32px;
+}
+.footer-logo{
+  display:block;
+  height:28px;
+  width:auto;
+}
+.copyright{
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.social-links{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.social-links a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:33px;
+  height:33px;
+  border-radius:50%;
+  color:#fff;
+  background:linear-gradient(135deg, #0f6fb8, #0b4f83);
+  box-shadow:0 8px 18px rgba(11,79,131,.18);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.social-links a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 20px rgba(11,79,131,.22);
+}
+.social-links a i{
+  font-size: 0.95rem;
+}
 
 .reveal{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}.reveal.visible{opacity:1;transform:none}
 
@@ -175,8 +240,8 @@ strong{color:#24364b}
   .transition-box{grid-template-columns:1fr}.transition-arrow{transform:rotate(90deg);margin:auto}
 }
 @media(max-width:720px){
-  .page-shell{padding:18px 14px}.brand-row{padding-right:0;margin-bottom:15px}.brand-row img{height:50px}.brand-kicker{display:none}
-  .home-btn{top:12px;right:12px;padding:9px 12px;font-size:.72rem}.home-btn span{display:none}
+  .page-shell{padding:18px 14px}
+  .home-btn{top:12px;right:12px;padding:9px 14px;font-size:13px}
   .hero{padding:30px 20px 22px;border-radius:22px}.hero-product{margin:20px 0 18px;font-size:1.02rem}.hero p{font-size:.94rem;line-height:1.62}
   .hero-grid{gap:22px}.hero-image-frame{border-radius:16px;aspect-ratio:16/10;box-shadow:0 18px 40px rgba(1,25,45,.30),0 0 0 4px rgba(255,255,255,.05)}
   .hero-media-glow{inset:-10px;border-radius:24px}
@@ -187,19 +252,14 @@ strong{color:#24364b}
   .value-grid{grid-template-columns:1fr}
   .final-section{padding:32px 19px}.final-statement{font-size:1.02rem;padding:18px}
   .icon-flow{gap:10px 4px}.icon-flow-step{width:88px}.icon-flow-icon{width:44px;height:44px;border-radius:13px;font-size:.96rem}.icon-flow-label{font-size:.7rem}.icon-flow-arrow{margin-top:14px;font-size:.72rem}
-  .top-bar .logo{height:65px}.woodsoft-footer{margin:14px 14px 22px;border-radius:18px}
 }
 </style>
 </head>
 <body>
 
-<a class="home-btn" href="index.html" aria-label="Về trang chủ"><i class="fa-solid fa-house"></i><span>HOME</span></a>
+<a class="home-btn" href="index.html" aria-label="Về trang chủ">HOME</a>
 
 <main class="page-shell">
-  <div class="brand-row">
-    <img src="images/logo.png" alt="Woodsoft logo">
-    <div class="brand-kicker">Woodsoft Data Analyzer</div>
-  </div>
 
   <section class="hero">
     <div class="hero-grid">
@@ -347,9 +407,9 @@ strong{color:#24364b}
   </div>
 </div>
 
-<div class="top-bar"><img class="logo" src="images/logo.png" alt="Woodsoft logo"></div>
 <footer class="woodsoft-footer">
   <div class="woodsoft-footer-inner">
+    <img class="footer-logo" src="images/logo.png" alt="Woodsoft logo">
     <span class="copyright">Copyright © 2026 woodsoft.vn</span>
     <div class="social-links" aria-label="Woodsoft social media">
       <a href="https://www.facebook.com/bazismebelshik" target="_blank" rel="noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
