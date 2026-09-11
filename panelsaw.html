@@ -69,6 +69,39 @@
       line-height:1;
     }
 
+    .compat-cta{
+      position:fixed;
+      top:78px;
+      right:20px;
+      z-index:999;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 18px;
+      border-radius:999px;
+      text-decoration:none;
+      color:var(--primary-dark);
+      font-weight:700;
+      font-size:13px;
+      letter-spacing:.01em;
+      background:#fff;
+      border:1px solid rgba(15,111,184,.35);
+      box-shadow:0 10px 24px rgba(11,79,131,.2);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .compat-cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 30px rgba(11,79,131,.3);
+    }
+    .compat-cta i{
+      color:var(--primary);
+      font-size:14px;
+    }
+
+    @media (max-width:720px){
+      .compat-cta{top:58px;right:12px;padding:8px 14px;font-size:12px}
+    }
+
     .page{
       width:min(1180px, calc(100% - 40px));
       margin:0 auto;
@@ -248,6 +281,10 @@
       margin-bottom:16px;
     }
 
+    .wide-figure + .section-head{
+      margin-top:20px;
+    }
+
     .section-icon{
       width:42px;
       height:42px;
@@ -326,6 +363,16 @@
       margin-top:18px;
     }
 
+    .section-pair{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .section-pair .section{
+      height:100%;
+    }
+
     .subcard{
       background:#f8fafc;
       border:1px solid #eef2f7;
@@ -342,10 +389,10 @@
     .subcard p,
     .subcard ul{margin-top:8px}
 
-    /* Section media (static illustration, no lightbox) */
+    /* Section media (click-to-zoom illustration) */
     .section-media-layout{
       display:grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
       gap:28px;
       align-items:start;
     }
@@ -354,66 +401,85 @@
       margin-top:0;
     }
 
-    .cut-diagram-figure{
+    .cut-diagram-figure,
+    .label-figure,
+    .wide-figure{
       margin:0;
+      display:block;
+      width:100%;
       background:linear-gradient(180deg, #fbfdff 0%, #f4f8fc 100%);
       border:1px solid #dbe6ef;
       border-radius:20px;
       padding:14px;
       box-shadow:0 12px 24px rgba(15,23,42,.05);
       align-self:start;
+      cursor:zoom-in;
+      text-align:left;
+      font:inherit;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
     }
 
-    .cut-diagram{
-      position:relative;
-      aspect-ratio:4 / 3;
-      border-radius:14px;
-      overflow:hidden;
-      background:#f0d5a5;
-      border:1px solid #dfbd84;
+    .wide-figure{
+      margin-top:20px;
     }
 
-    .cut-diagram .cut{
-      position:absolute;
-      background:#fff6e4;
-      border:1px solid rgba(121,80,29,.32);
-      border-radius:2px;
-      display:grid;
-      place-items:center;
-      color:#86612e;
-      font-size:11px;
-      font-weight:800;
+    .cut-diagram-figure:hover,
+    .label-figure:hover,
+    .wide-figure:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 28px rgba(15,23,42,.08);
+      border-color:#bfd5e6;
     }
-    .cut-diagram .c1{left:2%;top:3%;width:29%;height:45%}
-    .cut-diagram .c2{left:32%;top:3%;width:31%;height:45%}
-    .cut-diagram .c3{left:64%;top:3%;width:34%;height:20%}
-    .cut-diagram .c4{left:64%;top:24%;width:34%;height:24%}
-    .cut-diagram .c5{left:2%;top:49%;width:20%;height:48%}
-    .cut-diagram .c6{left:23%;top:49%;width:40%;height:48%}
-    .cut-diagram .c7{left:64%;top:49%;width:34%;height:48%}
 
-    .cut-diagram .sawline{
-      position:absolute;
-      left:31.3%;
-      top:0;
-      width:3px;
-      height:100%;
-      background:var(--primary);
-      box-shadow:0 0 0 2px rgba(15,111,184,.15);
+    .cut-diagram-figure img,
+    .label-figure img,
+    .wide-figure img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:12px;
+      border:1px solid #e5e7eb;
+      background:#fff;
     }
 
     .cut-diagram-caption{
       margin-top:10px;
-      font-size:13px;
-      line-height:1.55;
+      font-size:12px;
+      line-height:1.5;
       color:#6b7c90;
       text-align:center;
     }
+
+    .cut-diagram-zoom-hint{
+      margin-top:6px;
+      font-size:11px;
+      font-weight:700;
+      color:var(--primary);
+      text-align:center;
+    }
+
+    /* Lightbox xem ảnh phóng to */
+    .image-lightbox{position:fixed;inset:0;z-index:2500;display:none;overflow-y:auto;padding:56px 20px 40px}
+    .image-lightbox.open{display:block}
+    .image-lightbox-backdrop{position:fixed;inset:0;background:rgba(8,15,30,.86);backdrop-filter:blur(4px);z-index:0}
+    .image-lightbox-inner{
+      position:relative;z-index:1;width:min(960px,100%);margin:0 auto;
+      background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.4);
+    }
+    .image-lightbox-inner img{width:100%;height:auto;display:block}
+    .image-lightbox-close{
+      position:fixed;top:16px;right:20px;z-index:2;width:38px;height:38px;border-radius:50%;
+      background:rgba(255,255,255,.16);border:none;color:#fff;font-size:19px;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .image-lightbox-close:hover{background:rgba(255,255,255,.28)}
 
     @media (max-width:900px){
       .two-col{grid-template-columns:1fr}
       .section-media-layout{grid-template-columns:1fr}
       .cut-diagram-figure{order:-1}
+      .label-figure{order:-1}
+      .section-pair{grid-template-columns:1fr}
     }
 
     @media (max-width:620px){
@@ -617,6 +683,7 @@
 </head>
 <body>
 <a class="home-btn" href="index.html" aria-label="Về trang chủ">HOME</a>
+<a class="compat-cta" href="#compat-section" aria-label="Xem nhanh danh sách hãng máy tương thích"><i class="fa-solid fa-industry"></i> Máy tương thích</a>
 <main class="page">
 
 <section class="hero">
@@ -649,86 +716,66 @@
 </div>
 </div>
 <p>
-    Chi tiết có thể được cắt theo hai cấp: cắt tấm thành dải, sau đó cắt dải thành chi tiết — trên một hoặc hai thiết bị, tùy cách tổ chức sản xuất của nhà máy.
+    BAZIS - Cắt Ván giúp tiết kiệm đáng kể vật liệu và thời gian sản xuất: sơ đồ cắt được tính toán tối ưu và hiển thị dưới dạng biểu đồ trực quan, dễ hiểu. Chi tiết có thể cắt theo hai cấp — cắt tấm thành dải, rồi cắt dải thành chi tiết — trên một hoặc hai thiết bị.
   </p>
 <ul class="clean-list">
 <li><span class="check">✓</span><span>7 tiêu chí tối ưu, có thể sắp xếp mức ưu tiên theo yêu cầu sản xuất.</span></li>
 <li><span class="check">✓</span><span>2 chế độ cắt: tấm đơn hoặc chồng tấm, theo công nghệ của từng nhà máy.</span></li>
+<li><span class="check">✓</span><span>Cắt cho một sản phẩm hoặc cả dự án nhiều sản phẩm, mỗi sản phẩm một số lượng khác nhau.</span></li>
 <li><span class="check">✓</span><span>Nhiều postprocessor, xuất đúng định dạng chương trình cho từng dòng máy.</span></li>
 </ul>
 </div>
-<figure class="cut-diagram-figure">
-<div class="cut-diagram" aria-hidden="true">
-<div class="cut c1">P-01</div><div class="cut c2">P-02</div><div class="cut c3">P-03</div><div class="cut c4">P-04</div><div class="cut c5">P-05</div><div class="cut c6">P-06</div><div class="cut c7">P-07</div><div class="sawline"></div>
-</div>
-<figcaption class="cut-diagram-caption">Sơ đồ cắt: các chi tiết được sắp xếp trên tấm ván theo phương án tối ưu đã chọn.</figcaption>
+<figure aria-label="Bấm để phóng to sơ đồ cắt" class="cut-diagram-figure" data-full-alt="Sơ đồ cắt thực tế xuất từ BAZIS: bố trí chi tiết trên tấm ván, bo nẹp, kèm bảng kê kích thước và dán cạnh" data-full-img="images/panel-saw/cuttingboard.png" role="button" tabindex="0">
+<img alt="Sơ đồ cắt thực tế xuất từ BAZIS" loading="lazy" src="images/panel-saw/cuttingboard.png"/>
+<figcaption class="cut-diagram-caption">Sơ đồ cắt thực tế xuất từ BAZIS: bố trí chi tiết trên tấm ván kèm bảng kê kích thước.</figcaption>
+<div class="cut-diagram-zoom-hint">Bấm vào ảnh để xem cỡ lớn</div>
 </figure>
 </div>
 </section>
 
+<div class="section-pair">
 <section class="section">
+<figure aria-label="Bấm để phóng to sơ đồ minh họa" class="wide-figure" data-full-alt="Sơ đồ minh họa tiêu chí tối ưu và quy trình từ tấm ván đầu vào đến phương án cắt tối ưu và chi tiết cắt ra" data-full-img="images/panel-saw/minhhoa.png" role="button" tabindex="0" style="margin-top:0">
+<img alt="Minh họa tạo sơ đồ cắt theo điều kiện thực tế" loading="lazy" src="images/panel-saw/minhhoa.png"/>
+<div class="cut-diagram-zoom-hint">Bấm vào ảnh để xem cỡ lớn</div>
+</figure>
 <div class="section-head">
 <div class="section-icon">⚙</div>
 <div>
 <h2>Tạo sơ đồ cắt theo điều kiện thực tế</h2>
-<p class="lead">Tham số công nghệ được đưa vào ngay từ bước tạo sơ đồ, không xử lý sau.</p>
+<p class="lead">Tối ưu theo vật liệu, máy và phương án cắt.</p>
 </div>
 </div>
 <p>
-    BAZIS Cắt Ván có thể tạo nhiều phương án trong một lần tính, ứng với các hướng cắt đầu tiên khác nhau, để kỹ thuật viên so sánh và chọn phương án phù hợp nhất trước khi đưa xuống máy.
+    Từ tấm ván đầu vào, BAZIS tính toán phương án cắt tối ưu bằng nhiều thuật toán và tiêu chí, xuất ra chi tiết sẵn sàng gia công. Tiêu chí ưu tiên có thể thay đổi theo từng dòng máy — cưa bàn trượt, Panel Saw hoặc CNC Nesting.
   </p>
-<ul class="clean-list">
-<li><span class="check">✓</span><span>Chiều vân vật liệu và kích thước tấm chuẩn.</span></li>
-<li><span class="check">✓</span><span>Phế liệu hữu ích có sẵn trong kho, được ưu tiên kiểm tra trước khi dùng tấm mới.</span></li>
-<li><span class="check">✓</span><span>Khoảng lùi mép và lượng dư gia công theo yêu cầu kỹ thuật.</span></li>
-<li><span class="check">✓</span><span>Hướng cắt đầu tiên, có thể so sánh giữa nhiều phương án.</span></li>
-</ul>
-<div class="highlight">
-    Sau tối ưu tự động, kỹ thuật viên vẫn có thể chỉnh sửa sơ đồ bằng tay khi gặp chi tiết hoặc yêu cầu sản xuất đặc thù.
-  </div>
 </section>
 
 <section class="section">
-<div class="section-head">
-<div class="section-icon">▤</div>
-<div>
-<h2>Cắt chồng tấm cho Panel Saw công nghiệp</h2>
-<p class="lead">Hai cách lập sơ đồ, phù hợp số lượng đơn hàng và cách tổ chức sản xuất.</p>
-</div>
-</div>
-<div class="two-col">
-<div class="subcard">
-<h3>Chỉ cắt theo chồng tấm</h3>
-<p>Số lượng chi tiết được làm tròn theo bội số của số tấm trong chồng; phần dư có thể đưa vào vùng lưu trữ tạm để dùng cho đơn hàng sau.</p>
-</div>
-<div class="subcard">
-<h3>Chồng tấm kết hợp tấm đơn</h3>
-<p>Phần đủ bội số được cắt theo chồng tấm; phần còn lại được tách thành sơ đồ riêng để gia công trên máy phù hợp.</p>
-</div>
-</div>
-<div class="highlight">
-    Giới hạn số lần xoay có thể thiết lập theo đúng khả năng của hệ điều khiển từng Panel Saw, thay vì tối ưu theo mô hình lý tưởng.
-  </div>
-</section>
-
-<section class="section">
+<figure aria-label="Bấm để phóng to màn hình cấu hình vật liệu" class="wide-figure" data-full-alt="Màn hình Cấu hình vật liệu của BAZIS với 3 nhóm: Ván, Ván DC và Phôi thành phẩm" data-full-img="images/panel-saw/vanDC.jpg" role="button" tabindex="0" style="margin-top:0">
+<img alt="Màn hình Cấu hình vật liệu BAZIS: Ván, Ván DC, Phôi thành phẩm" loading="lazy" src="images/panel-saw/vanDC.jpg"/>
+<div class="cut-diagram-zoom-hint">Bấm vào ảnh để xem cỡ lớn</div>
+</figure>
 <div class="section-head">
 <div class="section-icon">♻</div>
 <div>
-<h2>Quản lý phế liệu hữu ích</h2>
-<p class="lead">Tận dụng phần ván còn dùng được cho các đơn hàng tiếp theo.</p>
+<h2>Quản lý ván DC</h2>
+<p class="lead">Tận dụng ván DC và phôi thành phẩm còn dùng được cho các đơn hàng tiếp theo.</p>
 </div>
 </div>
 <p>
-    Phần ván còn sử dụng được sau khi cắt có thể lưu thành cơ sở dữ liệu phế liệu. Khi tối ưu đơn hàng tiếp theo, hệ thống ưu tiên kiểm tra phế liệu phù hợp trước khi dùng đến tấm mới.
+    Ván còn dùng được sau khi cắt lưu thành ván DC, tách riêng với ván nguyên tấm và phôi thành phẩm. Hệ thống ưu tiên kiểm tra trước khi dùng tấm mới.
   </p>
 <ul class="clean-list">
-<li><span class="check">✓</span><span>Phế liệu được lưu theo kích thước, vật liệu và nguồn gốc phát sinh.</span></li>
-<li><span class="check">✓</span><span>Có thể đưa chi tiết của đơn hàng tiếp theo hoặc chi tiết thường dùng vào các vùng phế liệu phát sinh từ đơn hiện tại.</span></li>
+<li><span class="check">✓</span><span>Quản lý theo kích thước, vật liệu và nguồn gốc phát sinh.</span></li>
+<li><span class="check">✓</span><span>Có thể đưa vào chi tiết của đơn hàng sau.</span></li>
 </ul>
 </section>
+</div>
 
 <section class="section">
+<div class="section-media-layout">
+<div class="section-media-copy">
 <div class="section-head">
 <div class="section-icon">▥</div>
 <div>
@@ -741,9 +788,16 @@
 <li><span class="check">✓</span><span>Tự động tạo tem và mã vạch, với các trường dữ liệu do người dùng lựa chọn.</span></li>
 <li><span class="check">✓</span><span>Chia lô đơn hàng lớn thành các lô nhỏ hơn để tạo sơ đồ tốt hơn và cân bằng tải thiết bị trong xưởng.</span></li>
 </ul>
+</div>
+<figure aria-label="Bấm để phóng to mẫu tem nhãn" class="label-figure" data-full-alt="Mẫu tem nhãn tự động tạo bởi BAZIS, gồm mã QR, mã vạch và thông tin đơn hàng/kích thước chi tiết" data-full-img="images/panel-saw/label1.jpg" role="button" tabindex="0">
+<img alt="Mẫu tem nhãn tự động tạo bởi BAZIS" loading="lazy" src="images/panel-saw/label1.jpg"/>
+<figcaption class="cut-diagram-caption">Tem nhãn mẫu: mã QR, mã vạch, kích thước và thông tin đơn hàng được in tự động cho từng chi tiết.</figcaption>
+<div class="cut-diagram-zoom-hint">Bấm vào ảnh để xem cỡ lớn</div>
+</figure>
+</div>
 </section>
 
-<section class="section">
+<section class="section" id="compat-section" style="scroll-margin-top:90px">
 <div class="section-head">
 <div class="section-icon">⇄</div>
 <div>
@@ -754,6 +808,11 @@
 <p>
     Danh sách dưới đây được đối chiếu theo tài liệu BAZIS, kèm hệ điều khiển và định dạng file tương ứng cho từng hãng/nhóm máy.
   </p>
+<figure aria-label="Bấm để phóng to giao diện phần mềm" class="wide-figure" data-full-alt="Giao diện thực tế BAZIS Cắt Ván: danh sách chi tiết bên trái, danh sách hệ điều khiển Panel Saw bên phải" data-full-img="images/panel-saw/interface.jpg" role="button" tabindex="0">
+<img alt="Giao diện thực tế BAZIS Cắt Ván, gồm danh sách chi tiết và danh sách hệ điều khiển Panel Saw" loading="lazy" src="images/panel-saw/interface.jpg"/>
+<figcaption class="cut-diagram-caption">Giao diện thực tế: danh sách chi tiết (trái) và danh sách hệ điều khiển Panel Saw để xuất chương trình (phải).</figcaption>
+<div class="cut-diagram-zoom-hint">Bấm vào ảnh để xem cỡ lớn</div>
+</figure>
 <div class="compat-grid">
 <div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/altendorf.gif" alt="ALTENDORF" loading="lazy"></div><h3>ALTENDORF</h3><div class="compat-sub">Panel Saw</div><div class="compat-row"><div class="name">Altendorf</div><code>*.saw</code></div></div>
 <div class="compat-card"><div class="compat-logo"><img src="images/panel-saw/biesse-selco.gif" alt="BIESSE SELCO" loading="lazy"></div><h3>BIESSE SELCO</h3><div class="compat-sub">Trước 2000</div><div class="compat-row"><div class="name">Biesse Selco</div><code class="unknown">*.</code></div></div>
@@ -807,5 +866,44 @@
     </div>
   </div>
 </footer>
+
+<div class="image-lightbox" id="imageLightbox" aria-hidden="true">
+  <div class="image-lightbox-backdrop" data-image-close></div>
+  <button class="image-lightbox-close" id="imageLightboxClose" aria-label="Đóng ảnh">&times;</button>
+  <div class="image-lightbox-inner">
+    <img id="imageLightboxImg" src="" alt="" loading="lazy">
+  </div>
+</div>
+
+<script>
+  const imageLightbox = document.getElementById('imageLightbox');
+  const imageLightboxImg = document.getElementById('imageLightboxImg');
+  const imageLightboxClose = document.getElementById('imageLightboxClose');
+
+  function openImageLightbox(src, alt) {
+    imageLightboxImg.src = src;
+    imageLightboxImg.alt = alt || '';
+    imageLightbox.classList.add('open');
+    imageLightbox.setAttribute('aria-hidden', 'false');
+  }
+  function closeImageLightbox() {
+    imageLightbox.classList.remove('open');
+    imageLightbox.setAttribute('aria-hidden', 'true');
+    imageLightboxImg.src = '';
+  }
+
+  document.querySelectorAll('[data-full-img]').forEach(el => {
+    el.addEventListener('click', () => openImageLightbox(el.dataset.fullImg, el.dataset.fullAlt || ''));
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openImageLightbox(el.dataset.fullImg, el.dataset.fullAlt || '');
+      }
+    });
+  });
+  imageLightboxClose.addEventListener('click', closeImageLightbox);
+  imageLightbox.querySelector('[data-image-close]').addEventListener('click', closeImageLightbox);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeImageLightbox(); });
+</script>
 </body>
 </html>
