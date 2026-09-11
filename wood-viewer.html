@@ -267,6 +267,7 @@
       font-size:clamp(24px,3vw,34px);line-height:1.15;letter-spacing:-.03em;
     }
     .estimate-slogan{margin:0 0 16px;color:#475569;font-size:15px;font-weight:600;line-height:1.7;max-width:480px}
+    .estimate-overview-note{margin:0 0 18px;color:#475569;font-size:14.5px;line-height:1.72;max-width:520px}
 
     .viewer-flow-line{
       display:flex;align-items:center;gap:7px;flex-wrap:wrap;
@@ -286,6 +287,12 @@
       padding:0 4px;
     }
     .ov-visual-caption i{color:var(--primary);font-size:11px;margin-top:2px}
+
+    .estimate-overview.wide-visual{grid-template-columns:minmax(0,.82fr) minmax(380px,1.18fr)}
+    .tem-flow-row{display:flex;align-items:center;gap:12px}
+    .tem-flow-illus{flex:1 1 60%;min-width:0}
+    .tem-flow-real{flex:0 0 32%;min-width:0}
+    .tem-flow-arrow{flex:0 0 auto;color:var(--primary);font-size:20px}
 
     .estimate-block-title{
       display:flex;align-items:center;gap:9px;margin:0 0 14px;color:#fff;
@@ -359,19 +366,6 @@
     }
     .benefit-item strong{color:#12365c}
 
-    .workflow-card{padding:26px 30px}
-    .workflow-detail{
-      display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:start;
-      gap:6px;overflow-x:auto;padding:2px 1px 6px;
-    }
-    .workflow-detail-step{text-align:center;flex:0 0 auto;min-width:96px}
-    .workflow-detail-icon{
-      width:60px;height:60px;margin:0 auto 9px;border:1.5px solid #47a7e8;border-radius:50%;
-      display:grid;place-items:center;background:#f7fbff;color:#1378c2;font-size:21px;
-      box-shadow:0 7px 18px rgba(15,111,184,.07);
-    }
-    .workflow-detail-step strong{display:block;color:#1f2937;font-size:12.5px;line-height:1.4;font-weight:700}
-    .workflow-detail-arrow{align-self:center;margin-top:18px;color:#1992da;font-size:16px}
 
     .quote-banner{
       padding:34px 38px;border-radius:22px;
@@ -390,17 +384,16 @@
 
     @media(max-width:1050px){
       .estimate-overview{grid-template-columns:1fr}
+      .estimate-overview.wide-visual{grid-template-columns:1fr}
       .feature-showcase-grid{grid-template-columns:1fr}
       .benefit-list{grid-template-columns:1fr}
-      .workflow-detail{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:18px}
-      .workflow-detail-arrow{display:none}
     }
 
     @media(max-width:720px){
       .page{padding-top:24px}
       .hero{padding:32px 26px}
       .hero-icons{display:none}
-      .estimate-overview,.workflow-card{padding:18px}
+      .estimate-overview{padding:18px}
       .viewer-flow-line{gap:5px}
       .quote-banner{display:block}
       .quote-banner .quote-btn{margin-top:18px}
@@ -409,11 +402,9 @@
       .demo-web-icon{width:32px;height:32px;font-size:14px}
       .demo-web-copy strong{font-size:11px}
       .demo-web-live{font-size:9.5px}
-      .workflow-detail{grid-template-columns:1fr 1fr}
-    }
-
-    @media(max-width:480px){
-      .workflow-detail{grid-template-columns:1fr}
+      .tem-flow-row{flex-direction:column}
+      .tem-flow-arrow{transform:rotate(90deg)}
+      .tem-flow-real{flex:0 0 auto;width:60%}
     }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -480,10 +471,10 @@
 
         <div class="feature-showcase-card">
           <div class="feature-showcase-thumb" data-full-img="images/viewer/quetqr.png" data-full-alt="Quét QR trên tem sản phẩm để xác định chi tiết cần lắp">
-          <img src="images/viewer/quetqr.png" alt="Quét QR trên tem sản phẩm để xác định chi tiết cần lắp" loading="lazy">
-          <span class="feature-showcase-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+            <img src="images/viewer/quetqr.png" alt="Quét QR trên tem sản phẩm để xác định chi tiết cần lắp" loading="lazy">
+            <span class="feature-showcase-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
           </div>
-          <div class="feature-showcase-body"><h4>Hỗ trợ thợ lắp đặt tại công trình</h4><p>Quét QR trên tem sản phẩm để nhanh chóng xác định đúng chi tiết cần lắp. WoodViewer tập trung vào chi tiết đó, làm mờ phần còn lại và giúp người lắp hiểu trực quan vị trí của từng bộ phận.</p></div>
+          <div class="feature-showcase-body"><h4>Hỗ trợ thợ lắp đặt tại công trình</h4><p>Mỗi chi tiết được dán một tem in mã QR riêng. Thợ lắp đặt chỉ cần quét mã trên tem, WoodViewer sẽ tự động xác định và làm nổi bật đúng chi tiết đó trong mô hình 3D, giúp lắp đúng vị trí ngay từ lần đầu.</p></div>
         </div>
 
         <div class="feature-showcase-card">
@@ -523,18 +514,25 @@
       </div>
     </article>
 
-    <article class="estimate-detail-card workflow-card">
-      <h3 class="estimate-block-title"><i class="fa-solid fa-diagram-project"></i> QUY TRÌNH</h3>
-      <div class="workflow-detail" aria-label="Quy trình từ thiết kế đến trải nghiệm khách hàng">
-        <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-cube"></i></span><strong>Thiết kế 3D<br>BAZIS / SketchUp</strong></div>
-        <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
-        <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-arrow-up-from-bracket"></i></span><strong>Xuất lên WoodViewer<br>Mô hình trực tuyến</strong></div>
-        <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
-        <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-share-nodes"></i></span><strong>Chia sẻ<br>Link / QR / Website</strong></div>
-        <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
-        <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-rotate"></i></span><strong>Trải nghiệm<br>Xem &amp; tương tác 3D</strong></div>
-        <i class="fa-solid fa-arrow-right workflow-detail-arrow"></i>
-        <div class="workflow-detail-step"><span class="workflow-detail-icon"><i class="fa-solid fa-layer-group"></i></span><strong>Ứng dụng<br>Duyệt mẫu / Lắp đặt / AI Render</strong></div>
+    <article class="estimate-detail-card estimate-overview wide-visual">
+      <div class="estimate-overview-copy">
+        <span class="estimate-overview-kicker"><i class="fa-solid fa-qrcode"></i> Thử ngay</span>
+        <h2>Quét mã QR trên tem — xem chi tiết này nằm ở đâu</h2>
+        <p class="estimate-slogan">Đây là tem thực tế được in và dán lên từng chi tiết trong sản xuất.</p>
+        <p class="estimate-overview-note">Dùng camera điện thoại quét mã QR bên cạnh để tự trải nghiệm: WoodViewer sẽ mở đúng mô hình sản phẩm và làm nổi bật chính xác chi tiết này — giống hệt cách thợ lắp đặt sử dụng tại công trình.</p>
+        <a class="ov-cta" href="https://woodviewer.com/v/216sjuzwbv3gnyqw?partID=2687-VACH-TUONG-P.RIENG-3-K3" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Mở thử trên trình duyệt</a>
+      </div>
+      <div class="ov-visual">
+        <div class="tem-flow-row">
+          <div class="ov-visual-box tem-flow-illus" style="cursor:zoom-in" data-full-img="images/viewer/temqr2.png" data-full-alt="Không biết chi tiết ở đâu — quét mã QR trên tem để tìm ra ngay">
+            <img src="images/viewer/temqr2.png" alt="Không biết chi tiết ở đâu — quét mã QR trên tem để tìm ra ngay">
+          </div>
+          <i class="fa-solid fa-arrow-right tem-flow-arrow" aria-hidden="true"></i>
+          <div class="ov-visual-box tem-flow-real" style="cursor:zoom-in" data-full-img="images/viewer/temqr.jpg" data-full-alt="Tem sản phẩm in mã QR gắn trên từng chi tiết">
+            <img src="images/viewer/temqr.jpg" alt="Tem sản phẩm in mã QR gắn trên từng chi tiết">
+          </div>
+        </div>
+        <div class="ov-visual-caption"><i class="fa-solid fa-circle-info"></i><span>Không biết chi tiết nằm ở đâu? Quét mã QR trên tem thật bên phải để WoodViewer chỉ ngay đúng vị trí lắp đặt.</span></div>
       </div>
     </article>
 
